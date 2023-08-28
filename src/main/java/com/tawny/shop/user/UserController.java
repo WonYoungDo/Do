@@ -8,13 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 	
+	// 회원가입 화면
 	@GetMapping("/join")
 	public String join() {
 		return "user/join";
 	}
 	
+	// 로그인 화면
 	@GetMapping("/login")
 	public String login() {
 		return "user/login";
+	}
+	
+	// 아이디 찾기 화면
+	@GetMapping("/find/id")
+	public String findId() {
+		return "user/findId";
+	}
+	
+	// 비밀번호 찾기 화면
+	@GetMapping("/find/pw")
+	public String findPw() {
+		return "user/findPw";
 	}
 }

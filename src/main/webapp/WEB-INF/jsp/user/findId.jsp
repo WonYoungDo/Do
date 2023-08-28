@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>아이디 찾기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
@@ -20,48 +20,58 @@
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
-			<!-- 로그인 -->
-			<div class="login col-6 small d-flex justify-content-center align-items-center">	
-				<div class="login-section text-center">
-				
-					<!-- 문구 -->
-					<h1 class="login-phrase">환영합니다</h1>
-					<!-- 문구 -->
-					
+			<!-- 아이디 찾기 -->
+			<div class="find col-6 small d-flex justify-content-center align-items-center">	
+									
 					<!-- 입력란 -->				
-					<div class="login-box p-5 h-50 pt-5 border">
+					<div class="find-id p-5 pt-5 border">
 					
-						<!-- 아이디 입력란 -->
+						<!-- 이름 입력란 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
-							<label class="col-3 p-0 mt-2">아이디:</label>
-							<input type="text" class="col-8 border-0">
+							<label class="col-2 p-0 mt-2">이름:</label>
+							<input type="text" class="col-9 border-0">
 						</div>
-						<!-- /아이디 입력란 -->
+						<!-- /이름 입력란 -->
 						
-						<!-- 비밀번호 입력란 -->
+						<!-- 전화번호 입력란 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
-							<label class="col-4 p-0 mt-2">비밀번호 :</label>
-							<input type="text" class="col-8 border-0">
+							<label class="col-3 p-0 mt-2">전화번호:</label>
+							<input type="text" class="col-7 border-0">
+							<button type="button" class="btn btn-dark btn-sm col-2 p-0">인증</button>
 						</div>
-						<!-- /비밀번호 입력란 -->
+						<!-- /전화번호 입력란 -->
 						
-						<!-- 로그인 버튼 -->
-						<button type="button" class="btn btn-dark btn-block">로그인</button>
-						<!-- /로그인 버튼 -->			
+						<!-- 인증번호 입력란 -->
+						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+							<label class="col-3 p-0 mt-2">인증번호:</label>
+							<input type="text" class="col-7 border-0">
+							<button type="button" class="btn btn-dark btn-sm col-2 p-0">확인</button>
+						</div>
+						<!-- /인증번호 입력란 -->
+						
+						<!-- 조회한 아이디 -->
+						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark mt-3 pt-2">
+							<label class="col-4 p-0 mt-2">조회한 아이디:</label>
+							<input type="text" class="col-7 border-0">
+						</div>
+						<!-- /조회한 아이디 -->
+						
+						<!-- 아이디 찾기 버튼 -->
+						<button type="button" class="btn btn-dark btn-block">아이디 찾기</button>
+						<!-- /아이디 찾기 버튼 -->			
 						
 						<!-- 회원 정보 찾기 -->
 						<div class="d-flex justify-content-around pt-2">
-							<a href="/user/find/id">아이디 찾기</a>
-							<a href="/userfind/pw">비밀번호 찾기</a>
+							<a href="/user/login">로그인</a>
+							<a href="/user/find/pw">비밀번호 찾기</a>
 						</div>
 						<!-- /회원 정보 찾기 -->
 							
 					</div>
 					<!-- /입력란 -->
 					
-				</div>
 			</div>
-			<!-- /로그인 -->
+			<!-- /아이디 찾기 -->
 			
 			<!-- 베스트 상품2 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
