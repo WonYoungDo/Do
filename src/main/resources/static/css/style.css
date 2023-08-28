@@ -1,19 +1,68 @@
 @charset "UTF-8";
 
 #wrap {
-	height: 800px;
 	width: 1200%;
 	margin:auto;
 }
 
-header {
+
+header > .logo {
 	height: 100px;
 }
-
-section {
-	height: 600px;
+header > nav > .search {
+	height: 50px;
 }
+header > nav > .category {
+	height: 50px;
+}
+header > .gap {
+	height: 30px;
+}
+
+/* portal */
+section > .goods {
+	margin-top:10px;
+	width:300px;
+}
+
+/* join */
+section > .join > .join-box {
+	height: 570px;
+}
+
+section > .join > .join-input {
+	height: 50px;
+}
+
+section > .best-goods {
+	height: 570px;
+}
+
 
 footer {
 	height: 100px;
 }
+
+.border-input {
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+}
+
+.small-text {
+	font-size:10px;
+}
+
+ .icon-xs {
+  	font-size: 1.3rem;
+}
+.icon-sm {
+  	font-size: 1.5rem;
+}
+.icon-md {
+  	font-size: 2rem;
+}
+.icon-lg {
+	font-size: 2.5rem;
+}
+
