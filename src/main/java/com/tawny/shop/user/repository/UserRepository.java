@@ -3,6 +3,8 @@ package com.tawny.shop.user.repository;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public interface UserRepository {
 	

@@ -9,8 +9,7 @@
  		INSERT INTO
  			`user`
  		(
-	 		`id`
-			, `loginId`
+			`loginId`
 			, `pw`
 			, `name`
 			, `phoneNumber`
@@ -18,12 +17,11 @@
  		)
  		VALUE
  		(
- 			`id` = #{id}
-			, `loginId` = #{loginId}
-			, `pw` = #{pw}
-			, `name` = #{name}
-			, `phoneNumber` = #{phoneNumber}
-			, `address` = #{address}
+			#{loginId}
+			, #{pw}
+			, #{name}
+			, #{phoneNumber}
+			, #{address}
  		)
  		
  	</insert>

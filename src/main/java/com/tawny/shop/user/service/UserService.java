@@ -1,6 +1,7 @@
 package com.tawny.shop.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.tawny.shop.user.repository.UserRepository;
@@ -19,5 +20,6 @@ public class UserService {
 			, String phoneNumber
 			, String address) {
 		return userRepository.insertJoin(loginId, pw, name, phoneNumber, address);
+				
 	}
 }
