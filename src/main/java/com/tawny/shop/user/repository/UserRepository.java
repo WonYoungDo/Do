@@ -9,6 +9,7 @@ import com.tawny.shop.user.domain.User;
 @Repository
 public interface UserRepository {
 	
+	// 회원가입
 	public User insertJoin(
 			@Param("loginId") String loginId
 			, @Param("pw") String pw
@@ -16,9 +17,10 @@ public interface UserRepository {
 			, @Param("phoneNumber") String phoneNumber
 			, @Param("address") String address);
 	
-	public int findByLoginId(String loginId);
-//	public int isDuplication(@Param("loginId") String loginId);
-
-
+	// 중복확인
+	public User isDuplicateId(@Param("loginId") String loginId);
+	
+	// 인증
+	
 
 }

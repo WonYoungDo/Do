@@ -16,6 +16,7 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	// 회원가입 기능
 	public User join(
 			String loginId
 			, String pw
@@ -29,8 +30,9 @@ public class UserService {
 		return user;		
 	}
 	
+	// 중복확인 기능
 	public boolean isDuplication(String loginId) {
-		return userRepository.findByLoginId(loginId) != 0;
+		return userRepository.isDuplicateId(loginId) != null;
 	}
 	
 }

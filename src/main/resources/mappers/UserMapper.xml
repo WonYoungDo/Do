@@ -23,9 +23,21 @@
 			, #{phoneNumber}
 			, #{address}
  		)
- 		
  	</insert>
  	
+ 	<select id="isDuplicateId" resultType="com.tawny.shop.user.domain.User" parameterType="String">
+ 		SELECT 
+ 			`id`
+ 			, `loginId`
+			, `pw`
+			, `name`
+			, `phoneNumber`
+			, `address`
+		FROM
+			`user`
+		WHERE 
+			`loginId` = #{loginId}
+ 	</select>
 
  	
  </mapper>

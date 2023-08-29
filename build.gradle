@@ -42,8 +42,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7'
 	
-	// Security 의존성 라이브러리
+	// Security 의존성 라이브러리 비밀번호 암호화
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    
+    // Twilio SDK 의존성 인증과정
+    implementation 'com.twilio.sdk:twilio:10.0.0-rc.4'
 }
 
 tasks.named('test') {
