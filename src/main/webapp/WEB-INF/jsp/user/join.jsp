@@ -28,7 +28,7 @@
 					<!-- 아이디 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="col-2 p-0 mt-2">아이디:</label>
-						<input type="text" class="col-7 border-0">
+						<input type="text" class="col-7 border-0" id="idInput">
 						<button type="button" class="btn btn-dark btn-sm col-2 p-0">중복확인</button>
 					</div>
 					<!-- /아이디 입력란 -->
@@ -36,35 +36,35 @@
 					<!-- 비밀번호 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 						<label class="mt-2">비밀번호 :</label>
-						<input type="text" class="col-7 border-0">
+						<input type="text" class="col-7 border-0" id="pwInput">
 					</div>
 					<!-- /비밀번호 입력란 -->
 					
 					<!-- 비밀번호 확인란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="mt-2">비밀번호 확인 :</label>
-						<input type="text" class="col-7 border-0">
+						<input type="text" class="col-7 border-0" id="pwCheckInput">
 					</div>
 					<!-- /비밀번호 확인란 -->
 					
 					<!-- 이름 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 						<label class="mt-2">이름 :</label>
-						<input type="text" class="col-7 border-0">
+						<input type="text" class="col-7 border-0" id="nameInput">
 					</div>
 					<!-- /이름 입력란 -->
 					
 					<!-- 주소 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="mt-2">주소 :</label>
-						<input type="text" class="col-7 border-0">
+						<input type="text" class="col-7 border-0" id="addressInput">
 					</div>
 					<!-- /주소 입력란 -->
 					
 					<!-- 전화번호 입력 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 						<label class="col-3 p-0 mt-2">전화번호:</label>
-						<input type="text" class="col-6 border-0">
+						<input type="text" class="col-6 border-0" id="phoneNumberInput">
 						<button type="button" class="btn btn-dark btn-sm p-0 col-2">인증</button>
 					</div>
 					<!-- /전화번호 입력 -->
@@ -73,14 +73,14 @@
 					<div class="d-none">
 						<div class="join-input d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">인증번호:</label>
-							<input type="text" class="col-6 border-0">
+							<input type="text" class="col-6 border-0" id="CertificationInput">
 							<button type="button" class="btn btn-dark btn-sm p-0 col-2">확인</button>
 						</div>					
 					</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
-					<button type="button" class="btn btn-dark btn-block mt-5">회원가입</button>
+					<button type="button" class="btn btn-dark btn-block mt-5" id="joinBtn">회원가입</button>
 					<!-- /회원가입 버튼 -->
 									
 				</div>
@@ -99,5 +99,22 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+	<script>
+		$(document).ready(function() {
+			
+			// 회원가입 버튼 클릭
+			$("#joinBtn").on("click", function() {
+				let id = $("#idInpur").val();
+				let pw = $("#pwInpur").val();
+				let pwCheck = $("#pwCheckInpur").val();
+				let name = $("#nameInpur").val();
+				let address = $("#addressInpur").val();
+				let phoneNumber = $("#phoneNumberInpur").val();
+				
+				// 유효성 검사
+			});
+		});
+	</script>
+	
 </body>
 </html>

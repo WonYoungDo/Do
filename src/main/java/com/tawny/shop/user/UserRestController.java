@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.service.UserService;
 
 @RestController
@@ -26,14 +27,30 @@ public class UserRestController {
 			, @RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber
 			, @RequestParam("address") String address) {
-		int count = userService.join(loginId, pw, name, phoneNumber, address);
+		User user = userService.join(loginId, pw, name, phoneNumber, address);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(count == 1) {
+		if(user != null) {
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");
 		}
 		return resultMap;
 	}
+	
+	// 아이디 중복확인
+	public Map<String,Boolean> duplication(@RequestParam("loginId") String loginId) {
+		
+		boolean isDuplicate = userService.isDuplication(loginId);
+
+		Map<String, Boolean> resultMap = new HashMap<>();
+		if(isDuplicate) {
+			resultMap.put("result", true);
+		} else {
+			resultMap.put("result", false);
+		}
+		return resultMap;
+	}
+		
+	
 }
