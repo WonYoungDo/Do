@@ -81,20 +81,23 @@
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="col-3 p-0 mt-2">이메일:</label>
 						<input type="text" class="col-6 border-0" id="emailInput">
-						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyBtn">인증</button>
+						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="sendVerifyBtn">인증</button>
 					</div>
 					<div class="text-danger small d-none" id="emptyEmail">이메일을 입력해주세요!</div>
+					<div class="text-success small d-none" id="sendVerityCode">인증번호를 전송했습니다.</div>
+					<div class="text-danger small d-none" id="notSendBtn">인증번호 전송 버튼을 눌러주세요!</div>
 					<!-- /이메일 입력란 -->
 					
 					<!-- 인증번호 입력란 -->
 					<div class="d-none" id="verifyBox">
 						<div class="join-input d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">인증번호:</label>
-							<input type="text" class="col-6 border-0" id="verifyInput">
-							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="VerifyCodeBtn">확인</button>
+							<input type="text" class="col-6 border-0" id="verifyCodeInput">
+							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyCodeBtn">확인</button>
 						</div>					
 					</div>
-					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호를 입력해주세요!</div>
+					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
+					<div class="text-danger small d-none" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
@@ -120,19 +123,87 @@
 	<script>
 		$(document).ready(function() {
 			
-			// 아이디 중복
-			var duplicatedId = true;
-			
-			// 중복버튼 
-			var duplicatedBtn = false;
-			
-			// 전화번호 인증 버튼 
+			var duplicatedId = true;   // 아이디 중복 여부
+			var duplicatedBtn = false; // 중복 확인 버튼 클릭 여부
+			var sendVerifyBtn = false; // 인증번호 전송 버튼 클릭 여부
+			var verifyCodeBtn = false; // 인증번호 확인 버튼 클릭 여부
 			
 			
-			// 인증번호 확인 버튼
+			// 인증번호 일치 확인
+			$("#verifyCodeBtn").on("click", function() {
+				let verifyCodeInput = $("#verifyCodeInput").val();
+				
+				// 유효성 검사
+				if(verifyCodeInput == "") {
+					$("#emptyVerifyCode").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyVerifyCode").addClass("d-none");
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/verifyCheck"
+					, data:{"inputCode":verifyCodeInput}
+					, success:function(data) {
+						
+						verifyCodeBtn = true;
+						
+						if(data.userInputCode) { 
+								
+						} else { 
+							$("#emptyVerifyCode").removeClass("d-none");
+						}
+						
+					}
+					, error:function() {
+						alert("인증 에러");
+					}
+				});
+			});
 			
 			
-			// 인증번호 버튼
+			
+			
+			
+			// 인증 버튼 -> 이메일로 번호 발송
+			$("#sendVerifyBtn").on("click", function() {
+				let email = $("#emailInput").val();
+				
+				// 유효성 검사
+				if(email == "") {
+					$("#emptyEmail").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyEmail").addClass("d-none");
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/verify"
+					, data:{"email":email}
+					, success:function(data) {
+						
+						sendVerifyBtn = true;
+						
+						if(data.result == "success") {
+							$("#verifyBox").removeClass("d-none");
+							$("#sendVerityCode").removeClass("d-none");
+						} else {
+							$("#verifyBox").addClass("d-none");
+							$("#sendVerityCode").addClass("d-none");	
+						}
+						
+					}
+					, error:function() {
+						alert("인증번호 전송 에러");
+					}
+				});
+			});
+			
+			
+			
+			
 			
 			
 			// idInput 이벤트 초기화 
@@ -142,6 +213,10 @@
 				$("#availableId").addClass("d-none");
 				$("#duplicateId").addClass("d-none");
 			});
+			
+			
+			
+			
 			
 			// 중복확인 버튼
 			$("#duplicateBtn").on("click", function() {
@@ -180,6 +255,10 @@
 				
 				
 		
+			
+			
+			
+			
 			// 회원가입 버튼
 			$("#joinBtn").on("click", function() {
 				let id = $("#idInput").val();
@@ -188,9 +267,10 @@
 				let name = $("#nameInput").val();
 				let address = $("#addressInput").val();
 				let phoneNumber = $("#phoneNumberInput").val();
+				let email = $("#emailInput").val();
 				
 				// 유효성 검사
-				if(id == "") {
+				if(id == "") { 
 					$("#emptyId").removeClass("d-none");
 					return;
 				} else {
@@ -246,6 +326,26 @@
 					return;
 				} else {
 					$("#emptyPhoneNumber").addClass("d-none");
+				}
+				
+				if(email == "") {
+					$("#emptyEmail").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyEmail").addClass("d-none");
+				}
+				
+				if(!sendVerifyBtn) {
+					$("#notSendBtn").removeClass("d-none");
+					return;
+				} else {
+					$("#notSendBtn").addClass("d-none");
+				}
+				
+				if(!verifyCodeBtn) {
+					$("#notVerifyCodeBtn").removeClass("d-none");
+				} else {
+					$("#notVerifyCodeBtn").addClass("d-none");
 				}
 				
 				$.ajax({

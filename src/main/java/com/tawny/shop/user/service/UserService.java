@@ -1,9 +1,8 @@
 package com.tawny.shop.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.repository.UserRepository;
@@ -15,8 +14,7 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-	
+	private MailService mailService ;
 	
 	// 회원가입 기능
 	public User join(
@@ -26,9 +24,9 @@ public class UserService {
 			, String phoneNumber
 			, String email
 			, String address) {
-		String encryptPassword = passwordEncoder.encode(pw);
+		 //String encryptPassword = passwordEncoder.encode(pw);
 								 
-		User user = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, address, email);
+		User user = userRepository.insertJoin(loginId, pw, name, phoneNumber, address, email);
 		
 		return user;		
 	}
@@ -36,6 +34,11 @@ public class UserService {
 	// 중복확인 기능
 	public boolean isDuplication(String loginId) {
 		return userRepository.isDuplicateId(loginId) != null;
+	}
+	
+	// 이메일 인증 기능
+	public boolean mailVerityCheck(int verifyCode, int inputCode) {
+		return inputCode == verifyCode;
 	}
 	
 }

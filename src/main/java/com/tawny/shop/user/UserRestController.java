@@ -3,6 +3,8 @@ package com.tawny.shop.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,9 @@ import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.service.MailService;
 import com.tawny.shop.user.service.UserService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
 public class UserRestController {
@@ -59,16 +64,39 @@ public class UserRestController {
 		return resultMap;
 	}
 	
-	// 메일 인증
-	@GetMapping("/verify")
-	public Map<String, String> mailVerify(@RequestParam("email") String email) {
-	
-		String verifyMail = mailService.mailCheck(email);
+	// 메일 전송
+	@PostMapping("/verify")
+	public Map<String, String> mailVerify(@RequestParam("email") String email, HttpSession session) {
 		
-		Map<String, String> resultMap = new HashMap<>();
-		if()
-	}
+		int verifyCode = mailService.sendMail(email);
 
+		Map<String, String> resultMap = new HashMap<>();
+		if(verifyCode != 0) {
+			resultMap.put("result", "success");
+			session.setAttribute("verifyCode", verifyCode);
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+        return resultMap;
+    }
+		
+	// 메일 인증
+	@PostMapping("/verifyCheck")
+	public Map<String, Boolean> mailVerityCheck(@RequestParam("inputCode") int inputCode, HttpSession session) {
+		
+		int verifyCode = (Integer)session.getAttribute("verifyCode");
+		
+		boolean userInputCode = userService.mailVerityCheck(verifyCode, inputCode);
+		
+		Map<String, Boolean> resultMap = new HashMap<>();
+		if(userInputCode) {
+			resultMap.put("result", true);
+		} else {
+			resultMap.put("result", false);
+		}
+		return resultMap;
+	}
 		
 	
 }
