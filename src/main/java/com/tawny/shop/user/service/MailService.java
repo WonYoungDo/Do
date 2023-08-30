@@ -2,6 +2,7 @@ package com.tawny.shop.user.service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,6 @@ public class MailService {
     public int sendMail(String email){
         MimeMessage message = CreateMail(email);
         javaMailSender.send(message);
-
         return number;
     }
     

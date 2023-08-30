@@ -1,7 +1,8 @@
 package com.tawny.shop.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tawny.shop.user.domain.User;
@@ -37,8 +38,16 @@ public class UserService {
 	}
 	
 	// 이메일 인증 기능
-	public boolean mailVerityCheck(int verifyCode, int inputCode) {
-		return inputCode == verifyCode;
+	public boolean mailVerityCheck(int inputCode, HttpSession session) {
+		
+		Integer sentNumber = (Integer)session.getAttribute("verifyCode");
+		
+		boolean matched = (sentNumber != null) && (inputCode == sentNumber);
+		
+		return matched;
 	}
-	
+	public int check(HttpSession session) {
+		int sentNumber = (Integer)session.getAttribute("verifyCode");
+		return sentNumber;
+	}
 }

@@ -68,12 +68,12 @@ public class UserRestController {
 	@PostMapping("/verify")
 	public Map<String, String> mailVerify(@RequestParam("email") String email, HttpSession session) {
 		
-		int verifyCode = mailService.sendMail(email);
+		int sentVerifyCode = mailService.sendMail(email);
 
 		Map<String, String> resultMap = new HashMap<>();
-		if(verifyCode != 0) {
+		if(sentVerifyCode != 0) {
 			resultMap.put("result", "success");
-			session.setAttribute("verifyCode", verifyCode);
+			session.setAttribute("verifyCode", sentVerifyCode);
 		} else {
 			resultMap.put("result", "fail");
 		}
@@ -85,12 +85,11 @@ public class UserRestController {
 	@PostMapping("/verifyCheck")
 	public Map<String, Boolean> mailVerityCheck(@RequestParam("inputCode") int inputCode, HttpSession session) {
 		
-		int verifyCode = (Integer)session.getAttribute("verifyCode");
+		boolean isMatched = userService.mailVerityCheck(inputCode, session);
 		
-		boolean userInputCode = userService.mailVerityCheck(verifyCode, inputCode);
 		
 		Map<String, Boolean> resultMap = new HashMap<>();
-		if(userInputCode) {
+		if(isMatched) {
 			resultMap.put("result", true);
 		} else {
 			resultMap.put("result", false);

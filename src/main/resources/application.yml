@@ -27,5 +27,5 @@ spring:
     password : rgqzptxsrrjmiwmz
     properties :
       mail.smtp.auth : true 
-      mail.smtp.timeout : 5000 
+      mail.smtp.timeout : 20000 
       mail.smtp.starttls.enable : true

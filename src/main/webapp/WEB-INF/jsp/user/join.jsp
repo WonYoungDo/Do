@@ -48,7 +48,7 @@
 					<!-- 비밀번호 확인란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="mt-2">비밀번호 확인 :</label>
-						<input type="text" class="col-7 border-0" id="pwCheckInput">
+						<input type="password" class="col-7 border-0" id="pwCheckInput">
 					</div>
 					<div class="text-danger small d-none" id="emptyPwCheck">비밀번호를 확인해주세요!</div>
 					<!-- /비밀번호 확인란 -->
@@ -98,6 +98,7 @@
 					</div>
 					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
 					<div class="text-danger small d-none" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
+					<div class="text-success small d-none" id="verifyComplete">인증이 완료되었습니다.</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
@@ -133,7 +134,7 @@
 			$("#verifyCodeBtn").on("click", function() {
 				let verifyCodeInput = $("#verifyCodeInput").val();
 				
-				// 유효성 검사
+				// 유효성 검사 -> 인증 번호 입력란
 				if(verifyCodeInput == "") {
 					$("#emptyVerifyCode").removeClass("d-none");
 					return;
@@ -148,9 +149,10 @@
 					, success:function(data) {
 						
 						verifyCodeBtn = true;
-						
-						if(data.userInputCode) { 
-								
+						alert(data.isMatched);
+						if(data.isMatched) { 
+							$("#verifyComplete").removeClass("d-none");
+							$("#emptyVerifyCode").addClass("d-none");
 						} else { 
 							$("#emptyVerifyCode").removeClass("d-none");
 						}
@@ -170,7 +172,7 @@
 			$("#sendVerifyBtn").on("click", function() {
 				let email = $("#emailInput").val();
 				
-				// 유효성 검사
+				// 유효성 검사 -> 이메일 입력란
 				if(email == "") {
 					$("#emptyEmail").removeClass("d-none");
 					return;
