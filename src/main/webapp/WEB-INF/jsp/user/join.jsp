@@ -69,24 +69,32 @@
 					<div class="text-danger small d-none" id="emptyAddress">주소를 입력해주세요!</div>
 					<!-- /주소 입력란 -->
 					
-					<!-- 전화번호 입력 -->
+					<!-- 전화번호 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 						<label class="col-3 p-0 mt-2">전화번호:</label>
 						<input type="text" class="col-6 border-0" id="phoneNumberInput">
-						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="proveBtn">인증</button>
 					</div>
 					<div class="text-danger small d-none" id="emptyPhoneNumber">전화번호를 입력해주세요!</div>
-					<!-- /전화번호 입력 -->
+					<!-- /전화번호 입력란 -->
+					
+					<!-- 이메일 입력란 -->
+					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+						<label class="col-3 p-0 mt-2">이메일:</label>
+						<input type="text" class="col-6 border-0" id="emailInput">
+						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyBtn">인증</button>
+					</div>
+					<div class="text-danger small d-none" id="emptyEmail">이메일을 입력해주세요!</div>
+					<!-- /이메일 입력란 -->
 					
 					<!-- 인증번호 입력란 -->
-					<div class="d-none" id="proveBox">
+					<div class="d-none" id="verifyBox">
 						<div class="join-input d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">인증번호:</label>
-							<input type="text" class="col-6 border-0" id="CertificationInput">
-							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="">확인</button>
+							<input type="text" class="col-6 border-0" id="verifyInput">
+							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="VerifyCodeBtn">확인</button>
 						</div>					
 					</div>
-					<div class="text-danger small d-none" id="emptyCertification">인증번호를 입력해주세요!</div>
+					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호를 입력해주세요!</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
@@ -119,32 +127,12 @@
 			var duplicatedBtn = false;
 			
 			// 전화번호 인증 버튼 
-			var phoneNumberproveBtn = false;
+			
 			
 			// 인증번호 확인 버튼
-			var CertificationCheckBtn = false;
+			
 			
 			// 인증번호 버튼
-			$("#proveBtn").on("click", function() {
-				let phoneNumber = $("#phoneNumberInput").val();
-				let Certification = $("#CertificationInput").val();
-				
-				if(phoneNumber == "") {
-					$("#emptyPhoneNumber").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyPhoneNumber").addClass("d-none");
-					$("#proveBox").removeClass("d-none");
-				}
-				
-				if(Certification == "") {
-					$("#emptyCertification").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyCertification").addClass("d-none");
-				}
-				
-			});
 			
 			
 			// idInput 이벤트 초기화 

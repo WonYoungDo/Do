@@ -3,6 +3,7 @@ package com.tawny.shop.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.repository.UserRepository;
@@ -16,16 +17,18 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	
 	// 회원가입 기능
 	public User join(
 			String loginId
 			, String pw
 			, String name
 			, String phoneNumber
+			, String email
 			, String address) {
 		String encryptPassword = passwordEncoder.encode(pw);
 								 
-		User user = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, address);
+		User user = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, address, email);
 		
 		return user;		
 	}

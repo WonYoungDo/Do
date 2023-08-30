@@ -13,6 +13,7 @@
 			, `pw`
 			, `name`
 			, `phoneNumber`
+			, `email`
 			, `address` 		
  		)
  		VALUE
@@ -21,6 +22,7 @@
 			, #{pw}
 			, #{name}
 			, #{phoneNumber}
+			, #{email}
 			, #{address}
  		)
  	</insert>
@@ -32,6 +34,7 @@
 			, `pw`
 			, `name`
 			, `phoneNumber`
+			, `email`
 			, `address`
 		FROM
 			`user`

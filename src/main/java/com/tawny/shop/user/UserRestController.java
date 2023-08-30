@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tawny.shop.user.domain.User;
+import com.tawny.shop.user.service.MailService;
 import com.tawny.shop.user.service.UserService;
 
 @RestController
@@ -20,6 +21,9 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private MailService mailService ;
+	
 	// 회원가입 기능
 	@PostMapping("/join")
 	public Map<String, String> join(
@@ -27,8 +31,9 @@ public class UserRestController {
 			, @RequestParam("pw") String pw
 			, @RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber
+			, @RequestParam("email") String email
 			, @RequestParam("address") String address) {
-		User user = userService.join(loginId, pw, name, phoneNumber, address);
+		User user = userService.join(loginId, pw, name, phoneNumber, address, email);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(user != null) {
@@ -54,9 +59,16 @@ public class UserRestController {
 		return resultMap;
 	}
 	
-	// 전화번호 인증
-	@GetMapping("/verification")
-	public 
+	// 메일 인증
+	@GetMapping("/verify")
+	public Map<String, String> mailVerify(@RequestParam("email") String email) {
+	
+		String verifyMail = mailService.mailCheck(email);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		if()
+	}
+
 		
 	
 }
