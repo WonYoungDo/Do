@@ -38,10 +38,10 @@ public class UserRestController {
 			, @RequestParam("phoneNumber") String phoneNumber
 			, @RequestParam("email") String email
 			, @RequestParam("address") String address) {
-		User user = userService.join(loginId, pw, name, phoneNumber, address, email);
+		int count = userService.join(loginId, pw, name, phoneNumber, address, email);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(user != null) {
+		if(count != 0) {
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");
@@ -83,16 +83,16 @@ public class UserRestController {
 		
 	// 메일 인증
 	@PostMapping("/verifyCheck")
-	public Map<String, Boolean> mailVerityCheck(@RequestParam("inputCode") int inputCode, HttpSession session) {
+	public Map<String, String> mailVerityCheck(@RequestParam("inputCode") int inputCode, HttpSession session) {
 		
 		boolean isMatched = userService.mailVerityCheck(inputCode, session);
 		
 		
-		Map<String, Boolean> resultMap = new HashMap<>();
+		Map<String, String> resultMap = new HashMap<>();
 		if(isMatched) {
-			resultMap.put("result", true);
+			resultMap.put("result", "success");
 		} else {
-			resultMap.put("result", false);
+			resultMap.put("result", "fail");
 		}
 		return resultMap;
 		

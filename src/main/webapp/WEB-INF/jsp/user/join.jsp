@@ -148,13 +148,15 @@
 					, url:"/user/verifyCheck"
 					, data:{"inputCode":verifyCodeInput}
 					, success:function(data) {
-						alert("inputCode" + " : " + verifyCodeInput);
+						
 						verifyCodeBtn = true;
-						if(data.isMatched == false) { 
+						
+						if(data.result == "success") { 
 							$("#verifyComplete").removeClass("d-none");
 							$("#emptyVerifyCode").addClass("d-none");
 						} else { 
 							$("#notMatchCode").removeClass("d-none");
+							return;
 						}
 						
 					}
@@ -353,7 +355,7 @@
 				$.ajax({
 					type:"post"
 					, url:"/user/join"
-					, data:{"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber}
+					, data:{"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber, "email":email}
 					, success:function(data) {
 						
 						if(data.result == "success") { 

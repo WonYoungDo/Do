@@ -36,6 +36,8 @@
 			, `phoneNumber`
 			, `email`
 			, `address`
+			, `updatedAT`
+			, `createdAT`
 		FROM
 			`user`
 		WHERE 
