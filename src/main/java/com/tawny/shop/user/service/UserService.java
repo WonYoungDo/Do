@@ -46,8 +46,4 @@ public class UserService {
 		
 		return matched;
 	}
-	public int check(HttpSession session) {
-		int sentNumber = (Integer)session.getAttribute("verifyCode");
-		return sentNumber;
-	}
 }

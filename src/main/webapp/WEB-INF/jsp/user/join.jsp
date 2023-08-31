@@ -99,6 +99,7 @@
 					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
 					<div class="text-danger small d-none" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
 					<div class="text-success small d-none" id="verifyComplete">인증이 완료되었습니다.</div>
+					<div class="text-danger small d-none" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
@@ -147,14 +148,13 @@
 					, url:"/user/verifyCheck"
 					, data:{"inputCode":verifyCodeInput}
 					, success:function(data) {
-						
+						alert("inputCode" + " : " + verifyCodeInput);
 						verifyCodeBtn = true;
-						alert(data.isMatched);
-						if(data.isMatched) { 
+						if(data.isMatched == false) { 
 							$("#verifyComplete").removeClass("d-none");
 							$("#emptyVerifyCode").addClass("d-none");
 						} else { 
-							$("#emptyVerifyCode").removeClass("d-none");
+							$("#notMatchCode").removeClass("d-none");
 						}
 						
 					}
