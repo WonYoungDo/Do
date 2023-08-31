@@ -1,11 +1,13 @@
 package com.tawny.shop.user.service;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.repository.UserRepository;
 
 @Service
@@ -32,7 +34,8 @@ public class UserService {
 	
 	// 중복확인 기능
 	public boolean isDuplication(String loginId) {
-		return userRepository.isDuplicateId(loginId) != null;
+		boolean duplicateId = (userRepository.isDuplicateId(loginId) != null) && (userRepository.isDuplicateId(loginId).equals(loginId)); 
+		return duplicateId;
 	}
 	
 	// 이메일 인증 기능
@@ -43,5 +46,17 @@ public class UserService {
 		boolean matched = (sentNumber != null) && (inputCode == sentNumber);
 		
 		return matched;
+	}
+	
+	// 로그인 기능
+	public User login(String loginId, String pw) {
+		
+		List<User> userList = userRepository.getLoginInfo(loginId, pw);
+		
+		if(userList.isEmpty()) {
+			return null;
+		} else {
+			return userList.get(0);
+		}
 	}
 }

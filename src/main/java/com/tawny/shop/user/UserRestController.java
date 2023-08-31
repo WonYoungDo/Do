@@ -95,9 +95,24 @@ public class UserRestController {
 			resultMap.put("result", "fail");
 		}
 		return resultMap;
-		
-		
 	}
-		
 	
+	// 로그인
+	@PostMapping("/login")
+	public Map<String, String> login(			
+			@RequestParam("loginId") String loginId
+			, @RequestParam("pw") String pw
+			, HttpSession session) {
+		User user = userService.login(loginId, pw);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		if(user != null) {
+			resultMap.put("result", "success");
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userName", user.getName());
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
 }

@@ -43,6 +43,23 @@
 		WHERE 
 			`loginId` = #{loginId}
  	</select>
-
+	
+	<select id="getLoginInfo" resultType="com.tawny.shop.user.domain.User" parameterType="map">
+ 		SELECT 
+ 			`id`
+ 			, `loginId`
+			, `pw`
+			, `name`
+			, `phoneNumber`
+			, `email`
+			, `address`
+			, `updatedAT`
+			, `createdAT`
+		FROM
+			`user`
+		WHERE 
+			`loginId` = #{loginId}
+			AND `pw` = #{pw}
+ 	</select>
  	
  </mapper>

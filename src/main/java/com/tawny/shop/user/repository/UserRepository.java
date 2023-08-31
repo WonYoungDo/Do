@@ -1,7 +1,8 @@
 package com.tawny.shop.user.repository;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.tawny.shop.user.domain.User;
@@ -22,4 +23,8 @@ public interface UserRepository {
 	// 중복확인
 	public User isDuplicateId(@Param("loginId") String loginId);
 	
+	// 로그인 
+	public List<User> getLoginInfo(
+			@Param("loginId") String loginId
+			, @Param("pw") String pw);
 }
