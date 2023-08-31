@@ -1,15 +1,14 @@
-package com.tawny.shop.user.repository;
+package com.tawny.shop.manager.repository;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.tawny.shop.user.domain.User;
-
+import com.tawny.shop.manager.domain.Manager;
 
 @Repository
-public interface UserRepository {
+public interface ManagerRepository {
 	
 	// 회원가입
 	public int insertJoin(
@@ -17,14 +16,13 @@ public interface UserRepository {
 			, @Param("pw") String pw
 			, @Param("name") String name
 			, @Param("phoneNumber") String phoneNumber
-			, @Param("email") String email
-			, @Param("address") String address);
+			, @Param("email") String email);
 	
 	// 중복확인
 	public int isDuplicateId(@Param("loginId") String loginId);
 	
 	// 로그인 
-	public List<User> getLoginInfo(
+	public List<Manager> getLoginInfo(
 			@Param("loginId") String loginId
 			, @Param("pw") String pw);
 }

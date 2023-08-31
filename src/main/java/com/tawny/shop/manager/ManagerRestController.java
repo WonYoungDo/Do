@@ -1,4 +1,4 @@
-package com.tawny.shop.user;
+package com.tawny.shop.manager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tawny.shop.common.MailService;
-import com.tawny.shop.user.domain.User;
-import com.tawny.shop.user.service.UserService;
+import com.tawny.shop.manager.domain.Manager;
+import com.tawny.shop.manager.service.ManagerService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/user")
-public class UserRestController {
+@RequestMapping("/manager")
+public class ManagerRestController {
 	
 	@Autowired
-	private UserService userService;
+	private ManagerService ManagerService;
 	
 	@Autowired
 	private MailService mailService ;
@@ -36,9 +36,8 @@ public class UserRestController {
 			, @RequestParam("pw") String pw
 			, @RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber
-			, @RequestParam("email") String email
-			, @RequestParam("address") String address) {
-		int count = userService.join(loginId, pw, name, phoneNumber, address, email);
+			, @RequestParam("email") String email) {
+		int count = ManagerService.join(loginId, pw, name, phoneNumber, email);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(count != 0) {
@@ -53,7 +52,7 @@ public class UserRestController {
 	@GetMapping("/duplication")
 	public Map<String,Boolean> duplication(@RequestParam("loginId") String loginId) {
 		
-		boolean isDuplicate = userService.isDuplication(loginId);
+		boolean isDuplicate = ManagerService.isDuplication(loginId);
 
 		Map<String, Boolean> resultMap = new HashMap<>();
 		if(isDuplicate) {
@@ -85,7 +84,7 @@ public class UserRestController {
 	@PostMapping("/verifyCheck")
 	public Map<String, String> mailVerityCheck(@RequestParam("inputCode") int inputCode, HttpSession session) {
 		
-		boolean isMatched = userService.mailVerityCheck(inputCode, session);
+		boolean isMatched = ManagerService.mailVerityCheck(inputCode, session);
 		
 		
 		Map<String, String> resultMap = new HashMap<>();
@@ -103,13 +102,13 @@ public class UserRestController {
 			@RequestParam("loginId") String loginId
 			, @RequestParam("pw") String pw
 			, HttpSession session) {
-		User user = userService.login(loginId, pw);
+		Manager manager = ManagerService.login(loginId, pw);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(user != null) {
+		if(manager != null) {
 			resultMap.put("result", "success");
-			session.setAttribute("userId", user.getId());
-			session.setAttribute("userName", user.getName());
+			session.setAttribute("userId", manager.getId());
+			session.setAttribute("userName", manager.getName());
 		} else {
 			resultMap.put("result", "fail");
 		}

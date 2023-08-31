@@ -1,4 +1,4 @@
-package com.tawny.shop.user.service;
+package com.tawny.shop.manager.service;
 
 import java.util.List;
 
@@ -7,14 +7,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tawny.shop.manager.domain.Manager;
+import com.tawny.shop.manager.repository.ManagerRepository;
 import com.tawny.shop.user.domain.User;
-import com.tawny.shop.user.repository.UserRepository;
 
 @Service
-public class UserService {
+public class ManagerService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private ManagerRepository managerRepository;
 	
 	
 	// 회원가입 기능
@@ -23,11 +24,10 @@ public class UserService {
 			, String pw
 			, String name
 			, String phoneNumber
-			, String email
-			, String address) {
+			, String email) {
 		 //String encryptPassword = passwordEncoder.encode(pw);
 								 
-		int count = userRepository.insertJoin(loginId, pw, name, phoneNumber, address, email);
+		int count = managerRepository.insertJoin(loginId, pw, name, phoneNumber, email);
 		
 		return count;		
 	}
@@ -35,7 +35,7 @@ public class UserService {
 	// 중복확인 기능
 	public boolean isDuplication(String loginId) {
 		
-		int duplicateId = userRepository.isDuplicateId(loginId); 
+		int duplicateId = managerRepository.isDuplicateId(loginId); 
 		
 		return duplicateId != 0;
 	}
@@ -51,14 +51,14 @@ public class UserService {
 	}
 	
 	// 로그인 기능
-	public User login(String loginId, String pw) {
+	public Manager login(String loginId, String pw) {
 		
-		List<User> userList = userRepository.getLoginInfo(loginId, pw);
+		List<Manager> managerList = managerRepository.getLoginInfo(loginId, pw);
 		
-		if(userList.isEmpty()) {
+		if(managerList.isEmpty()) {
 			return null;
 		} else {
-			return userList.get(0);
+			return managerList.get(0);
 		}
 	}
 }

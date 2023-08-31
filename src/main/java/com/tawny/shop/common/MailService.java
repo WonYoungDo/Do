@@ -1,4 +1,4 @@
-package com.tawny.shop.user.service;
+package com.tawny.shop.common;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
