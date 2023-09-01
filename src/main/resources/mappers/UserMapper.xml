@@ -14,7 +14,8 @@
 			, `name`
 			, `phoneNumber`
 			, `email`
-			, `address` 		
+			, `address`
+			, `saltStr` 		
  		)
  		VALUE
  		(
@@ -24,6 +25,7 @@
 			, #{phoneNumber}
 			, #{email}
 			, #{address}
+			, #{saltStr}
  		)
  	</insert>
  	
@@ -45,13 +47,13 @@
 			, `phoneNumber`
 			, `email`
 			, `address`
+			, `saltStr`
 			, `updatedAT`
 			, `createdAT`
 		FROM
 			`user`
 		WHERE 
 			`loginId` = #{loginId}
-			AND `pw` = #{pw}
  	</select>
  	
  </mapper>

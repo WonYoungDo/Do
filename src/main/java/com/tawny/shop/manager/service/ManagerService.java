@@ -1,5 +1,6 @@
 package com.tawny.shop.manager.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,10 +27,14 @@ public class ManagerService {
 			, String name
 			, String phoneNumber
 			, String email) {
-		String encryptPassword = PasswordEncoding.sha256(pw);
-								 
-		int count = managerRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email);
 		
+		byte[] salt = PasswordEncoding.createSalt();
+		String encryptPassword = PasswordEncoding.sha256(pw, salt);
+		
+		String saltStr = Base64.getEncoder().encodeToString(salt);
+		
+		int count = managerRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email, saltStr);
+				
 		return count;		
 	}
 	
@@ -54,14 +59,15 @@ public class ManagerService {
 	// 로그인 기능
 	public Manager login(String loginId, String pw) {
 		
-		String encryptPassword = PasswordEncoding.sha256(pw);
+		Manager manager = managerRepository.getLoginInfo(loginId);
 		
-		List<Manager> managerList = managerRepository.getLoginInfo(loginId, encryptPassword);
+		byte[] salt = Base64.getDecoder().decode(manager.getSaltStr());
+		String encryptPassword = PasswordEncoding.sha256(pw, salt);
 		
-		if(managerList.isEmpty()) {
+		if(!manager.getPw().equals(encryptPassword)) {
 			return null;
 		} else {
-			return managerList.get(0);
+			return manager;
 		}
 	}
 }

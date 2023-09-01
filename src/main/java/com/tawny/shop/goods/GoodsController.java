@@ -14,4 +14,9 @@ public class GoodsController {
 		return "manager/goodsUpload";
 	}
 	
+	// 상품 수정 화면
+	@GetMapping("/goodsUpdate")
+	public String goodsUpdate() {
+		return "manager/goodsUpdate";
+	}
 }

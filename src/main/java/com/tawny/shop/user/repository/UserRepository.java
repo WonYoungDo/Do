@@ -18,13 +18,13 @@ public interface UserRepository {
 			, @Param("name") String name
 			, @Param("phoneNumber") String phoneNumber
 			, @Param("email") String email
-			, @Param("address") String address);
+			, @Param("address") String address
+			, @Param("saltStr") String saltStr);
 	
 	// 중복확인
 	public int isDuplicateId(@Param("loginId") String loginId);
 	
 	// 로그인 
-	public List<User> getLoginInfo(
-			@Param("loginId") String loginId
-			, @Param("pw") String pw);
+	public User getLoginInfo(
+			@Param("loginId") String loginId);
 }

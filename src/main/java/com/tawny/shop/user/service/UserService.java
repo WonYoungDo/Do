@@ -1,5 +1,6 @@
 package com.tawny.shop.user.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -27,9 +28,12 @@ public class UserService {
 			, String email
 			, String address) {
 		
-		String encryptPassword = PasswordEncoding.sha256(pw);
+		byte[] salt = PasswordEncoding.createSalt();
+		String encryptPassword = PasswordEncoding.sha256(pw, salt);
 		
-		int count = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email, address);
+		String saltStr = Base64.getEncoder().encodeToString(salt);
+		
+		int count = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email, address, saltStr);
 				
 		return count;		
 	}
@@ -55,14 +59,16 @@ public class UserService {
 	// 로그인 기능
 	public User login(String loginId, String pw) {
 		
-		String encryptPassword = PasswordEncoding.sha256(pw);
+		User user = userRepository.getLoginInfo(loginId);
 		
-		List<User> userList = userRepository.getLoginInfo(loginId, encryptPassword);
+		byte[] salt = Base64.getDecoder().decode(user.getSaltStr());
 		
-		if(userList.isEmpty()) {
+		String encryptPassword = PasswordEncoding.sha256(pw, salt);
+		
+		if(!user.getPw().equals(encryptPassword)) {
 			return null;
 		} else {
-			return userList.get(0);
+			return user;
 		}
 	}
 }

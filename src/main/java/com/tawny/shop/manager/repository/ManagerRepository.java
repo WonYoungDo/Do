@@ -1,7 +1,5 @@
 package com.tawny.shop.manager.repository;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,13 +14,13 @@ public interface ManagerRepository {
 			, @Param("pw") String pw
 			, @Param("name") String name
 			, @Param("phoneNumber") String phoneNumber
-			, @Param("email") String email);
+			, @Param("email") String email
+			, @Param("saltStr") String saltStr);
 	
 	// 중복확인
 	public int isDuplicateId(@Param("loginId") String loginId);
 	
 	// 로그인 
-	public List<Manager> getLoginInfo(
-			@Param("loginId") String loginId
-			, @Param("pw") String pw);
+	public Manager getLoginInfo(
+			@Param("loginId") String loginId);
 }

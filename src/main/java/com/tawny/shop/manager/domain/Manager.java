@@ -15,6 +15,7 @@ public class Manager {
 	private String name;
 	private String phoneNumber;
 	private String email;
+	private String saltStr;
 	private Date createdAT;
 	private Date updatedAT;
 }

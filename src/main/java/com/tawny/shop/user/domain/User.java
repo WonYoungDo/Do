@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 public class User {
 	
 	private int id;
@@ -17,6 +16,7 @@ public class User {
 	private String name;
 	private String phoneNumber;
 	private String email;
+	private String saltStr;
 	private String address;
 	private Date createdAT;
 	private Date updatedAT;

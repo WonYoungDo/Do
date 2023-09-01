@@ -6,13 +6,20 @@ import java.security.SecureRandom;
 
 public class PasswordEncoding {
 	
-	public static String sha256(String message) {
+	
+	public static byte[] createSalt() {
+	    SecureRandom random = new SecureRandom();
+	    byte[] salt = new byte[16];
+	    random.nextBytes(salt);
+	    return salt;
+	    
+	}
+
+	public static String sha256(String message, byte[] salt) {
         String passwordEncode = "";
         try {
             // 솔트 생성
-            SecureRandom random = new SecureRandom();
-            byte[] salt = new byte[16];
-            random.nextBytes(salt);
+
 
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             
@@ -36,4 +43,6 @@ public class PasswordEncoding {
         }
         return passwordEncode;
     }
+
+	
 }

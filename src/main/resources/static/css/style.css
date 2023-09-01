@@ -66,6 +66,14 @@ section > .find > .find-pw > .input-box {
 	height: 50px;
 }
 
+/* manager goodsUpload */
+section > .goods-upload {
+	height: 570px;
+}
+.goods-image {
+	height: 250px;
+}
+
 footer {
 	height: 100px;
 }
