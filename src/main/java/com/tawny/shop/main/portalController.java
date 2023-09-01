@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main")
 public class portalController {
 	
+	// 메인 포털 화면
 	@GetMapping("/portal")
 	public String portal() {
 		return "main/portal";
 	}
+	
 }

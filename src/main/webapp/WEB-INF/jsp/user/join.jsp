@@ -40,7 +40,7 @@
 					<!-- 비밀번호 입력란 -->
 					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 						<label class="mt-2">비밀번호 :</label>
-						<input type="text" class="col-7 border-0" id="pwInput">
+						<input type="password" class="col-7 border-0" id="pwInput">
 					</div>
 					<div class="text-danger small d-none" id="emptyPw">비밀번호를 입력해주세요!</div>
 					<!-- /비밀번호 입력란 -->

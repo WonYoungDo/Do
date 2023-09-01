@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tawny.shop.config.PasswordEncoding;
 import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.repository.UserRepository;
 
@@ -25,10 +26,11 @@ public class UserService {
 			, String phoneNumber
 			, String email
 			, String address) {
-		 //String encryptPassword = passwordEncoder.encode(pw);
-								 
-		int count = userRepository.insertJoin(loginId, pw, name, phoneNumber, address, email);
 		
+		String encryptPassword = PasswordEncoding.sha256(pw);
+		
+		int count = userRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email, address);
+				
 		return count;		
 	}
 	
@@ -53,7 +55,9 @@ public class UserService {
 	// 로그인 기능
 	public User login(String loginId, String pw) {
 		
-		List<User> userList = userRepository.getLoginInfo(loginId, pw);
+		String encryptPassword = PasswordEncoding.sha256(pw);
+		
+		List<User> userList = userRepository.getLoginInfo(loginId, encryptPassword);
 		
 		if(userList.isEmpty()) {
 			return null;

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tawny.shop.config.PasswordEncoding;
 import com.tawny.shop.manager.domain.Manager;
 import com.tawny.shop.manager.repository.ManagerRepository;
 import com.tawny.shop.user.domain.User;
@@ -25,9 +26,9 @@ public class ManagerService {
 			, String name
 			, String phoneNumber
 			, String email) {
-		 //String encryptPassword = passwordEncoder.encode(pw);
+		String encryptPassword = PasswordEncoding.sha256(pw);
 								 
-		int count = managerRepository.insertJoin(loginId, pw, name, phoneNumber, email);
+		int count = managerRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email);
 		
 		return count;		
 	}
@@ -53,7 +54,9 @@ public class ManagerService {
 	// 로그인 기능
 	public Manager login(String loginId, String pw) {
 		
-		List<Manager> managerList = managerRepository.getLoginInfo(loginId, pw);
+		String encryptPassword = PasswordEncoding.sha256(pw);
+		
+		List<Manager> managerList = managerRepository.getLoginInfo(loginId, encryptPassword);
 		
 		if(managerList.isEmpty()) {
 			return null;

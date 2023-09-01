@@ -1,6 +1,7 @@
 package com.tawny.shop.user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tawny.shop.common.MailService;
+import com.tawny.shop.config.PasswordEncoding;
 import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.service.UserService;
 

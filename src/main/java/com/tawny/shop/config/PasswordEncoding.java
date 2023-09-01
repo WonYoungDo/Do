@@ -6,8 +6,8 @@ import java.security.SecureRandom;
 
 public class PasswordEncoding {
 	
-	public static String salting(String message) {
-        String passwordEncode = "pw";
+	public static String sha256(String message) {
+        String passwordEncode = "";
         try {
             // 솔트 생성
             SecureRandom random = new SecureRandom();
@@ -18,7 +18,7 @@ public class PasswordEncoding {
             
             // 비밀번호와 솔트를 연결
             md.update(salt);
-            md.update(passwordEncode.getBytes());
+            md.update(message.getBytes());
 
             byte byteData[] = md.digest();
 
@@ -29,10 +29,11 @@ public class PasswordEncoding {
 				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 			}
 
-			System.out.println("Hex format : " + sb.toString());
+			passwordEncode = sb.toString();
 
         } catch (NoSuchAlgorithmException e) {
            e.printStackTrace();
         }
+        return passwordEncode;
     }
 }
