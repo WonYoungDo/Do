@@ -19,6 +19,9 @@ header > nav > .category {
 header > .gap {
 	height: 30px;
 }
+header > nav > .category > .login-user {
+	width: 100px;
+}
 
 /* portal */
 section > .goods {
@@ -102,4 +105,15 @@ footer {
 .icon-lg {
 	font-size: 2.5rem;
 }
+
+
+.nav-item > .sub-category {
+    position: absolute;
+	left: 15%;
+}
+.sub-category li a {
+    padding: 20px; /* 원하는 간격으로 조정합니다 */
+}
+
+
 
