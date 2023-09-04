@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container p-0">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/managerHeader.jsp"/>
 		
 		<section class="d-flex p-0 border border-dark">
 		
@@ -20,14 +20,15 @@
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
-			<!-- 상품 수정 -->
+			<!-- 상품 등록 -->
 			<div class="goods-upload col-6 d-flex justify-content-center">	
 				<div class="col-10">
-					<h4 class="pt-3 pr-5 mr-5">상품 수정</h4>
+					<h4 class="pt-3 pr-5 mr-5">상품 등록</h4>
 					<div class="border mt-3">
 						<!-- 상품 사진 -->
 						<div class="goods-image col-6 d-flex align-items-center justify-content-center border">
-
+							<i class="bi bi-plus-square-fill"></i>
+							<input type="file" class="d-none">
 						</div>
 						<!-- /상품 사진 -->
 						
@@ -52,17 +53,12 @@
 						</div>
 						<!-- /상품 설명 -->
 					</div>
-					
-					<div class="d-flex justify-content-between mt-2">
-						<button type="button" class="btn form-control btn-danger col-3">삭제</button>
-						<button type="button" class="btn form-control btn-dark col-3">저장</button>
-					</div>
-					
+					<button type="button" class="btn form-control btn-dark mt-2">등록</button>
 				</div>
 					
 				
 			</div>
-			<!-- /상품 수정 -->
+			<!-- /상품 등록 -->
 			
 			<!-- 베스트 상품2 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>

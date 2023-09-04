@@ -11,12 +11,12 @@ public class GoodsController {
 	// 상품 등록 화면
 	@GetMapping("/goodsUpload")
 	public String goodsUpload() {
-		return "manager/goodsUpload";
+		return "manager/goods/goodsUpload";
 	}
 	
 	// 상품 수정 화면
 	@GetMapping("/goodsUpdate")
 	public String goodsUpdate() {
-		return "manager/goodsUpdate";
+		return "manager/goods/goodsUpdate";
 	}
 }

@@ -11,24 +11,24 @@ public class ManagerController {
 	// 회원가입 화면
 	@GetMapping("/join")
 	public String join() {
-		return "manager/join";
+		return "manager/userManagement/join";
 	}
 	
 	// 로그인 화면
 	@GetMapping("/login")
 	public String login() {
-		return "manager/login";
+		return "manager/userManagement/login";
 	}
 	
 	// 아이디 찾기 화면
 	@GetMapping("/find/id")
 	public String findId() {
-		return "manager/findId";
+		return "manager/userManagement/findId";
 	}
 	
 	// 비밀번호 찾기 화면
 	@GetMapping("/find/pw")
 	public String findPw() {
-		return "manager/findPw";
+		return "manager/userManagement/findPw";
 	}
 }
