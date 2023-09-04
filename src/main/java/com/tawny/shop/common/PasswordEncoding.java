@@ -1,4 +1,4 @@
-package com.tawny.shop.config;
+package com.tawny.shop.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

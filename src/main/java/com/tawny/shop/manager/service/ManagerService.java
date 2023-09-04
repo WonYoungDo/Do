@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tawny.shop.config.PasswordEncoding;
+import com.tawny.shop.common.PasswordEncoding;
 import com.tawny.shop.manager.domain.Manager;
 import com.tawny.shop.manager.repository.ManagerRepository;
 import com.tawny.shop.user.domain.User;

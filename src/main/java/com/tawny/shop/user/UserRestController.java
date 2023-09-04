@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tawny.shop.common.MailService;
-import com.tawny.shop.config.PasswordEncoding;
+import com.tawny.shop.common.PasswordEncoding;
 import com.tawny.shop.user.domain.User;
 import com.tawny.shop.user.service.UserService;
 

@@ -132,3 +132,8 @@ footer {
   	text-decoration: none;
   	background-color: transparent !important;
 }
+
+.small-placeholder {
+    font-size: 12px;
+    color: gray;
+}
