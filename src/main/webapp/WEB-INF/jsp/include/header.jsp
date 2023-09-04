@@ -35,11 +35,11 @@
 	            	<a href="#" class="nav-link text-dark font-weight-bold main-category">BEST</a>
 		            <div class="d-none sub-category">
 		                <ul class="d-flex justify-content-around">
-		                    <li class="text-white"><a href="#" class="dropdown-item text-white font-weight-bold">OUTER</a></li>
-		                    <li class="text-white"><a href="#" class="dropdown-item text-white font-weight-bold">TOP</a></li>
-		                    <li class="text-white"><a href="#" class="dropdown-item text-white font-weight-bold">PANTS</a></li>
-		                    <li class="text-white"><a href="#" class="dropdown-item text-white font-weight-bold">SHOES</a></li>
-		                    <li class="text-white"><a href="#" class="dropdown-item text-white font-weight-bold">ACC</a></li>
+		                    <li><a href="#" class="dropdown-item">OUTER</a></li>
+		                    <li><a href="#" class="dropdown-item">TOP</a></li>
+		                    <li><a href="#" class="dropdown-item">PANTS</a></li>
+		                    <li><a href="#" class="dropdown-item">SHOES</a></li>
+		                    <li><a href="#" class="dropdown-item">ACC</a></li>
 		                </ul>
 		            </div>
 		        </li>
@@ -48,13 +48,13 @@
 				<!-- NEW -->		
 	            <li class="nav-item">
 		            <a href="#" class="nav-link text-dark font-weight-bold main-category">NEW</a>
-		            <div class="d-none dropdown-visible p-0 sub-category">
-		                <ul class="d-flex flex-row justify-content-around p-0 m-0 w-100">
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">OUTER</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">TOP</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">PANTS</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">SHOES</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">ACC</a></li>
+		            <div class="d-none sub-category">
+		                <ul class="d-flex flex-row justify-content-around">
+		                    <li><a href="#" class="dropdown-item">OUTER</a></li>
+		                    <li><a href="#" class="dropdown-item">TOP</a></li>
+		                    <li><a href="#" class="dropdown-item">PANTS</a></li>
+		                    <li><a href="#" class="dropdown-item">SHOES</a></li>
+		                    <li><a href="#" class="dropdown-item">ACC</a></li>
 		                </ul>
 		            </div>
 	       		</li>
@@ -63,12 +63,12 @@
 				<!-- OUTER -->		
 	            <li class="nav-item">
 		            <a href="#" class="nav-link text-dark font-weight-bold main-category">OUTER</a>
-		            <div class="d-none p-0 sub-category">
-		                <ul class="d-flex justify-content-around p-0 m-0 w-100">
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">패딩</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">코트</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">집업</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">자켓</a></li>
+		            <div class="d-none sub-category">
+		                <ul class="d-flex justify-content-around">
+		                    <li><a href="#" class="dropdown-item">패딩</a></li>
+		                    <li><a href="#" class="dropdown-item">코트</a></li>
+		                    <li><a href="#" class="dropdown-item">집업</a></li>
+		                    <li><a href="#" class="dropdown-item">자켓</a></li>
 		                </ul>
 		            </div>
 	            </li>
@@ -77,14 +77,14 @@
 				<!-- PANTS -->		
 	            <li class="nav-item">
 		            <a href="#" class="nav-link text-dark font-weight-bold main-category">PANTS</a>
-		            <div class="d-none p-0 sub-category">
-		                <ul class="d-flex justify-content-around p-0 m-0 w-100">
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">슬랙스</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">청바지</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">데님</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">조거</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">반바지</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">트레이닝</a></li>
+		            <div class="d-none sub-category">
+		                <ul class="d-flex justify-content-around">
+		                    <li><a href="#" class="dropdown-item">슬랙스</a></li>
+		                    <li><a href="#" class="dropdown-item">청바지</a></li>
+		                    <li><a href="#" class="dropdown-item">데님</a></li>
+		                    <li><a href="#" class="dropdown-item">조거</a></li>
+		                    <li><a href="#" class="dropdown-item">반바지</a></li>
+		                    <li><a href="#" class="dropdown-item">트레이닝</a></li>
 		                </ul>
 		            </div>
 		        </li>
@@ -93,14 +93,14 @@
 				<!-- SHOES -->		
 	            <li class="nav-item">
 		            <a href="#" class="nav-link text-dark font-weight-bold main-category">SHOES</a>
-		            <div class="d-none p-0 sub-category">
-		                <ul class="d-flex justify-content-around p-0 m-0 w-100">
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">단화</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">운동화</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">로퍼</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">구두</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">샌들</a></li>
-		                    <li><a href="#" class="dropdown-item text-white font-weight-bold">슬리퍼</a></li>
+		            <div class="d-none sub-category">
+		                <ul class="d-flex justify-content-around">
+		                    <li><a href="#" class="dropdown-item">단화</a></li>
+		                    <li><a href="#" class="dropdown-item">운동화</a></li>
+		                    <li><a href="#" class="dropdown-item">로퍼</a></li>
+		                    <li><a href="#" class="dropdown-item">구두</a></li>
+		                    <li><a href="#" class="dropdown-item">샌들</a></li>
+		                    <li><a href="#" class="dropdown-item">슬리퍼</a></li>
 		                </ul>
 		            </div>
 		        </li>
@@ -109,17 +109,17 @@
 				<!-- ACC -->		
 	            <li class="nav-item">
 		            <a href="#" class="nav-link text-dark font-weight-bold main-category">ACC</a>
-		            <div class="d-none p-0 sub-category">
-		                <ul class="d-flex justify-content-around p-0 m-0 w-100">
-		                    <li class="text-white"><a href="#" class="dropdown-item text-dark font-weight-bold">가방</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">지갑</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">벨트</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">모자</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">넥타이</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">머플러</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">팔찌</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">반지</a></li>
-		                    <li><a href="#" class="dropdown-item text-dark font-weight-bold">양말</a></li>
+		            <div class="d-none sub-category">
+		                <ul class="d-flex justify-content-around">
+		                    <li><a href="#" class="dropdown-item">가방</a></li>
+		                    <li><a href="#" class="dropdown-item">지갑</a></li>
+		                    <li><a href="#" class="dropdown-item">벨트</a></li>
+		                    <li><a href="#" class="dropdown-item">모자</a></li>
+		                    <li><a href="#" class="dropdown-item">넥타이</a></li>
+		                    <li><a href="#" class="dropdown-item">머플러</a></li>
+		                    <li><a href="#" class="dropdown-item">팔찌</a></li>
+		                    <li><a href="#" class="dropdown-item">반지</a></li>
+		                    <li><a href="#" class="dropdown-item">양말</a></li>
 		                </ul>
 		            </div>
 		        </li>
@@ -129,7 +129,9 @@
 			</ul>
 			
 			<div class="login-user small-text d-flex justify-content-start align-items-center mr-3">
-				${userName } <a href="/user/logout" class="pl-1">로그아웃</a>
+				<c:if test="${not empty userId}">
+					${userName } <a href="/user/logout" class="pl-1">로그아웃</a>
+				</c:if>
 			</div>
 		</div>
 		<!-- /카테고리2 -->
@@ -161,9 +163,10 @@
 			dropdownMenu.css('transform', 'translateX(' + diffPos + 'px)'); // 위치 조정
 		});
 		  
-		$(".main-category").on("mouseleave", function(e) {
-			$(".sub-category").addClass('d-none');
-		});
+	    $(".nav-item").on("mouseleave", function(e) {  
+			let subCategory = $(this).find(".sub-category"); 
+			subCategory.addClass('d-none'); 	
+	    });
 	
 	});
 </script>

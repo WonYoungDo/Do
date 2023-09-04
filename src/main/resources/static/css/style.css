@@ -115,5 +115,20 @@ footer {
     padding: 20px; /* 원하는 간격으로 조정합니다 */
 }
 
+.sub-category li {
+    margin-top: -14px; /* 원하는 만큼 양수 값으로 조정합니다 */
+}
 
-
+.dropdown-item {
+	color : white;
+}
+.dropdown-item:hover {
+    background-color: transparent;
+  	color : white;
+	font-weight: bold;
+}
+.dropdown-item:active {
+  	color : rgb(192, 192, 192);
+  	text-decoration: none;
+  	background-color: transparent !important;
+}
