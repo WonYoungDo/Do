@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container p-0">
-		<c:import url="/WEB-INF/jsp/include/managerHeader.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/manager/header.jsp"/>
 		
 		<section class="d-flex p-0 border border-dark">
 		
@@ -30,8 +30,11 @@
 						<div class="goods-image col-6 d-flex align-items-center justify-content-center border">
 							<i class="bi bi-plus-square-fill" id="addFileIcon"></i>
 							<input type="file" class="d-none" id="addFile">
-							<img src="#" id="image" class="d-none">
+							<img src="#" id="file" class="d-none w-100 h-100">
 						</div>
+						<div class="col-6 text-center d-none">
+							<a href="#" class="small" id="cencelFile">선택 취소</a>
+						</div>	
 						<!-- /상품 사진 -->
 						
 						<!-- 상품 설명 -->
@@ -67,7 +70,7 @@
 						</div>
 						<!-- /상품 설명 -->
 					</div>
-					<button type="button" class="btn form-control btn-dark mt-2" id="addBtn">등록</button>
+					<button type="button" class="btn form-control btn-dark my-2" id="addBtn">등록</button>
 				</div>
 					
 				
@@ -88,17 +91,30 @@
 	<script>
 		$(document).ready(function() {
 			
+			// 이미지 선택 취소
+			$("#cencelFile").on("click", function(e) {
+				e.preventDefault();
+
+			    $("#addFile").val("");
+			    $("#file").addClass("d-none");
+			    $("#addFileIcon").removeClass("d-none");
+			    $("#cencelFile").addClass("d-none");
+			});
+			
 			// 이미지 미리보기
-			$("#addFile").on("change", function() {
-				let file = event.target.files[0];
-				let reader = new FileReader();
+			$("#addFile").on("change", function(e) {
+				let file = this.files[0];
 				
-				reader.onload = function(e) {
-			    	$("#Image").attr("src", e.target.result);
-			    	$("#Image").removeClass("d-none");
+			    if(file) {
+					let reader = new FileReader();
+					reader.onload = function(e) {
+				    	$("#file").attr("src", e.target.result);
+				    	$("#file").removeClass("d-none");
+				    	$("#addFileIcon").addClass("d-none"); 
+				    	$("#cencelFile").removeClass("d-none");
+			   		}
+			  		reader.readAsDataURL(file);
 			    }
-					  
-			  	reader.readAsDataURL(file);
 			});
 			
 			// 등록하기 버튼

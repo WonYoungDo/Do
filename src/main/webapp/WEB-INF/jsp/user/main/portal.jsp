@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>(관리자)Do</title>
+<title>Do</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 	<div id="wrap" class="container bg-white p-0">
-		<c:import url="/WEB-INF/jsp/include/manager/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/user/header.jsp"/>
 		<section class="d-flex flex-wrap border border-dark">
 			<div class="goods col-3 small">
 				<img src="/static/image/사진1.jpg" class="w-100 h-75">

@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.tawny.shop.user.repository.UserRepository">
+ <mapper namespace="com.tawny.shop.user.member.repository.UserRepository">
  	
  	<insert id="insertJoin" parameterType="map">
  		INSERT INTO
@@ -38,7 +38,7 @@
 			`loginId` = #{loginId}
  	</select>
 	
-	<select id="getLoginInfo" resultType="com.tawny.shop.user.domain.User" parameterType="map">
+	<select id="getLoginInfo" resultType="com.tawny.shop.user.member.domain.User" parameterType="map">
  		SELECT 
  			`id`
  			, `loginId`

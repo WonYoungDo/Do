@@ -30,9 +30,7 @@ section > .goods {
 }
 
 
-section > .best-goods {
-	height: 570px;
-}
+
 
 /* join */
 section > .join > .join-box {
@@ -70,9 +68,6 @@ section > .find > .find-pw > .input-box {
 }
 
 /* manager goodsUpload */
-section > .goods-upload {
-	height: 570px;
-}
 .goods-image {
 	height: 250px;
 }
