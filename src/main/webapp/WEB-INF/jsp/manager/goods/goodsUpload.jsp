@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container p-0">
-		<c:import url="/WEB-INF/jsp/include/manager/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
 		<section class="d-flex p-0 border border-dark">
 		
@@ -32,8 +32,8 @@
 							<input type="file" class="d-none" id="addFile">
 							<img src="#" id="file" class="d-none w-100 h-100">
 						</div>
-						<div class="col-6 text-center d-none">
-							<a href="#" class="small" id="cencelFile">선택 취소</a>
+						<div class="col-6 text-center">
+							<a href="#" class="small d-none" id="cencelFile">선택 취소</a>
 						</div>	
 						<!-- /상품 사진 -->
 						
@@ -96,9 +96,10 @@
 				e.preventDefault();
 
 			    $("#addFile").val("");
+			    $("#file").attr("src", "#");
 			    $("#file").addClass("d-none");
 			    $("#addFileIcon").removeClass("d-none");
-			    $("#cencelFile").addClass("d-none");
+			    $(this).addClass("d-none");
 			});
 			
 			// 이미지 미리보기

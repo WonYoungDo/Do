@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container bg-white p-0">
-		<c:import url="/WEB-INF/jsp/include/user/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex flex-wrap border border-dark">
 			<div class="goods col-3 small">
 				<img src="/static/image/사진1.jpg" class="w-100 h-75">

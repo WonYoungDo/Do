@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container p-0">
-		<c:import url="/WEB-INF/jsp/include/manager/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
 		<section class="d-flex p-0 border border-dark">
 		

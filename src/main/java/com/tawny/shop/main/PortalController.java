@@ -1,17 +1,17 @@
-package com.tawny.shop.manager.main;
+package com.tawny.shop.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/manager/main")
-public class ManagerPortalController {
+@RequestMapping("/main")
+public class PortalController {
 	
-	// 관리자 메인 포털 화면
+	// 메인 포털 화면
 	@GetMapping("/portal")
 	public String portal() {
-		return "manager/main/portal";
+		return "main/portal";
 	}
 	
 }

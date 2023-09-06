@@ -33,10 +33,6 @@ section > .goods {
 
 
 /* join */
-section > .join > .join-box {
-	height: 570px;
-}
-
 section > .join > .input-box {
 	height: 50px;
 }

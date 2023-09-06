@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="wrap" class="container p-0">
-		<c:import url="/WEB-INF/jsp/include/user/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
@@ -25,8 +25,13 @@
 				<!-- 입력란 -->				
 				<div class="join-box col-10 p-5">
 				
+					<div class="d-flex">
+						<button type="button" class="btn btn-dark form-control mr-1">사용자</button>
+						<button type="button" class="btn btn-dark form-control">관리자</button>
+					</div>
+					
 					<!-- 아이디 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
 						<label class="col-2 p-0 mt-2">아이디:</label>
 						<input type="text" class="col-7 border-0" id="idInput">
 						<button type="button" class="btn btn-dark btn-sm col-2 p-0" id="duplicateBtn">중복확인</button>

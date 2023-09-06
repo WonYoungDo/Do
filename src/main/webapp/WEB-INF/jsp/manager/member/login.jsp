@@ -110,7 +110,7 @@
 					, success:function(data) {
 						
 						if(data.result == "success") { 
-							location.href="/manager/main/portal";
+							location.href="/main/portal";
 						} else {
 							alert("회원정보가 일치하지 않습니다.");
 						}

@@ -107,8 +107,8 @@ public class ManagerRestController {
 		Map<String, String> resultMap = new HashMap<>();
 		if(manager != null) {
 			resultMap.put("result", "success");
-			session.setAttribute("userId", manager.getId());
-			session.setAttribute("userName", manager.getName());
+			session.setAttribute("managerId", manager.getId());
+			session.setAttribute("managerName", manager.getName());
 		} else {
 			resultMap.put("result", "fail");
 		}
