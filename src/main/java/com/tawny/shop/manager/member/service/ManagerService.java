@@ -33,7 +33,7 @@ public class ManagerService {
 		
 		String saltStr = Base64.getEncoder().encodeToString(salt);
 		
-		int count = managerRepository.insertJoin(loginId, encryptPassword, name, phoneNumber, email, saltStr);
+		int count = managerRepository.insertManagerJoin(loginId, encryptPassword, name, phoneNumber, email, saltStr);
 				
 		return count;		
 	}
@@ -41,7 +41,7 @@ public class ManagerService {
 	// 중복확인 기능
 	public boolean isDuplication(String loginId) {
 		
-		int duplicateId = managerRepository.isDuplicateId(loginId); 
+		int duplicateId = managerRepository.isDuplicateManagerId(loginId);
 		
 		return duplicateId != 0;
 	}
@@ -59,7 +59,7 @@ public class ManagerService {
 	// 로그인 기능
 	public Manager login(String loginId, String pw) {
 		
-		Manager manager = managerRepository.getLoginInfo(loginId);
+		Manager manager = managerRepository.getManagerLoginInfo(loginId);
 		
 		byte[] salt = Base64.getDecoder().decode(manager.getSaltStr());
 		String encryptPassword = PasswordEncoding.sha256(pw, salt);

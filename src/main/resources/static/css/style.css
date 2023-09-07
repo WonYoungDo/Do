@@ -38,15 +38,14 @@ section > .join > .input-box {
 }
 
 /* login */
-section > .login > .login-section > .login-box {
-	height: 500px;
+section > .login > .login-section {
+	height: 570px;
+}
+section > .login > .login-section > .login-phrase {
+	height: 70px;
 }
 section > .login > .login-section > .login-box > .input-box {
 	height: 50px;
-}
-
-section > .login > .login-section > .login-phrase {
-	height: 70px;
 }
 
 /* find */

@@ -14,55 +14,56 @@
 	<div id="wrap" class="container p-0">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0">
+		<section class="d-flex p-0 border border-dark">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 로그인 -->
-			<div class="login col-6 small d-flex justify-content-center align-items-center">	
-				<div class="login-section text-center">
-				
-					<!-- 문구 -->
-					<h1 class="login-phrase">환영합니다</h1>
-					<!-- 문구 -->
+			<div class="login col-6 small d-flex justify-content-center">	
+				<div class="login-section d-flex justify-content-center align-items-center">
 					
-					<!-- 입력란 -->				
-					<div class="login-box p-5 h-50 pt-5 border">
-					
-						<form id="loginForm">
-							<!-- 아이디 입력란 -->
-							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
-								<label class="col-3 p-0 mt-2">아이디:</label>
-								<input type="text" class="col-8 border-0" id="idInput">
-							</div>
-							<div class="text-danger small d-none" id="emptyId">아이디를 입력해주세요!</div>
-							<!-- /아이디 입력란 -->
-							
-							<!-- 비밀번호 입력란 -->
-							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
-								<label class="col-4 p-0 mt-2">비밀번호 :</label>
-								<input type="password" class="col-8 border-0" id="pwInput">
-							</div>
-							<div class="text-danger small d-none" id="emptyPw">비밀번호를 입력해주세요!</div>
-							<!-- /비밀번호 입력란 -->
-							
-							<!-- 로그인 버튼 -->
-							<button type="submit" class="btn btn-dark btn-block" id="loginBtn">로그인</button>
-							<!-- /로그인 버튼 -->			
+					<div class="text-center">
+						<!-- 문구 -->
+						<h1 class="login-phrase mb-5">환영합니다</h1>
+						<!-- 문구 -->
 						
-							<!-- 회원 정보 찾기 -->
-							<div class="d-flex justify-content-around pt-2">
-								<a href="/user/find/id">아이디 찾기</a>
-								<a href="/userfind/pw">비밀번호 찾기</a>
-							</div>
-							<!-- /회원 정보 찾기 -->
-						</form>	
+						<!-- 입력란 -->				
+						<div class="login-box p-5 h-50 border mb-5">
 						
+							<form id="loginForm">
+								<!-- 아이디 입력란 -->
+								<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+									<label class="col-3 p-0 mt-2">아이디:</label>
+									<input type="text" class="col-8 border-0" id="idInput">
+								</div>
+								<div class="text-danger small d-none" id="emptyId">아이디를 입력해주세요!</div>
+								<!-- /아이디 입력란 -->
+								
+								<!-- 비밀번호 입력란 -->
+								<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+									<label class="col-4 p-0 mt-2">비밀번호 :</label>
+									<input type="password" class="col-8 border-0" id="pwInput">
+								</div>
+								<div class="text-danger small d-none" id="emptyPw">비밀번호를 입력해주세요!</div>
+								<!-- /비밀번호 입력란 -->
+								
+								<!-- 로그인 버튼 -->
+								<button type="submit" class="btn btn-dark btn-block" id="loginBtn">로그인</button>
+								<!-- /로그인 버튼 -->			
+							
+								<!-- 회원 정보 찾기 -->
+								<div class="d-flex justify-content-around pt-2">
+									<a href="/do/find/id">아이디 찾기</a>
+									<a href="/do/find/pw">비밀번호 찾기</a>
+								</div>
+								<!-- /회원 정보 찾기 -->
+							</form>	
+							
+						</div>
+						<!-- /입력란 -->
 					</div>
-					<!-- /입력란 -->
-					
 				</div>
 			</div>
 			<!-- /로그인 -->
@@ -110,7 +111,7 @@
 					, success:function(data) {
 						
 						if(data.result == "success") { 
-							location.href="/main/portal";
+							location.href="/do/main/portal";
 						} else {
 							alert("회원정보가 일치하지 않습니다.");
 						}

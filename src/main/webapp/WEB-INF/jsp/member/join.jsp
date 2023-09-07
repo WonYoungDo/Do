@@ -13,7 +13,7 @@
 <body>
 	<div id="wrap" class="container p-0">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section class="d-flex p-0">
+		<section class="d-flex p-0 border border-dark">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
@@ -36,10 +36,10 @@
 						<input type="text" class="col-7 border-0" id="idInput">
 						<button type="button" class="btn btn-dark btn-sm col-2 p-0" id="duplicateBtn">중복확인</button>
 					</div>
-					<div class="text-danger small d-none" id="emptyId">아이디를 입력해주세요!</div>
-					<div class="text-success small d-none" id="availableId">사용가능한 아이디입니다.</div>
-					<div class="text-danger small d-none" id="duplicateId">사용중인 아이디입니다.</div>
-					<div class="text-danger small d-none" id="duplicate">중복확인을 해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyId">아이디를 입력해주세요!</div>
+					<div class="text-success small d-none guide-message" id="availableId">사용가능한 아이디입니다.</div>
+					<div class="text-danger small d-none guide-message" id="duplicateId">사용중인 아이디입니다.</div>
+					<div class="text-danger small d-none guide-message" id="duplicate">중복확인을 해주세요!</div>
 					<!-- /아이디 입력란 -->
 					
 					<!-- 비밀번호 입력란 -->
@@ -47,7 +47,7 @@
 						<label class="mt-2">비밀번호 :</label>
 						<input type="password" class="col-7 border-0" id="pwInput">
 					</div>
-					<div class="text-danger small d-none" id="emptyPw">비밀번호를 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPw">비밀번호를 입력해주세요!</div>
 					<!-- /비밀번호 입력란 -->
 					
 					<!-- 비밀번호 확인란 -->
@@ -55,7 +55,7 @@
 						<label class="mt-2">비밀번호 확인 :</label>
 						<input type="password" class="col-7 border-0" id="pwCheckInput">
 					</div>
-					<div class="text-danger small d-none" id="emptyPwCheck">비밀번호를 확인해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPwCheck">비밀번호를 확인해주세요!</div>
 					<!-- /비밀번호 확인란 -->
 					
 					<!-- 이름 입력란 -->
@@ -63,7 +63,7 @@
 						<label class="mt-2">이름 :</label>
 						<input type="text" class="col-7 border-0" id="nameInput">
 					</div>
-					<div class="text-danger small d-none" id="emptyName">이름을 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyName">이름을 입력해주세요!</div>
 					<!-- /이름 입력란 -->
 					
 					<!-- 주소 입력란 -->
@@ -72,7 +72,7 @@
 							<label class="mt-2">주소 :</label>
 							<input type="text" class="col-7 border-0" id="addressInput">
 						</div>
-						<div class="text-danger small d-none" id="emptyAddress">주소를 입력해주세요!</div>
+						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요!</div>
 					</div>	
 					<!-- /주소 입력란 -->
 					
@@ -81,7 +81,7 @@
 						<label class="col-3 p-0 mt-2">전화번호:</label>
 						<input type="text" class="col-6 border-0" id="phoneNumberInput">
 					</div>
-					<div class="text-danger small d-none" id="emptyPhoneNumber">전화번호를 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요!</div>
 					<!-- /전화번호 입력란 -->
 					
 					<!-- 이메일 입력란 -->
@@ -90,9 +90,9 @@
 						<input type="text" class="col-6 border-0" id="emailInput">
 						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="sendVerifyBtn">인증</button>
 					</div>
-					<div class="text-danger small d-none" id="emptyEmail">이메일을 입력해주세요!</div>
-					<div class="text-success small d-none" id="sendVerityCode">인증번호를 전송했습니다.</div>
-					<div class="text-danger small d-none" id="notSendBtn">인증번호 전송 버튼을 눌러주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요!</div>
+					<div class="text-success small d-none guide-message" id="sendVerityCode">인증번호를 전송했습니다.</div>
+					<div class="text-danger small d-none guide-message" id="notSendBtn">인증번호 전송 버튼을 눌러주세요!</div>
 					<!-- /이메일 입력란 -->
 					
 					<!-- 인증번호 입력란 -->
@@ -103,10 +103,10 @@
 							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyCodeBtn">확인</button>
 						</div>					
 					</div>
-					<div class="text-danger small d-none" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
-					<div class="text-danger small d-none" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
-					<div class="text-success small d-none" id="verifyComplete">인증이 완료되었습니다.</div>
-					<div class="text-danger small d-none" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
+					<div class="text-danger small d-none guide-message" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
+					<div class="text-danger small d-none guide-message" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
+					<div class="text-success small d-none guide-message" id="verifyComplete">인증이 완료되었습니다.</div>
+					<div class="text-danger small d-none guide-message" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
 					<!-- /인증번호 입력란 -->
 					
 					<!-- 회원가입 버튼 -->
@@ -139,25 +139,29 @@
 			var userBtn = true; 	   // 사용자용 버튼 클릭 여부
 			var managerBtn = false;    // 관리자용 버튼 클릭 여부
 			
-			
 		    // 사용자 버튼 클릭 시
 		    $("#userBtn").on("click", function() {
 		    	$(this).removeClass('btn-secondary').addClass('btn-dark');
 		        $('#managerBtn').removeClass('btn-dark').addClass('btn-secondary');
 		        
 		        $("#address").removeClass("d-none");
+		        $("input").val("");
+		        $(".guide-message").addClass("d-none");
 		        
 		        userBtn = true;
 		        managerBtn = false;
 		    });
-
+			
+		    $('#userBtn').click();
+		    
 		    // 관리자 버튼 클릭 시
 		    $("#managerBtn").on("click", function() {
 		    	$(this).removeClass('btn-secondary').addClass('btn-dark');
 		        $('#userBtn').removeClass('btn-dark').addClass('btn-secondary');
 		        
 		        $("#address").addClass("d-none");
-		        
+		        $("input").val("");
+		        $(".guide-message").addClass("d-none");
 		        userBtn = false;
 		        managerBtn = true;
 			});
@@ -242,12 +246,9 @@
 				$("#availableId").addClass("d-none");
 				$("#duplicateId").addClass("d-none");
 			});
+
 			
-			
-			
-			
-			
-			// 중복확인 버튼(관리자)
+			// 중복확인 버튼
 			$("#duplicateBtn").on("click", function() {
 				let id = $("#idInput").val();
 				
@@ -259,13 +260,19 @@
 					$("#emptyId").addClass("d-none");
 				}
 				
+				let url;
+				if(userBtn) { // 사용자로 로그인 할 때
+					url = "/user/duplication";
+				} else if(managerBtn) {
+					url = "/manager/duplication";
+				}
+
 				$.ajax({
 					type:"get"
-					, url:"/manager/duplication"
+					, url:url
 					, data:{"loginId":id}
 					, success:function(data) {
 						
-						managerBtn = true;
 						duplicatedBtn = true;
 						duplicatedId = data.isDuplicate;
 						
@@ -281,150 +288,11 @@
 						alert("중복확인 에러");
 					}
 				});
-			});
-			
-			// 중복확인 버튼(사용자)
-			$("#duplicateBtn").on("click", function() {
-				let id = $("#idInput").val();
-				
-				// 유효성 검사
-				if(id == "") {
-					$("#emptyId").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyId").addClass("d-none");
-				}
-				
-				$.ajax({
-					type:"get"
-					, url:"/user/duplication"
-					, data:{"loginId":id}
-					, success:function(data) {
-						
-						userBtn = true;
-						duplicatedBtn = true;
-						duplicatedId = data.isDuplicate;
-						
-						if(data.result) { // 중복
-							$("#duplicateId").removeClass("d-none");
-							$("#availableId").addClass("d-none");
-						} else { // 사용가능 아이디
-							$("#availableId").removeClass("d-none");
-							$("#duplicateId").addClass("d-none");
-						}
-					}
-					, error:function() {
-						alert("중복확인 에러");
-					}
-				});
+
 			});
 				
 				
-			// 회원가입 버튼(관리자)
-			$("#joinBtn").on("click", function() {
-				let id = $("#idInput").val();
-				let pw = $("#pwInput").val();
-				let pwCheck = $("#pwCheckInput").val();
-				let name = $("#nameInput").val();
-				let phoneNumber = $("#phoneNumberInput").val();
-				let email = $("#emailInput").val();
-				
-				// 유효성 검사
-				if(id == "") { 
-					$("#emptyId").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyId").addClass("d-none");
-				}
-				
-				if(!duplicatedBtn) {
-					$("#duplicate").removeClass("d-none");
-					return;
-				} else {
-					$("#duplicate").addClass("d-none");
-				}
-				
-				if(duplicatedId) {
-					$("#duplicateId").removeClass("d-none");
-					$("#availableId").addClass("d-none");
-					return;
-				} else {
-					$("#availableId").removeClass("d-none");
-					$("#duplicateId").addClass("d-none");
-				}
-				
-				if(pw == "") {
-					$("#emptyPw").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyPw").addClass("d-none");
-				}
-				
-				if(pwCheck != pw) {
-					$("#emptyPwCheck").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyPwCheck").addClass("d-none");
-				}
-				
-				if(name == "") {
-					$("#emptyName").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyName").addClass("d-none");
-				}
-				
-				if(phoneNumber == "") {
-					$("#emptyPhoneNumber").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyPhoneNumber").addClass("d-none");
-				}
-				
-				if(email == "") {
-					$("#emptyEmail").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyEmail").addClass("d-none");
-				}
-				
-				if(!sendVerifyBtn) {
-					$("#notSendBtn").removeClass("d-none");
-					return;
-				} else {
-					$("#notSendBtn").addClass("d-none");
-				}
-				
-				if(!verifyCodeBtn) {
-					$("#notVerifyCodeBtn").removeClass("d-none");
-				} else {
-					$("#notVerifyCodeBtn").addClass("d-none");
-				}
-				
-				// 관리자 버튼 선택이 아니면
-				if(!managerBtn) {
-					return;
-				}
-				
-				$.ajax({
-					type:"post"
-					, url:"/manager/join"
-					, data:{"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email}
-					, success:function(data) {
-						
-						if(data.result == "success") { 
-							location.href="/manager/login";
-						} else {
-							alert("회원가입 실패");
-						}
-					}
-					, error:function() {
-						alert("회원가입 에러");
-					}
-				});
-			});
-			
-			// 회원가입 버튼(사용자)
+			// 회원가입 버튼
 			$("#joinBtn").on("click", function() {
 				let id = $("#idInput").val();
 				let pw = $("#pwInput").val();
@@ -479,13 +347,6 @@
 					$("#emptyName").addClass("d-none");
 				}
 				
-				if(address == "") {
-					$("#emptyAddress").removeClass("d-none");
-					return;
-				} else {
-					$("#emptyAddress").addClass("d-none");
-				}
-				
 				if(phoneNumber == "") {
 					$("#emptyPhoneNumber").removeClass("d-none");
 					return;
@@ -509,23 +370,42 @@
 				
 				if(!verifyCodeBtn) {
 					$("#notVerifyCodeBtn").removeClass("d-none");
+					return;
 				} else {
 					$("#notVerifyCodeBtn").addClass("d-none");
 				}
 				
-				// 사용자 버튼 선택이 아니면
-				if(!userBtn) {
-					return;
+				let url;
+				let resultData = {"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email};
+				if(userBtn) { // 사용자로 로그인 할 때
+					url = "/user/join";
+					locationUrl = "user/"
+					data["address"] = address;		
+					
+					userBtn = true;
+					managerBtn = false;
+					
+					if(address == "") {
+						$("#emptyAddress").removeClass("d-none");
+						return;
+					} else {
+						$("#emptyAddress").addClass("d-none");
+					}
+					
+				} else if(managerBtn) {
+					url = "/manager/join";
+					managerBtn = true;
+					userBtn = false;
 				}
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/join"
-					, data:{"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber, "email":email}
+					, url:url
+					, data:resultData
 					, success:function(data) {
 						
 						if(data.result == "success") { 
-							location.href="/user/login";
+							location.href="/do/login";
 						} else {
 							alert("회원가입 실패");
 						}

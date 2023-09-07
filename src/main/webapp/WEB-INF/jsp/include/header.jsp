@@ -4,7 +4,7 @@
     
 <header class="d-flex">
 	<div class="logo col-2 p-0 border border-dark">
-		<a href="/manager/main/portal">
+		<a href="/do/main/portal">
 			<img alt="로고" src="/static/image/로고.1.png" class="col-12 h-100">
 		</a>
 	</div>
@@ -21,8 +21,8 @@
 			
 			<!-- 메뉴 -->
 			<div class="small">
-				<a href="/user/login" class="text-dark pr-2">로그인</a>
-				<a href="/user/join" class="text-dark">회원가입</a>
+				<a href="/do/login" class="text-dark pr-2">로그인</a>
+				<a href="/do/join" class="text-dark">회원가입</a>
 				<a href="#" class="text-dark px-2">마이페이지</a>
 			</div>
 			<!-- /카테고리1 -->

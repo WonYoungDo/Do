@@ -9,7 +9,7 @@ import com.tawny.shop.manager.member.domain.Manager;
 public interface ManagerRepository {
 	
 	// 회원가입
-	public int insertJoin(
+	public int insertManagerJoin(
 			@Param("loginId") String loginId
 			, @Param("pw") String pw
 			, @Param("name") String name
@@ -18,9 +18,9 @@ public interface ManagerRepository {
 			, @Param("saltStr") String saltStr);
 	
 	// 중복확인
-	public int isDuplicateId(@Param("loginId") String loginId);
+	public int isDuplicateManagerId(@Param("loginId") String loginId);
 	
 	// 로그인 
-	public Manager getLoginInfo(
+	public Manager getManagerLoginInfo(
 			@Param("loginId") String loginId);
 }

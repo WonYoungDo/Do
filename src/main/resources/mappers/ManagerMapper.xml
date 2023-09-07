@@ -5,9 +5,9 @@
  
  <mapper namespace="com.tawny.shop.manager.member.repository.ManagerRepository">
  	
- 	<insert id="insertJoin" parameterType="map">
+ 	<insert id="insertManagerJoin" parameterType="map">
  		INSERT INTO
- 			`user`
+ 			`manager`
  		(
 			`loginId`
 			, `pw`
@@ -27,16 +27,16 @@
  		)
  	</insert>
  	
- 	<select id="isDuplicateId" resultType="int" parameterType="String">
+ 	<select id="isDuplicateManagerId" resultType="int" parameterType="String">
  		SELECT 
  			count(1)
 		FROM
-			`user`
+			`manager`
 		WHERE 
 			`loginId` = #{loginId}
  	</select>
 	
-	<select id="getLoginInfo" resultType="com.tawny.shop.manager.member.domain.Manager" parameterType="map">
+	<select id="getManagerLoginInfo" resultType="com.tawny.shop.manager.member.domain.Manager" parameterType="map">
  		SELECT 
  			`id`
  			, `loginId`
@@ -48,7 +48,7 @@
 			, `updatedAT`
 			, `createdAT`
 		FROM
-			`user`
+			`manager`
 		WHERE 
 			`loginId` = #{loginId}
  	</select>
