@@ -128,3 +128,7 @@ footer {
     font-size: 12px;
     color: gray;
 }
+
+.btn-dark:active, .btn-dark:focus {
+    background-color: #343a40 !important; /* dark color */
+}
