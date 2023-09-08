@@ -211,9 +211,9 @@
 			
 			// 가운데 정렬을 위한 위치 조정
 			let buttonPos = $(this).offset().left + $(this).outerWidth() / 2; // 중앙 위치 계산
-			let menuPos = dropdownMenu.offset().left + dropdownMenu.outerWidth() / 2; // 중앙 위치 계산
+			let menuPos = subCategory.offset().left + subCategory.outerWidth() / 2; // 중앙 위치 계산
 			let diffPos = buttonPos - menuPos; // 차이 계산
-			dropdownMenu.css('transform', 'translateX(' + diffPos + 'px)'); // 위치 조정
+			subCategory.css('transform', 'translateX(' + diffPos + 'px)'); // 위치 조정
 		});
 		  
 	    $(".nav-item").on("mouseleave", function(e) {  

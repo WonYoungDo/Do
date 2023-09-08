@@ -103,7 +103,7 @@
 							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyCodeBtn">확인</button>
 						</div>					
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyVerifyCode">인증번호가 일치하지 않습니다.</div>
+					<div class="text-danger small d-none guide-message" id="emptyVerifyCode">인증번호를 입력해주세요.</div>
 					<div class="text-danger small d-none guide-message" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
 					<div class="text-success small d-none guide-message" id="verifyComplete">인증이 완료되었습니다.</div>
 					<div class="text-danger small d-none guide-message" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
@@ -136,6 +136,7 @@
 			var duplicatedBtn = false; // 중복 확인 버튼 클릭 여부
 			var sendVerifyBtn = false; // 인증번호 전송 버튼 클릭 여부
 			var verifyCodeBtn = false; // 인증번호 확인 버튼 클릭 여부
+			var verifyCode = false;    // 인증 코드 일치 여부
 			var userBtn = true; 	   // 사용자용 버튼 클릭 여부
 			var managerBtn = false;    // 관리자용 버튼 클릭 여부
 			
@@ -165,6 +166,15 @@
 		        userBtn = false;
 		        managerBtn = true;
 			});
+		    
+		    
+			// 인증번호 input 이벤트 초기화 
+			$("#verifyCodeInput").on("input", function() {
+				verifyCodeBtn = false;
+				verifyCode = false;
+				$("#verifyComplete").addClass("d-none");
+				$("#notMatchCode").addClass("d-none");
+			});
 			
 			
 			// 인증번호 일치 확인
@@ -187,13 +197,20 @@
 						
 						verifyCodeBtn = true;
 						
-						if(data.result == "success") { 
-							$("#verifyComplete").removeClass("d-none");
-							$("#emptyVerifyCode").addClass("d-none");
-						} else { 
+						if(isNaN(verifyCodeInput)) {
 							$("#notMatchCode").removeClass("d-none");
 							return;
 						}
+						
+						if(data.result == "success") { // 일치하면 
+							verifyCode = true;
+							$("#verifyComplete").removeClass("d-none");
+							$("#notMatchCode").addClass("d-none");
+							
+						} else { // 일치하지 않으면 
+							$("#verifyComplete").addClass("d-none");
+							$("#notMatchCode").removeClass("d-none");
+						} 
 						
 					}
 					, error:function() {
@@ -226,9 +243,11 @@
 						if(data.result == "success") {
 							$("#verifyBox").removeClass("d-none");
 							$("#sendVerityCode").removeClass("d-none");
+							$("#notSendBtn").addClass("d-none");
 						} else {
 							$("#verifyBox").addClass("d-none");
-							$("#sendVerityCode").addClass("d-none");	
+							$("#sendVerityCode").addClass("d-none");
+							$("#notSendBtn").addClass("d-none");
 						}
 						
 					}
@@ -279,9 +298,11 @@
 						if(data.result) { // 중복
 							$("#duplicateId").removeClass("d-none");
 							$("#availableId").addClass("d-none");
+							$("#duplicate").addClass("d-none");
 						} else { // 사용가능 아이디
 							$("#availableId").removeClass("d-none");
 							$("#duplicateId").addClass("d-none");
+							$("#duplicate").addClass("d-none");
 						}
 					}
 					, error:function() {
@@ -290,8 +311,8 @@
 				});
 
 			});
-				
-				
+			
+			
 			// 회원가입 버튼
 			$("#joinBtn").on("click", function() {
 				let id = $("#idInput").val();
@@ -303,20 +324,24 @@
 				let email = $("#emailInput").val();
 				
 				// 유효성 검사
+				
+				// 아이디 입력란이 비어있을 때
 				if(id == "") { 
 					$("#emptyId").removeClass("d-none");
 					return;
-				} else {
+				} else { 
 					$("#emptyId").addClass("d-none");
 				}
 				
-				if(!duplicatedBtn) {
+				// 아이디 중복확인 버튼을 누르지 않았을 때
+				if(!duplicatedBtn) { 
 					$("#duplicate").removeClass("d-none");
 					return;
-				} else {
+				} else { 
 					$("#duplicate").addClass("d-none");
 				}
 				
+				// 아이디가 중복 되었을 때
 				if(duplicatedId) {
 					$("#duplicateId").removeClass("d-none");
 					$("#availableId").addClass("d-none");
@@ -361,6 +386,7 @@
 					$("#emptyEmail").addClass("d-none");
 				}
 				
+				// 인증번호 전송 버튼 클릭 여부
 				if(!sendVerifyBtn) {
 					$("#notSendBtn").removeClass("d-none");
 					return;
@@ -368,6 +394,7 @@
 					$("#notSendBtn").addClass("d-none");
 				}
 				
+				// 인증번호 확인 버튼 클릭 여부
 				if(!verifyCodeBtn) {
 					$("#notVerifyCodeBtn").removeClass("d-none");
 					return;
@@ -375,15 +402,21 @@
 					$("#notVerifyCodeBtn").addClass("d-none");
 				}
 				
+				// 인증 코드 확인 여부
+				if(!verifyCode) {
+					$("#notMatchCode").removeClass("d-none");
+					return;
+				} else {
+					$("#notMatchCode").addClass("d-none");
+				}
+				
+				
 				let url;
 				let resultData = {"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email};
 				if(userBtn) { // 사용자로 로그인 할 때
 					url = "/user/join";
 					locationUrl = "user/"
-					data["address"] = address;		
-					
-					userBtn = true;
-					managerBtn = false;
+					resultData["address"] = address;		
 					
 					if(address == "") {
 						$("#emptyAddress").removeClass("d-none");
@@ -394,8 +427,6 @@
 					
 				} else if(managerBtn) {
 					url = "/manager/join";
-					managerBtn = true;
-					userBtn = false;
 				}
 				
 				$.ajax({
