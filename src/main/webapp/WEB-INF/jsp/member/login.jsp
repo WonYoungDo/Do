@@ -30,8 +30,12 @@
 						<!-- 문구 -->
 						
 						<!-- 입력란 -->				
-						<div class="login-box p-5 h-50 border mb-5">
-						
+						<div class="login-box p-5 h-50 border pb-5">
+							
+							<div class="d-flex justify-content-end">
+								<label>관리자 <input type="checkbox" name="loginType" value="manager"></label>
+							</div>
+							
 							<form id="loginForm">
 								<!-- 아이디 입력란 -->
 								<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
@@ -81,6 +85,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
+			
+			// 관리자 로그인 체크박스를 선택한 경우
+			
 			
 			// 로그인 버튼 클릭 
 			$("#loginForm").on("submit", function(e) {

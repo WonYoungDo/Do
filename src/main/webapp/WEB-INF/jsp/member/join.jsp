@@ -47,7 +47,7 @@
 						<label class="mt-2">비밀번호 :</label>
 						<input type="password" class="col-7 border-0" id="pwInput">
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyPw">비밀번호를 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPw">비밀번호를 입력해주세요.</div>
 					<!-- /비밀번호 입력란 -->
 					
 					<!-- 비밀번호 확인란 -->
@@ -55,7 +55,7 @@
 						<label class="mt-2">비밀번호 확인 :</label>
 						<input type="password" class="col-7 border-0" id="pwCheckInput">
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyPwCheck">비밀번호를 확인해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPwCheck">비밀번호를 확인해주세요.</div>
 					<!-- /비밀번호 확인란 -->
 					
 					<!-- 이름 입력란 -->
@@ -63,7 +63,7 @@
 						<label class="mt-2">이름 :</label>
 						<input type="text" class="col-7 border-0" id="nameInput">
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyName">이름을 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyName">이름을 입력해주세요.</div>
 					<!-- /이름 입력란 -->
 					
 					<!-- 주소 입력란 -->
@@ -72,7 +72,7 @@
 							<label class="mt-2">주소 :</label>
 							<input type="text" class="col-7 border-0" id="addressInput">
 						</div>
-						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요!</div>
+						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요.</div>
 					</div>	
 					<!-- /주소 입력란 -->
 					
@@ -81,7 +81,8 @@
 						<label class="col-3 p-0 mt-2">전화번호:</label>
 						<input type="text" class="col-6 border-0" id="phoneNumberInput">
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요.</div>
+					<div class="text-danger small d-none guide-message" id="invalidPhoneNumber">전화번호 형식이 올바르지 않습니다.</div>
 					<!-- /전화번호 입력란 -->
 					
 					<!-- 이메일 입력란 -->
@@ -90,9 +91,9 @@
 						<input type="text" class="col-6 border-0" id="emailInput">
 						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="sendVerifyBtn">인증</button>
 					</div>
-					<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요!</div>
+					<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요.</div>
 					<div class="text-success small d-none guide-message" id="sendVerityCode">인증번호를 전송했습니다.</div>
-					<div class="text-danger small d-none guide-message" id="notSendBtn">인증번호 전송 버튼을 눌러주세요!</div>
+					<div class="text-danger small d-none guide-message" id="notSendBtn">인증번호 전송 버튼을 눌러주세요.</div>
 					<!-- /이메일 입력란 -->
 					
 					<!-- 인증번호 입력란 -->
@@ -104,7 +105,7 @@
 						</div>					
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyVerifyCode">인증번호를 입력해주세요.</div>
-					<div class="text-danger small d-none guide-message" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요!</div>
+					<div class="text-danger small d-none guide-message" id="notVerifyCodeBtn">인증번호 확인 버튼을 눌러주세요.</div>
 					<div class="text-success small d-none guide-message" id="verifyComplete">인증이 완료되었습니다.</div>
 					<div class="text-danger small d-none guide-message" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
 					<!-- /인증번호 입력란 -->
@@ -174,39 +175,45 @@
 				verifyCode = false;
 				$("#verifyComplete").addClass("d-none");
 				$("#notMatchCode").addClass("d-none");
+				$("#notVerifyCodeBtn").addClass("d-none");
+				$("#emptyVerifyCode").addClass("d-none");
 			});
 			
 			
 			// 인증번호 일치 확인
 			$("#verifyCodeBtn").on("click", function() {
 				let verifyCodeInput = $("#verifyCodeInput").val();
+				verifyCodeBtn = true;
 				
 				// 유효성 검사 -> 인증 번호 입력란
 				if(verifyCodeInput == "") {
 					$("#emptyVerifyCode").removeClass("d-none");
 					return;
-				} else {
-					$("#emptyVerifyCode").addClass("d-none");
+				} else if(isNaN(verifyCodeInput)) {
+					$("#notMatchCode").removeClass("d-none");
+					return;
+				}
+				
+				$("#emptyVerifyCode").addClass("d-none");
+				
+				let verifyCheckUrl;
+				if(userBtn) { // 사용자로 로그인 할 때
+					verifyCheckUrl = "/user/verifyCheck";
+				} else if(managerBtn) {
+					verifyCheckUrl = "/manager/verifyCheck";
 				}
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/verifyCheck"
+					, url:verifyCheckUrl
 					, data:{"inputCode":verifyCodeInput}
 					, success:function(data) {
-						
-						verifyCodeBtn = true;
-						
-						if(isNaN(verifyCodeInput)) {
-							$("#notMatchCode").removeClass("d-none");
-							return;
-						}
 						
 						if(data.result == "success") { // 일치하면 
 							verifyCode = true;
 							$("#verifyComplete").removeClass("d-none");
 							$("#notMatchCode").addClass("d-none");
-							
+							$("#notVerifyCodeBtn").addClass("d-none");
 						} else { // 일치하지 않으면 
 							$("#verifyComplete").addClass("d-none");
 							$("#notMatchCode").removeClass("d-none");
@@ -232,9 +239,16 @@
 					$("#emptyEmail").addClass("d-none");
 				}
 				
+				let sendVerityUrl;
+				if(userBtn) { // 사용자로 로그인 할 때
+					sendVerityUrl = "/user/verify";
+				} else if(managerBtn) {
+					sendVerityUrl = "/manager/verify";
+				}
+				
 				$.ajax({
 					type:"post"
-					, url:"/user/verify"
+					, url:sendVerityUrl
 					, data:{"email":email}
 					, success:function(data) {
 						
@@ -279,16 +293,16 @@
 					$("#emptyId").addClass("d-none");
 				}
 				
-				let url;
+				let duplicateIdUrl;
 				if(userBtn) { // 사용자로 로그인 할 때
-					url = "/user/duplication";
+					duplicateIdUrl = "/user/duplication";
 				} else if(managerBtn) {
-					url = "/manager/duplication";
+					duplicateIdUrl = "/manager/duplication";
 				}
 
 				$.ajax({
 					type:"get"
-					, url:url
+					, url:duplicateIdUrl
 					, data:{"loginId":id}
 					, success:function(data) {
 						
@@ -375,6 +389,9 @@
 				if(phoneNumber == "") {
 					$("#emptyPhoneNumber").removeClass("d-none");
 					return;
+				} else if(phoneNumber.length != 11 || !phoneNumber.startsWith("010")) {
+					$("#invalidPhoneNumber").removeClass("d-none");
+					return;
 				} else {
 					$("#emptyPhoneNumber").addClass("d-none");
 				}
@@ -411,11 +428,10 @@
 				}
 				
 				
-				let url;
+				let joinUrl;
 				let resultData = {"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email};
 				if(userBtn) { // 사용자로 로그인 할 때
-					url = "/user/join";
-					locationUrl = "user/"
+					joinUrl = "/user/join";
 					resultData["address"] = address;		
 					
 					if(address == "") {
@@ -426,12 +442,12 @@
 					}
 					
 				} else if(managerBtn) {
-					url = "/manager/join";
+					joinUrl = "/manager/join";
 				}
 				
 				$.ajax({
 					type:"post"
-					, url:url
+					, url:joinUrl
 					, data:resultData
 					, success:function(data) {
 						
