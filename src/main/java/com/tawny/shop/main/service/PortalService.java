@@ -23,7 +23,7 @@ public class PortalService {
 	// 상품 정보 보여주기
 	public List<GoodsDetail> getGoodsList() {
 		
-		List<Goods> goodsList = goodsRepository.selectGoods();
+		List<Goods> goodsList = goodsRepository.selectGoodsList();
 		List<GoodsDetail> goodsDetailList = new ArrayList<>();
 		
 		for(Goods goods : goodsList) {

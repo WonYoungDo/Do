@@ -25,7 +25,7 @@
 		)
  	</insert>
  	
- 	<select id="selectGoods" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="map">
+ 	<select id="selectGoodsList" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="map">
  		SELECT
  			id 
  			, `goodsName`
@@ -40,6 +40,32 @@
 		ORDER BY
 			 `createdAT` DESC
  	</select>
+ 	
+ 	<select id="selectGoods" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `goodsName`
+			, `price`
+			, `count`
+			, `category`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`goods`
+ 	</select>
+ 	
+ 	<update id="goodsUpdate" parameterType="map">
+ 		UPDATE
+ 			`goods`
+		SET
+			`goodsName` = #{goodsName}
+			, `price` = #{price}
+			, `count` = #{count}
+			, `category` = #{category}
+		WHERE
+			`id` = #{goodsId}
+ 	</update>
  	
  	<select id="findById" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="int">
  		SELECT

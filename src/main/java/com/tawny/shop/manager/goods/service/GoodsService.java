@@ -15,7 +15,7 @@ public class GoodsService {
 	@Autowired
 	private GoodsRepository goodsRepository;
 	
-	// 상품 등록
+	// 상품 등록 기능
 	public int addGoodsUpload(
 			String goodsName
 			, int price
@@ -25,6 +25,16 @@ public class GoodsService {
 		String imagePath = FileManager.saveFile(file);
 		
 		return goodsRepository.insertGoods(goodsName, price, count, category, imagePath);
+	}
+	
+	// 상품 수정 기능
+	public int goodsUpdate(String goodsName, int price, int count, String category) {
+		return goodsRepository.goodsUpdate(goodsName, price, count, category);
+	}
+	
+	// 등록된 상품 정보
+	public Goods getGoods(int id) {
+		return goodsRepository.selectGoods(id);
 	}
 	
 	// goodsId 얻어오기
