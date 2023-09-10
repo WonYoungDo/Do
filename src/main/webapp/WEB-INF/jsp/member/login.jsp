@@ -86,15 +86,14 @@
 	<script>
 		$(document).ready(function() {
 			
-			// 관리자 로그인 체크박스를 선택한 경우
-			
-			
 			// 로그인 버튼 클릭 
 			$("#loginForm").on("submit", function(e) {
 				e.preventDefault();
 				
 				let id = $("#idInput").val();
 				let pw = $("#pwInput").val();
+				
+				let loginType = $('input[name="loginType"]').is(":checked");
 				
 				// 유효성 검사
 				if(id == "") { 
@@ -111,9 +110,16 @@
 					$("#emptyPw").addClass("d-none");
 				}
 				
+				let loginUrl;
+				if(loginType) {
+					loginUrl = "/manager/login";
+				} else {
+					loginUrl = "/user/login";
+				}
+				
 				$.ajax({
 					type:"post"
-					, url:"/user/login"
+					, url:loginUrl
 					, data:{"loginId":id, "pw":pw}
 					, success:function(data) {
 						
