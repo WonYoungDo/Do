@@ -14,62 +14,17 @@
 	<div id="wrap" class="container bg-white p-0">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex flex-wrap border border-dark">
-			<div class="goods col-3 small">
-				<img src="/static/image/사진1.jpg" class="w-100 h-75">
-				<div>
-					상품 이름:<br>
-					상품 가격:
+			
+			<c:forEach var="goods" items="${goodsList }">
+				<div class="goods col-3 small">
+					<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
+					<div>
+						상품 이름: ${goods.goodsName }<br>
+						상품 가격: ${goods.price }
+					</div>
 				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진2.jpg" class="w-100 h-75">
-				<div>
-					상품 이름:<br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진3.jpg" class="w-100 h-75">
-				<div>
-					상품 이름:<br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진4.jpg" class="w-100 h-75">
-				<div>
-					상품 이름:<br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진5.jpg" class="w-100 h-75">
-				<div>
-					상품 이름: <br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진1.jpg" class="w-100 h-75">
-				<div>
-					상품 이름: <br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진7.jpg" class="w-100 h-75">
-				<div>
-					상품 이름: <br>
-					상품 가격:
-				</div>
-			</div>
-			<div class="goods col-3 small">
-				<img src="/static/image/사진8.jpg" class="w-100 h-75">
-				<div>
-					상품 이름: <br>
-					상품 가격:
-				</div>
-			</div>
+			</c:forEach>
+
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>

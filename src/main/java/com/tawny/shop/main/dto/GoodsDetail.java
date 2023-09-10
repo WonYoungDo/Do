@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 public class GoodsDetail {
 	
+	private int goodsId;
 	private String goodsName;
 	private int price;
 	private int count;

@@ -25,4 +25,31 @@
 		)
  	</insert>
  	
+ 	<select id="selectGoods" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="map">
+ 		SELECT
+ 			id 
+ 			, `goodsName`
+			, `price`
+			, `count`
+			, `category`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT`
+		FROM
+			`goods`
+		ORDER BY
+			 `createdAT` DESC
+ 	</select>
+ 	
+ 	<select id="findById" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="int">
+ 		SELECT
+ 			`id` 
+		FROM
+			`goods`
+		WHERE
+			`id` = #{id}
+		ORDER BY
+			 `createdAT` DESC
+ 	</select>
+ 	
  </mapper>

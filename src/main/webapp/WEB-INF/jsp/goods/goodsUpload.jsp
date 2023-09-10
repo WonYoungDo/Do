@@ -130,7 +130,6 @@
 				if(goodsName == "") {
 					return;
 				}
-				
 				if(goodsPrice instanceof Number) {
 					return;
 				} else if(goodsPrice == "") {
@@ -143,9 +142,7 @@
 					return;
 				}
 				
-				if(!(goodsCategory instanceof Number)) {
-					return;
-				} else if(goodsCategory == "") {
+				if(goodsCategory == "") {
 					return;
 				}
 				

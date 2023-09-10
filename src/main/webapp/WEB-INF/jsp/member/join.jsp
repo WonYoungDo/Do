@@ -110,6 +110,8 @@
 					<div class="text-danger small d-none guide-message" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
 					<!-- /인증번호 입력란 -->
 					
+					
+					
 					<!-- 회원가입 버튼 -->
 					<button type="button" class="btn btn-dark btn-block mt-5" id="joinBtn">회원가입</button>
 					<!-- /회원가입 버튼 -->
