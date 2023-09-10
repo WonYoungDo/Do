@@ -19,22 +19,30 @@
 			</div>
 			<!-- /검색 -->
 			
-			<!-- 메뉴 -->
-			<div class="small">
-				<a href="/do/login" class="text-dark pr-2">로그인</a>
-				<a href="/do/join" class="text-dark">회원가입</a>
-				<a href="#" class="text-dark px-2">마이페이지</a>
-			</div>
-			<!-- /카테고리1 -->
+			<c:if test="${empty managerId }">
+				<!-- 메뉴 -->
+				<div class="small">
+					<c:if test="${empty userId }">
+						<a href="/do/login" class="text-dark">로그인</a>
+						<a href="/do/join" class="text-dark px-2 pr-4">회원가입</a>
+					</c:if>	
+					<c:if test="${not empty userId }">
+						<a href="#" class="text-dark pr-3">마이페이지</a>
+					</c:if>	
+				</div>
+				<!-- /메뉴 -->
+			</c:if>
+			
 		</div>
-		<!-- /메뉴1 -->
+		<!-- /카테고리1 -->
+		
 		<!-- 카테고리2 -->
 		<div class="category d-flex border border-dark">
 		
 			<ul class="nav w-100 d-flex justify-content-center pt-1 text-center">
 			<c:choose>
 				<%-- 관리자 로그인 시 --%>
-				<c:when test="${sessionScope.managerId} != null">
+				<c:when test="${not empty managerId}">
 					<!-- 상품관리 -->		
 		            <li class="nav-item">
 		            	<a href="#" class="nav-link text-dark font-weight-bold main-category">상품관리</a>
@@ -182,10 +190,14 @@
 			</ul>
 			 
 			<div class="login-user small-text d-flex justify-content-start align-items-center mr-3">
+				<c:if test="${not empty managerId}">
+					${managerName } <a href="/manager/logout" class="pl-1">로그아웃</a>
+				</c:if>
 				<c:if test="${not empty userId}">
-					<!-- ${userName } <a href="/user/logout" class="pl-1">로그아웃</a>  -->
+					${userName } <a href="/user/logout" class="pl-1">로그아웃</a>
 				</c:if>
 			</div>
+			
 		</div>
 		<!-- /카테고리2 -->
 		
