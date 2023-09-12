@@ -42,4 +42,9 @@ public class PortalService {
 		}
 		return goodsDetailList;
 	}
+	
+	// 상품 개별 정보 가져오기
+	public Goods getGoods(int id) {
+		return goodsRepository.selectGoods(id);
+	}
 }

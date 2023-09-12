@@ -53,6 +53,8 @@
 			, `updatedAT` 
 		FROM
 			`goods`
+		WHERE
+			`id` = #{id}
  	</select>
  	
  	<update id="goodsUpdate" parameterType="map">
@@ -63,6 +65,7 @@
 			, `price` = #{price}
 			, `count` = #{count}
 			, `category` = #{category}
+			, `updatedAT` = now()
 		WHERE
 			`id` = #{goodsId}
  	</update>

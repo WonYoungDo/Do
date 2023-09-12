@@ -42,13 +42,14 @@ public class GoodsRestController {
 	}
 	
 	// 상품 수정
-	@PostMapping("/goodsUpdate")
+	@PutMapping("/goodsUpdate")
 	public Map<String, String> goodsUpdate(
-			@RequestParam("goodsName") String goodsName
+			@RequestParam("goodsId") int goodsId
+			, @RequestParam("goodsName") String goodsName
 			, @RequestParam("price") int price
 			, @RequestParam("count") int count
 			, @RequestParam("category") String category) {
-		int goodsUpdate = goodsService.goodsUpdate(goodsName, price, count, category); 
+		int goodsUpdate = goodsService.goodsUpdate(goodsId, goodsName, price, count, category); 
 	
 		Map<String, String> resultMap = new HashMap<>();
 		if(goodsUpdate != 0) {

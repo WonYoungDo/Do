@@ -17,10 +17,14 @@
 			
 			<c:forEach var="goods" items="${goodsList }">
 				<div class="goods col-3 small">
-					<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
+					<a href="/do/main/goodsInfo/${goods.goodsId }">
+						<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
+					</a>	
 					<div>
-						상품 이름: ${goods.goodsName }<br>
-						상품 가격: ${goods.price }
+						<a href="/do/main/goodsInfo/${goods.goodsId }">	
+							상품 이름: ${goods.goodsName }<br>
+							상품 가격: ${goods.price }
+						</a>
 					</div>
 				</div>
 			</c:forEach>

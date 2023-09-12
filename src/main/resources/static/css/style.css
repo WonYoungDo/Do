@@ -29,7 +29,13 @@ section > .goods {
 	width:300px;
 }
 
-
+/* goods-info */
+section > .goods-info {
+	height: 570px;
+}
+section > .goods-info > .goods {
+	height: 250px;
+}
 
 
 /* join */

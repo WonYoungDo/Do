@@ -23,7 +23,8 @@ public interface GoodsRepository {
 	
 	// 수정한 내용 쿼리에 업데이트
 	public int goodsUpdate(
-			@Param("goodsName") String goodsName
+			@Param("goodsId") int goodsId
+			, @Param("goodsName") String goodsName
 			, @Param("price") int price
 			, @Param("count") int count
 			, @Param("category") String category);

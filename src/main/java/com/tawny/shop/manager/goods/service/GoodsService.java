@@ -28,8 +28,8 @@ public class GoodsService {
 	}
 	
 	// 상품 수정 기능
-	public int goodsUpdate(String goodsName, int price, int count, String category) {
-		return goodsRepository.goodsUpdate(goodsName, price, count, category);
+	public int goodsUpdate(int goodsId, String goodsName, int price, int count, String category) {
+		return goodsRepository.goodsUpdate(goodsId, goodsName, price, count, category);
 	}
 	
 	// 등록된 상품 정보

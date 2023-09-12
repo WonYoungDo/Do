@@ -36,28 +36,28 @@
 							<!-- 품명 -->
 							<div class="d-flex pt-2">
 						 		<label class="pt-2 px-2">품명 : </label>
-						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 픔명을 입력하세요." id="goodsNameInput" value="">
+						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 픔명을 입력하세요." id="goodsNameInput" value="${goods.goodsName }">
 							</div>
 							<!-- /품명 -->
 							
 							<!-- 가격 -->
 							<div class="d-flex pt-2">
 						 		<label class="pt-2 px-2">가격 :</label>
-						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 상품 가격을 입력하세요." id="goodsPriceInput">
+						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 상품 가격을 입력하세요." id="goodsPriceInput" value="${goods.price }">
 							</div>
 							<!-- /가격 -->
 							
 							<!-- 수량 -->
 							<div class="d-flex pt-2">
 						 		<label class="pt-2 px-2">수량 :</label>
-						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 상품 수량을 입력하세요." id="goodsCountInput">
+						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 상품 수량을 입력하세요." id="goodsCountInput" value="${goods.count }">
 							</div>
 							<!-- /수량 -->
 							
 							<!-- 분류 -->
 							<div class="d-flex pt-2 pb-2">
 						 		<label class="pt-2 px-2">분류 :</label>
-						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 분류 항목을 입력하세요" id="goodsCategoryInput">
+						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 분류 항목을 입력하세요" id="goodsCategoryInput" value="${goods.category }">
 							</div>
 							<!-- /분류 -->
 						</div>
@@ -65,8 +65,8 @@
 					</div>
 					
 					<div class="d-flex justify-content-between my-2">
-						<button type="button" class="btn form-control btn-danger col-3" id="deleteBtn">삭제</button>
-						<button type="button" class="btn form-control btn-dark col-3" id="saveBtn">저장</button>
+						<button type="button" class="btn form-control btn-danger col-3" id="deleteBtn" data-goods-id="${goods.id }">삭제</button>
+						<button type="button" class="btn form-control btn-dark col-3" id="saveBtn" data-goods-id="${goods.id }">저장</button>
 					</div>
 					
 				</div>
@@ -95,6 +95,7 @@
 				let goodsPrice = $("#goodsPriceInput").val();
 				let goodsCount = $("#goodsCountInput").val();
 				let goodsCategory = $("#goodsCategoryInput").val();
+				let goodsId = $(this).data("goods-id");
 				
 				// 유효성 검사
 				if(goodsName == "") {
@@ -113,6 +114,22 @@
 					alert("작성할 내용을 입력해주세요.");
 					return;
 				}
+				
+				$.ajax({
+					type:"put"
+					, url:"/manager/goodsUpdate"
+					, dada:{"goodsId":goodsId, "goodsName":goodsName, "price":goodsPrice, "count":goodsCount, "category":goodsCategory}
+					, sucess:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("수정 실패");
+						}
+					}
+					, error:function() {
+						alert("수정 에러");
+					}
+				});
 			});
 		});
 	</script>
