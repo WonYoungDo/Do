@@ -5,31 +5,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Do</title>
+<title>상품 결제</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container bg-white p-0">
+	<div id="wrap" class="container p-0">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section class="d-flex flex-wrap border border-dark">
-			
-			<c:forEach var="goods" items="${goodsList }">
-				<div class="goods col-3 small">
-					<a href="/do/main/goodsInfo/${goods.goodsId }" class="goods-link">
-						<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
-					</a>	
-					<div>
-						<a href="/do/main/goodsInfo/${goods.goodsId }" class="goods-link">	
-							${goods.goodsName }<br>
-							${goods.price }
-						</a>
+		
+		<section class="d-flex p-0 border border-dark">
+		
+			<!-- 베스트 상품1 -->
+			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
+			<!-- /베스트 상품1 -->
+	
+			<div class="goods-payment col-6 d-flex justify-content-center">	
+				<div class="pay-box col-10">
+					<h4 class="pt-3 pr-5 mr-5">주문/결제</h4>
+					<div class="pay-info mt-3 border p-1">
+						<b>수령인 : </b> <br>
+						<b>배송지 : </b> <br>     
+						<div class="small pt-4">
+							상품 가격 : <br>
+							상품 수량 : 
+						</div>	
 					</div>
+					<div class="pay-method my-3 border p-1">
+						<b>결제 수단</b>
+					</div>
+					
+					<div class="pay-request border p-0">
+						<div class="h-25 pl-1 pt-1"><b>요청사항</b></div>
+						<textarea class="w-100 h-75 border-0 mb-1"></textarea>
+					</div>
+					
+					<div class="pt-5">
+						<button type="button" class="btn form-control btn-dark" id="payBtn">결제하기</button>
+					</div>
+					
 				</div>
-			</c:forEach>
-
+					
+			</div>
+	
+			<!-- 베스트 상품2 -->
+			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
+			<!-- /베스트 상품2 -->
+		
 		</section>
+		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

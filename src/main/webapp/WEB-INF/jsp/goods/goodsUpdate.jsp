@@ -26,8 +26,8 @@
 					<h4 class="pt-3 pr-5 mr-5">상품 수정</h4>
 					<div class="border mt-3">
 						<!-- 상품 사진 -->
-						<div class="goods-image col-6 d-flex align-items-center justify-content-center border">
-
+						<div class="goods-image col-6 d-flex align-items-center justify-content-center border p-0">
+							<img src="${goods.imagePath }" class="w-100 h-100"> 
 						</div>
 						<!-- /상품 사진 -->
 						
@@ -36,7 +36,7 @@
 							<!-- 품명 -->
 							<div class="d-flex pt-2">
 						 		<label class="pt-2 px-2">품명 : </label>
-						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 픔명을 입력하세요." id="goodsNameInput" value="${goods.goodsName }">
+						 		<input type="text" class="border-0 form-control col-9 small-placeholder" placeholder="수정할 품명을 입력하세요." id="goodsNameInput" value="${goods.goodsName }">
 							</div>
 							<!-- /품명 -->
 							
@@ -71,7 +71,6 @@
 					
 				</div>
 					
-				
 			</div>
 			<!-- /상품 수정 -->
 			
@@ -96,7 +95,7 @@
 				let goodsCount = $("#goodsCountInput").val();
 				let goodsCategory = $("#goodsCategoryInput").val();
 				let goodsId = $(this).data("goods-id");
-				
+
 				// 유효성 검사
 				if(goodsName == "") {
 					alert("제목을 입력해주세요.");
@@ -118,9 +117,10 @@
 				$.ajax({
 					type:"put"
 					, url:"/manager/goodsUpdate"
-					, dada:{"goodsId":goodsId, "goodsName":goodsName, "price":goodsPrice, "count":goodsCount, "category":goodsCategory}
-					, sucess:function(data) {
+					, data:{"goodsId":goodsId, "goodsName":goodsName, "price":goodsPrice, "count":goodsCount, "category":goodsCategory}
+					, success:function(data) {
 						if(data.result == "success") {
+							alert("저장되었습니다.");
 							location.reload();
 						} else {
 							alert("수정 실패");

@@ -27,7 +27,7 @@
 					<div class="border mt-3">
 					
 						<!-- 상품 사진 -->
-						<div class="goods-image col-6 d-flex align-items-center justify-content-center border">
+						<div class="goods-image col-6 d-flex align-items-center justify-content-center border p-0">
 							<i class="bi bi-plus-square-fill" id="addFileIcon"></i>
 							<input type="file" class="d-none" id="addFile">
 							<img src="#" id="file" class="d-none w-100 h-100">

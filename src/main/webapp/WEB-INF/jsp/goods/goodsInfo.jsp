@@ -27,11 +27,11 @@
 				
 					<div class="goods d-flex col-10 p-0">
 					
-						<div class="goods-image col-7 p-0">
+						<div class="col-7 p-0">
 							<img src="${goods.imagePath }"  class="w-100 h-100">
 						</div>
 						
-						<div class="goods-payment d-flex flex-column justify-content-between border border-dark col-5 p-2">
+						<div class="d-flex flex-column justify-content-between border border-dark col-5 p-2">
 							<div>
 								<div class="border-bottom pb-2">
 									${goods.goodsName }
@@ -52,7 +52,7 @@
 										${goods.price } + ${goods.price } 원
 									</div>
 								</div>
-								<button type="button" class="btn btn-dark form-control">바로 구매</button>
+								<a type="button" href="/do/main/goodsOrder" class="btn btn-dark form-control text-white">바로 구매</a>
 							</div>
 						</div>
 						

@@ -49,7 +49,7 @@
 			            <div class="d-none sub-category">
 			                <ul class="d-flex justify-content-around">
 			                    <li><a href="/manager/goodsUpload" class="dropdown-item">상품등록</a></li>
-			                    <li><a href="/manager/goodsUpdate" class="dropdown-item">상품수정</a></li>
+			                    <li><a href="/manager/goodsList" class="dropdown-item">상품수정</a></li>
 			                </ul>
 			            </div>
 			        </li>

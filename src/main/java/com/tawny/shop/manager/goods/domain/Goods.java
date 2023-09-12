@@ -1,5 +1,7 @@
 package com.tawny.shop.manager.goods.domain;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +15,6 @@ public class Goods {
 	private int count;
 	private String category;
 	private String imagePath;
+	private Date createdAT;
+	private Date updatedAT;
 }

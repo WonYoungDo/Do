@@ -37,6 +37,19 @@ section > .goods-info > .goods {
 	height: 250px;
 }
 
+/* goods-order */
+section > .goods-payment {
+	height: 570px;
+}
+section > .goods-payment > .pay-box > .pay-info {
+	height: 150px;
+}
+section > .goods-payment > .pay-box > .pay-method {
+	height: 100px;
+}
+section > .goods-payment > .pay-box > .pay-request {
+	height: 120px;
+}
 
 /* join */
 section > .join > .input-box {
@@ -73,9 +86,18 @@ section > .find > .find-pw > .input-box {
 	height: 250px;
 }
 
+/* goodsUpdate */
+section > .goods-list {
+	height: 570px;
+}
+section > .goods-list > .goods {
+	height: 100px;
+}
+
 footer {
 	height: 100px;
 }
+
 
 
 
@@ -102,6 +124,9 @@ footer {
 	font-size: 2.5rem;
 }
 
+.goods-link {
+	color: black;
+}
 
 .nav-item > .sub-category {
     position: absolute;

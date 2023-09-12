@@ -39,6 +39,12 @@ public class PortalController {
 		return "goods/goodsInfo";
 	}
 	
+	// 결제 화면
+	@GetMapping("/main/goodsOrder")
+	public String goodsOrder() {
+		return "goods/goodsOrder";
+	}
+	
 	// 회원가입 화면
 	@GetMapping("/join")
 	public String join() {
@@ -63,5 +69,6 @@ public class PortalController {
 		return "member/findPw";
 	}
 	
+
 	
 }
