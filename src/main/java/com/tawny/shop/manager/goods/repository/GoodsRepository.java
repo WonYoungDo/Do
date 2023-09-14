@@ -33,5 +33,5 @@ public interface GoodsRepository {
 			, @Param("category") String category);
 	
 	// goodsId 가져오기
-	public List<Goods> findById(@Param("id") int id);
+	public List<Goods> findByGoodsId(@Param("id") int id);
 }

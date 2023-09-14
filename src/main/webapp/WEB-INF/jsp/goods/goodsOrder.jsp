@@ -27,12 +27,14 @@
 						<b>수령인 : </b> <br>
 						<b>배송지 : </b> <br>     
 						<div class="small pt-4">
-							상품 가격 : <br>
-							상품 수량 : 
+							주문 상품 : ${goods.goodsName } <br>
+							상품 가격 : ${goods.price } <br>
+							주문 수량 : 3개
 						</div>	
 					</div>
 					<div class="pay-method my-3 border p-1">
 						<b>결제 수단</b>
+						
 					</div>
 					
 					<div class="pay-request border p-0">

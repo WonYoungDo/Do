@@ -13,4 +13,6 @@ public class GoodsDetail {
 	private int count;
 	private String category;
 	private String imagePath;
+	
+	private int userId;
 }

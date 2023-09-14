@@ -20,11 +20,13 @@
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
-			<div class="goods-list col-6 d-flex justify-content-center p-1">
+			<div class="goods-list col-6 d-flex flex-column p-1">
+			
 			<c:forEach var="goods" items="${goodsList }">
-				<div class="goods col-10 d-flex p-0 border">
-					<a href="/manager/goodsUpdate/${goods.goodsId }" class="goods-link col-3 p-0">
-						<img src="${goods.imagePath }" class="h-100 w-100">
+			
+				<div class="goods d-flex p-0 border">
+					<a href="/manager/goodsUpdate/${goods.goodsId }" class="goods-link col-2 p-0">
+						<img src="${goods.imagePath }" class="w-100 h-100">
 					</a>
 					<div class="col-9">
 						<a href="/manager/goodsUpdate/${goods.goodsId }" class="goods-link">
@@ -34,7 +36,9 @@
 						</a>	
 					</div>
 				</div>
+				
 			</c:forEach>
+			
 			</div>
 			
 			<!-- 베스트 상품2 -->

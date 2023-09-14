@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
+import com.tawny.shop.manager.goods.service.GoodsService;
 
 @Controller
 @RequestMapping("/do")
@@ -31,18 +32,9 @@ public class PortalController {
 	// 개별 상품 정보
 	@GetMapping("/main/goodsInfo/{id}")
 	public String goodsInfo(@PathVariable("id") int id, Model model) {
-		
 		Goods goods = portalService.getGoods(id);
-		
 		model.addAttribute("goods", goods);
-		
 		return "goods/goodsInfo";
-	}
-	
-	// 결제 화면
-	@GetMapping("/main/goodsOrder")
-	public String goodsOrder() {
-		return "goods/goodsOrder";
 	}
 	
 	// 회원가입 화면

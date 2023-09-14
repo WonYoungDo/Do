@@ -27,4 +27,7 @@ public interface UserRepository {
 	// 로그인 
 	public User getLoginInfo(
 			@Param("loginId") String loginId);
+	
+	// 사용자 id 얻어오기
+	public User findByUserId(@Param("id") int id);
 }

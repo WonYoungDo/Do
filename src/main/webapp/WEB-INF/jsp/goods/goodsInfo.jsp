@@ -52,7 +52,7 @@
 										${goods.price } + ${goods.price } 원
 									</div>
 								</div>
-								<a type="button" href="/do/main/goodsOrder" class="btn btn-dark form-control text-white">바로 구매</a>
+								<a type="button" href="/do/goodsOrder/${goods.id}" class="btn btn-dark form-control text-white">바로 구매</a>
 							</div>
 						</div>
 						

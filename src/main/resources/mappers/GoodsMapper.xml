@@ -70,15 +70,13 @@
 			`id` = #{goodsId}
  	</update>
  	
- 	<select id="findById" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="int">
+ 	<select id="findByGoodsId" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="int">
  		SELECT
  			`id` 
 		FROM
 			`goods`
 		WHERE
 			`id` = #{id}
-		ORDER BY
-			 `createdAT` DESC
  	</select>
  	
  </mapper>

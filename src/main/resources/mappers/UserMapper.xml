@@ -56,4 +56,13 @@
 			`loginId` = #{loginId}
  	</select>
  	
+ 	<select id="findByUserId" resultType="com.tawny.shop.user.member.domain.User" parameterType="int">
+ 		SELECT
+ 			`id` 
+		FROM
+			`user`
+		WHERE
+			`id` = #{id}
+ 	</select>
+ 	
  </mapper>

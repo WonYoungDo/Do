@@ -71,4 +71,9 @@ public class UserService {
 			return user;
 		}
 	}
+	
+	// 사용자 id 얻어오기
+	public User getUserId(int id) {
+		return userRepository.findByUserId(id);
+	}
 }

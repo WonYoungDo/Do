@@ -39,6 +39,6 @@ public class GoodsService {
 	
 	// goodsId 얻어오기
 	public List<Goods> getGoodsId(int id) {
-		return goodsRepository.findById(id);
+		return goodsRepository.findByGoodsId(id);
 	}
 }
