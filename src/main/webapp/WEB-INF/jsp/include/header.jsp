@@ -27,7 +27,7 @@
 						<a href="/do/join" class="text-dark px-2 pr-4">회원가입</a>
 					</c:if>	
 					<c:if test="${not empty userId }">
-						<a href="#" class="text-dark pr-3">마이페이지</a>
+						<a href="/do/user/mypage" class="text-dark pr-3">마이페이지</a>
 					</c:if>	
 				</div>
 				<!-- /메뉴 -->

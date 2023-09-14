@@ -94,6 +94,11 @@ section > .goods-list > .goods {
 	height: 100px;
 }
 
+/* mypage */
+section > .mypage {
+	height: 570px;
+}
+
 footer {
 	height: 100px;
 }
@@ -111,7 +116,10 @@ footer {
 	font-size:10px;
 }
 
- .icon-xs {
+.icon-point {
+	font-size: 0.1rem;
+}
+.icon-xs {
   	font-size: 1.3rem;
 }
 .icon-sm {
@@ -124,7 +132,7 @@ footer {
 	font-size: 2.5rem;
 }
 
-.goods-link {
+.link {
 	color: black;
 }
 

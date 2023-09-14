@@ -11,7 +11,6 @@ import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.repository.GoodsRepository;
 import com.tawny.shop.manager.goods.service.GoodsService;
-import com.tawny.shop.user.member.domain.User;
 import com.tawny.shop.user.member.service.UserService;
 
 @Service

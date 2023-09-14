@@ -25,11 +25,11 @@
 			<c:forEach var="goods" items="${goodsList }">
 			
 				<div class="goods d-flex p-0 border">
-					<a href="/manager/goodsUpdate/${goods.goodsId }" class="goods-link col-2 p-0">
+					<a href="/manager/goodsUpdate/${goods.goodsId }" class="link col-2 p-0">
 						<img src="${goods.imagePath }" class="w-100 h-100">
 					</a>
 					<div class="col-9">
-						<a href="/manager/goodsUpdate/${goods.goodsId }" class="goods-link">
+						<a href="/manager/goodsUpdate/${goods.goodsId }" class="link">
 							품명 : ${goods.goodsName } <br>
 							가격 : ${goods.price } <br>
 							수량 : ${goods.count }
