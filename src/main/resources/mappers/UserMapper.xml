@@ -56,9 +56,18 @@
 			`loginId` = #{loginId}
  	</select>
  	
- 	<select id="findByUserId" resultType="com.tawny.shop.user.member.domain.User" parameterType="int">
+ 	<select id="selectUser" resultType="com.tawny.shop.user.member.domain.User" parameterType="int">
  		SELECT
- 			`id` 
+ 			`id`
+ 			, `loginId`
+			, `pw`
+			, `name`
+			, `phoneNumber`
+			, `email`
+			, `address`
+			, `saltStr`
+			, `updatedAT`
+			, `createdAT`
 		FROM
 			`user`
 		WHERE

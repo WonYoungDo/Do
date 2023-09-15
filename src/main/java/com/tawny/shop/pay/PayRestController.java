@@ -18,13 +18,14 @@ public class PayRestController {
 	@Autowired
 	private PayService payService;
 	
+	// 카드 등록
 	@PutMapping("/card/register")
 	public Map<String, String> registerCard(
 			@RequestParam("card") String card
 			, @RequestParam("cardNumber") String cardNumber
 			, HttpSession session) {
-		int userId = (Integer)session.getAttribute("userId");
 		
+		int userId = (Integer)session.getAttribute("userId");
 		int count = payService.addCardInfo(userId, card, cardNumber);
 		
 		Map<String, String> resultMap = new HashMap<>();

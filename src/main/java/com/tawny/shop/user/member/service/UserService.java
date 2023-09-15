@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tawny.shop.common.PasswordEncoding;
+import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.user.member.domain.User;
 import com.tawny.shop.user.member.repository.UserRepository;
 
@@ -72,8 +73,10 @@ public class UserService {
 		}
 	}
 	
-	// 사용자 id 얻어오기
-	public User getUserId(int id) {
-		return userRepository.findByUserId(id);
+	
+	// id를 기반으로 등록된 사용자 정보 
+	public User getUser(int id) {
+		return userRepository.selectUser(id);
 	}
+	
 }

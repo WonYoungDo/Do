@@ -11,7 +11,6 @@ import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.repository.GoodsRepository;
 import com.tawny.shop.manager.goods.service.GoodsService;
-import com.tawny.shop.user.member.service.UserService;
 
 @Service
 public class PortalService {
@@ -21,9 +20,6 @@ public class PortalService {
 	
 	@Autowired
 	private GoodsService goodsService;
-	
-	@Autowired
-	private UserService userService;
 	
 	// 상품 정보 보여주기
 	public List<GoodsDetail> getGoodsList() {

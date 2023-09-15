@@ -31,28 +31,28 @@
 						<!-- 아이디 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
 							<label class="col-2 p-0 mt-2">아이디 :</label>
-							<input type="text" class="col-9 border-0" id="idInput" value="${user.name }">
+							<input type="text" class="col-9 border-0" id="idInput" value="${user.loginId }">
 						</div>
 						<!-- /아이디 -->
 						
 						<!-- 이름 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 							<label class="mt-2">이름 :</label>
-							<input type="text" class="col-9 border-0" id="nameInput" value="">
+							<input type="text" class="col-9 border-0" id="nameInput" value="${user.name }">
 						</div>
 						<!-- /이름 -->
 						
 						<!-- 전화번호 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">전화번호 :</label>
-							<input type="text" class="col-9 border-0" id="phoneNumberInput" value="">
+							<input type="text" class="col-9 border-0" id="phoneNumberInput" value="${user.phoneNumber }">
 						</div>
 						<!-- /전화번호 -->
 						
 						<!-- 이메일 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 							<label class="col-3 p-0 mt-2">이메일 :</label>
-							<input type="text" class="col-9 border-0" id="emailInput" value="">
+							<input type="text" class="col-9 border-0" id="emailInput" value="${user.email }">
 						</div>
 						<!-- /이메일 -->
 
@@ -70,7 +70,7 @@
 						<div id="address">
 							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 								<label class="mt-2">주소 :</label>
-								<input type="text" class="col-9 border-0" id="addressInput" value="">
+								<input type="text" class="col-9 border-0" id="addressInput" value="${user.address }">
 							</div>
 						</div>	
 						<!-- /주소 -->
@@ -117,5 +117,51 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+	<script>
+		$(document).ready(function() {
+			
+			// 결제 수단 등록
+			$("#saveCardBtn").on("click", function() {
+				let card = $("#cardInput").val();		
+				let cardNumber = $("#cardNumberInput").val();	
+				
+				if(card == "") {
+					alert("카드사를 입력해주세요.");
+					return;
+				} else if(/[0-9]/.test(card)) {
+					alert("이름이 올바르지 않습니다.");
+					return;
+				}
+				
+				if(cardNumber == "") {
+					alert("카드 번호를 입력해주세요.");
+					return;
+				} else if(/[a-zA-Z가-힣]/.test(cardNumber)) {
+				    alert("숫자로 입력해주세요.");
+				    return;
+				}
+				
+				$.ajax({
+					type:"put"
+					, url:"/card/register"
+					, data:{"card":card, "cardNumber":cardNumber}
+					, success:function(data) {
+						
+						if(data.result == "success") { 
+							location.reload();
+						} else {
+							alert("카드 등록 실패");
+						} 
+						
+					}
+					, error:function() {
+						alert("카드 등록 에러");
+					}
+				});
+			});
+			
+			
+		});
+	</script>	
 </body>
 </html>

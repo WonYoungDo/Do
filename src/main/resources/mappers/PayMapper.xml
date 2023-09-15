@@ -7,7 +7,7 @@
  	
 	<insert id="insertCardInfo" parameterType="map">
  		INSERT INTO
- 			`goods`
+ 			`pay`
 		(
 			`userId`
 			, `card`
@@ -17,9 +17,19 @@
 		(
 			#{userId}
 			, #{card}
-			, #{count}
 			, #{cardNumber}
 		)
  	</insert>
  	
+	<select id="selectCard" parameterType="map">
+ 		SELECT
+			`id`
+			, `userId`
+			, `card`
+			, `cardNumber`
+		FROM
+			`pay`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
 </mapper> 	

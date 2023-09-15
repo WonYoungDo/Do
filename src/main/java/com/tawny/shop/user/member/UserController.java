@@ -13,12 +13,9 @@ public class UserController {
 	// 로그아웃 
 	@GetMapping("/user/logout")
 	public String logout(HttpServletRequest request) {
-		
 		HttpSession session = request.getSession();
-		
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
-		
 		return "redirect:/do/login";		
 	}
 }

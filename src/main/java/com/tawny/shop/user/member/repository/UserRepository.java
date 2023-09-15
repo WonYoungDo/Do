@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.user.member.domain.User;
 
 
@@ -28,6 +29,6 @@ public interface UserRepository {
 	public User getLoginInfo(
 			@Param("loginId") String loginId);
 	
-	// 사용자 id 얻어오기
-	public User findByUserId(@Param("id") int id);
+	// 저장되어 있는 사용자 정보 가져오기 
+	public User selectUser(@Param("id") int id);
 }

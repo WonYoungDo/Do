@@ -32,7 +32,7 @@ public class GoodsService {
 		return goodsRepository.goodsUpdate(goodsId, goodsName, price, count, category);
 	}
 	
-	// 등록된 상품 정보 id
+	// id를 기반으로 등록된 상품 정보 
 	public Goods getGoods(int id) {
 		return goodsRepository.selectGoods(id);
 	}
