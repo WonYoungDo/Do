@@ -31,28 +31,29 @@
 						<!-- 아이디 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
 							<label class="col-2 p-0 mt-2">아이디 :</label>
-							<input type="text" class="col-9 border-0" id="idInput" value="${user.loginId }">
+							<input type="text" class="col-9 border-0 no-outline" id="idInput" value="${user.loginId }" readonly>
 						</div>
 						<!-- /아이디 -->
 						
 						<!-- 이름 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
-							<label class="mt-2">이름 :</label>
-							<input type="text" class="col-9 border-0" id="nameInput" value="${user.name }">
+							<label class="mt-2">이름 :</label> 
+							<input type="text" class="col-9 border-0 no-outline" id="nameInput" value="${user.name }" readonly>
 						</div>
 						<!-- /이름 -->
 						
 						<!-- 전화번호 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">전화번호 :</label>
-							<input type="text" class="col-9 border-0" id="phoneNumberInput" value="${user.phoneNumber }">
+							<input type="text" class="col-9 border-0 no-outline" id="phoneNumberInput" value="${user.phoneNumber }" readonly>
 						</div>
 						<!-- /전화번호 -->
 						
 						<!-- 이메일 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 							<label class="col-3 p-0 mt-2">이메일 :</label>
-							<input type="text" class="col-9 border-0" id="emailInput" value="${user.email }">
+							<input type="text" class="col-7 border-0 no-outline" id="emailInput" value="${user.email }" readonly>
+							<button type="button" class="btn btn-dark col-2 btn-sm" id="emailUpdateBtn">수정</button>
 						</div>
 						<!-- /이메일 -->
 
@@ -60,7 +61,13 @@
 						<div id="address">
 							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 								<label class="mt-2">결제 수단 :</label>
-								<input type="text" class="col-7 border-0" id="addressInput" value="">
+								
+								<select id="card" class="col-7 form-control">
+							 	<c:forEach var="card" items="${pay}">
+									<option  value="card.id">${card.card }-${card.cardNumber }</option>
+								</c:forEach>
+								
+							</select>
 								<button type="button" class="btn btn-dark col-2 btn-sm" data-toggle="modal" data-target="#moreModal">등록</button>
 							</div>
 						</div>	
@@ -70,13 +77,14 @@
 						<div id="address">
 							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 								<label class="mt-2">주소 :</label>
-								<input type="text" class="col-9 border-0" id="addressInput" value="${user.address }">
+								<input type="text" class="col-7 border-0 no-outline" id="addressInput" value="${user.address }" readonly>
+								<button type="button" class="btn btn-dark col-2 btn-sm" id="addressUpdateBtn">수정</button>
 							</div>
 						</div>	
 						<!-- /주소 -->
 						
 						<div class="d-flex justify-content-end">
-							<button type="button" class="btn btn-dark" id="saveBtn">수정</button>
+							<button type="button" class="btn btn-dark" id="saveBtn">저장</button>
 						</div>
 					</div>
 				</div>
@@ -120,6 +128,26 @@
 	<script>
 		$(document).ready(function() {
 			
+			// 주소 수정 버튼
+		    $("#addressUpdateBtn").on("click", function() {
+		        let addressInput = $("#addressInput");
+		        if (addressInput.prop("readonly")) {
+		        	addressInput.prop("readonly", false); 
+		        } else {
+		        	addressInput.prop("readonly", true); 
+		        }
+		    });
+			
+			// 이메일 수정 버튼
+		    $("#emailUpdateBtn").on("click", function() {
+		        let emailInput = $("#emailInput");
+		        if (emailInput.prop("readonly")) { 
+		            emailInput.prop("readonly", false);
+		        } else {
+		            emailInput.prop("readonly", true);
+		        }
+		    });
+			
 			// 결제 수단 등록
 			$("#saveCardBtn").on("click", function() {
 				let card = $("#cardInput").val();		
@@ -159,6 +187,11 @@
 					}
 				});
 			});
+			
+			// 내정보 저장 버튼
+		//	${"#saveBtn"}.on("click", function() {
+		//		
+		//	});
 			
 			
 		});

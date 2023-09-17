@@ -12,8 +12,10 @@ public class Order {
 	private int id;
 	private int userId;
 	private int goodsId;
+	private int payId;
 	private String delivery;
 	private String address;
+	private String request;
 	private Date createdAT;
 	private Date updatedAT;
 }

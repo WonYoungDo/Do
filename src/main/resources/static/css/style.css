@@ -104,12 +104,20 @@ footer {
 }
 
 
+.no-outline:focus {
+    outline: none;
+}
 
 
 .border-input {
     border-right: 0;
     border-left: 0;
     border-top: 0;
+}
+
+.thick-border {
+    border-width: 3px !important;
+    border-color: black !important;
 }
 
 .small-text {
@@ -130,6 +138,10 @@ footer {
 }
 .icon-lg {
 	font-size: 2.5rem;
+}
+
+.vertical-icon {
+    display: block;
 }
 
 .link {

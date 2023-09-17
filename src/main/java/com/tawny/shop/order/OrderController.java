@@ -1,22 +1,47 @@
 package com.tawny.shop.order;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
+import com.tawny.shop.manager.goods.service.GoodsService;
+import com.tawny.shop.pay.domain.Pay;
+import com.tawny.shop.pay.service.PayService;
+import com.tawny.shop.user.member.domain.User;
+import com.tawny.shop.user.member.service.UserService;
 
 @RequestMapping("/do")
+@Controller
 public class OrderController {
 	
-	private PortalService portalService;
+	@Autowired
+	private PayService payService;
+	
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private GoodsService goodsService;
 	
 	// 결제 화면
-	@GetMapping("/goodsOrder/{id}")
-	public String goodsOrder(@PathVariable("id") int id,  Model model) {
-		Goods goods = portalService.getGoods(id);
+	@GetMapping("/goodsOrder")
+	public String goodsOrder(Model model, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		User user = userService.getUser(userId);
+		List<Pay> pay = payService.getCardInfo(userId);
+		Goods goods = goodsService.getGoods(userId);
+		
+		model.addAttribute("user", user);
+		model.addAttribute("pay", pay);
 		model.addAttribute("goods", goods);
 		return "goods/goodsOrder";
 	}

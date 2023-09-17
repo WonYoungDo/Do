@@ -1,5 +1,7 @@
 package com.tawny.shop.pay.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,11 @@ public class PayService {
 	
 	// 카드 등록 기능
 	public int addCardInfo(int userId, String card, String cardNumber) {
-		return payRepository.insertCardInfo(userId, cardNumber, cardNumber);
+		return payRepository.insertCardInfo(userId, card, cardNumber);
 	}
 	
 	// id를 기반으로 등록된 카드 정보 가져오기
-	public Pay getCardInfo(int userId) {
+	public List<Pay> getCardInfo(int userId) {
 		return payRepository.selectCard(userId);
 	}
 }

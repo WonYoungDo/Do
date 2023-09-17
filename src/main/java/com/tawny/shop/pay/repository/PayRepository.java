@@ -1,5 +1,7 @@
 package com.tawny.shop.pay.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,5 @@ public interface PayRepository {
 			, @Param("cardNumber") String cardNumber);
 	
 	// id를 기반으로 등록된 카드 정보 가져오기
-	public Pay selectCard(@Param("userId") int userId);
+	public List<Pay> selectCard(@Param("userId") int userId);
 }

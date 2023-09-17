@@ -1,5 +1,7 @@
 package com.tawny.shop.user.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class MypageController {
 	public String mypageInfo(Model model, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
 		User user = userService.getUser(userId);
-		Pay pay = payService.getCardInfo(userId);
+		List<Pay> pay = payService.getCardInfo(userId);
 		model.addAttribute("user", user);
 		model.addAttribute("pay", pay);
 		return "mypage/myInfo";
