@@ -23,7 +23,7 @@
 			<!-- 상품 상세 정보 -->
 			<div class="col-6">
 			
-				<div class="goods-info d-flex justify-content-center">
+				<div class="goods-info d-flex justify-content-center" data-goods-id="${goods.id}">
 				
 					<div class="goods d-flex col-10 p-0">
 					
@@ -84,6 +84,8 @@
 	<script>
 		$(document).ready(function() {
 			
+			let goodsId = $(".goods-info").data("goods-id");
+			let goodsName = "${goods.goodsName}";			
 			let count = 1;
 			let totalPrice = ${goods.price};
 			
@@ -104,6 +106,17 @@
 		            count--;
 		            update();
 		        }
+		    });
+		    
+			// 바로 구매 버튼 클릭 시 URL에 파라미터 추가
+		    $("a[type='button']").on("click", function(e) {
+		    	e.preventDefault();
+		    	let href = $(this).attr("href");
+		    	href += "&goodsId=" + goodsId;
+		    	href += "?count=" + count;
+		    	href += "&totalPrice=" + totalPrice * count;
+		    	href += "&goodsName=" + encodeURIComponent(goodsName);
+				window.location.href = href;
 		    });
 		});
 	</script>

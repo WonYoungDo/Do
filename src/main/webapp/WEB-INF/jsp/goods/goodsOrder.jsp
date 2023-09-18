@@ -26,12 +26,16 @@
 					<h4 class="pt-3 pr-5 mr-5">주문/결제</h4>
 					
 					<div class="pay-info mt-3 border p-1" data-user-id="${session.userId}">
-						<b>수령인 : ${user.name }</b> <br>
-						<b>배송지 : ${user.address }</b> <br>     
-						<div class="small pt-4">
-							주문 상품 : ${goods.goodsName } <br>
-							상품 가격 : ${goods.price } <br>
-							주문 수량 :
+						<div class="font-weight-bold">수령인 : ${user.name }</div>
+						<div class="d-flex justify-content-between align-items-center py-2">
+							<div class="font-weight-bold" id="address">배송지 : ${user.address }</div>   
+							<input type="text" class="d-none col-9" id="newAddress">
+							<button type="button" class="btn btn-sm ml-1" id="addressDirectBtn">직접입력</button>
+						</div>
+						<div class="small">
+							<div class="order-goods-name"></div>
+							<div class="order-goods-price py-1"></div>
+							<div class="order-goods-count"></div>
 						</div>	
 					</div>
 					
@@ -40,7 +44,7 @@
 						<div class="pt-2">
 							<select id="card" class="form-control">
 							 	<c:forEach var="card" items="${pay}">
-									<option  value="card.id">${card.card }-${card.cardNumber }</option>
+									<option  value="${card.id}">${card.card }-${card.cardNumber }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -73,17 +77,54 @@
 	<script>
 		$(document).ready(function() {
 			
+			let params = new URLSearchParams(location.search);
+			let count = params.get("count");
+			let totalPrice = params.get("totalPrice");
+			let goodsName = decodeURIComponent(params.get("goodsName"));
+			
+			// 주문 수량 및 상품 가격 업데이트
+			if (count && totalPrice) {
+				$(".order-goods-name").append("상품 이름 : " + goodsName + "<br>");
+			    $(".order-goods-price").append("상품 가격 : " + totalPrice + "<br>");
+			    $(".order-goods-count").append("주문 수량 : " + count + "<br>");
+			}
+			
+			// 배송지 직접입력
+			$("#addressDirectBtn").on("click", function() {
+			    $("#address").toggleClass("d-none");
+			    $("#newAddress").toggleClass("d-none");
+			
+			    if ($("#newAddress").hasClass("d-none")) {
+			        $(this).text("직접입력");
+			    } else {
+			        $(this).text("취소");
+			    }
+			});
 			
 			// 결제하기 버튼
-			${"#payBtn"}.on("click", function() {
+			$("#payBtn").on("click", function() {
 				let userId = $(".pay-info").data("user-id");
+				let goodsId = params.get("goodsId");
 				let payId = $("#card").val();
 				let request = $("#requestInput").val();
+				let address;				
 				
+				// 배송지 직접입력 유효성 검사
+			    if ($("#newAddress").hasClass("d-none")) {
+			        address = $("#address").text().split(": ")[1];
+			    } else {
+			        address = $("#newAddress").val();
+			        if (address == "") {
+			        	$("#newAddress").attr("placeholder", "배송지를 입력하세요");
+			            return;
+			        }
+			    }
+			   	alert(goodsId + " " + payId);
+			   
 				$.ajax({
 					type:"put"
 					, url:"/goods/order"
-					, data:{"userId":userId, "payId":payId, "request":request}
+					, data:{"goodsId":goodsId, "payId":payId, "request":request, "address":address}
 					, success:function(data) {
 						if(data.result == "success") {
 							alert("결제되었습니다.");

@@ -27,9 +27,6 @@ public class OrderController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private GoodsService goodsService;
-	
 	// 결제 화면
 	@GetMapping("/goodsOrder")
 	public String goodsOrder(Model model, HttpSession session) {
@@ -38,11 +35,9 @@ public class OrderController {
 		
 		User user = userService.getUser(userId);
 		List<Pay> pay = payService.getCardInfo(userId);
-		Goods goods = goodsService.getGoods(userId);
 		
 		model.addAttribute("user", user);
 		model.addAttribute("pay", pay);
-		model.addAttribute("goods", goods);
 		return "goods/goodsOrder";
 	}
 }

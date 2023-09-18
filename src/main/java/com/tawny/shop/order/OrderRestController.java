@@ -20,21 +20,16 @@ public class OrderRestController {
 	@Autowired
 	private OrderService orderService;
 	
-	@Autowired
-	private GoodsService goodsService;
-	
-	@Autowired
-	private PayService payService;
-	
 	// 주문 정보 저장
 	@PutMapping("/goods/order")
 	public Map<String, String> Order(
-			HttpSession session
+			@RequestParam("goodsId") int goodsId
 			, @RequestParam("payId") int payId
-			, @RequestParam("request") String request) {
+			, @RequestParam("request") String request
+			, @RequestParam("address") String address
+			, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
-		int goodsId = goodsService.getGoods(userId).getId();
-		int count = orderService.addOrder(userId, goodsId, payId, request);
+		int count = orderService.addOrder(userId, goodsId, payId, request, address);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(count != 0) {

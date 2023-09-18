@@ -13,6 +13,7 @@
 			, `goodsId`
 			, `payId`
 			, `request`
+			, `address`
 		)
 		VALUE
 		(
@@ -20,6 +21,7 @@
 			, #{goodsId}
 			, #{payId}
 			, #{request}
+			, #{address}
 		)
  	</insert>
 

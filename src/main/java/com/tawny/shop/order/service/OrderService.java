@@ -16,7 +16,8 @@ public class OrderService {
 			int userId
 			, int goodsId
 			, int payId
-			, String request) {
-		return orderRepository.insertOrder(userId, goodsId, payId, request);
+			, String request
+			, String address) {
+		return orderRepository.insertOrder(userId, goodsId, payId, request, address);
 	}
 }
