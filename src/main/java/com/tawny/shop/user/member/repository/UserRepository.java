@@ -31,4 +31,11 @@ public interface UserRepository {
 	
 	// 저장되어 있는 사용자 정보 가져오기 
 	public User selectUser(@Param("id") int id);
+	
+	// 내정보 수정
+	public int updateMyInfo(
+			@Param("userId") int userId
+			, @Param("email") String email
+			, @Param("phoneNumber") String phoneNumber
+			, @Param("address") String address);
 }

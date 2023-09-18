@@ -79,4 +79,9 @@ public class UserService {
 		return userRepository.selectUser(id);
 	}
 	
+	
+	// 내 정보 수정 
+	public int updateMyInfo(int userId, String address, String email, String phoneNumber) {
+		return userRepository.updateMyInfo(userId, email, phoneNumber, address);
+	}
 }

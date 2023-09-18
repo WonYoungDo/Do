@@ -45,8 +45,11 @@
 						<!-- 전화번호 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">전화번호 :</label>
-							<input type="text" class="col-9 border-0 no-outline" id="phoneNumberInput" value="${user.phoneNumber }" readonly>
+							<input type="text" class="col-7 border-0 no-outline" id="phoneNumberInput" value="${user.phoneNumber }" readonly>
+							<button type="button" class="btn btn-dark col-2 btn-sm" id="phoneNumberUpdateBtn">수정</button>
 						</div>
+						<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요.</div>
+						<div class="text-danger small d-none guide-message" id="invalidPhoneNumber">전화번호 형식이 올바르지 않습니다.</div>
 						<!-- /전화번호 -->
 						
 						<!-- 이메일 -->
@@ -55,6 +58,7 @@
 							<input type="text" class="col-7 border-0 no-outline" id="emailInput" value="${user.email }" readonly>
 							<button type="button" class="btn btn-dark col-2 btn-sm" id="emailUpdateBtn">수정</button>
 						</div>
+						<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요.</div>
 						<!-- /이메일 -->
 
 						<!-- 결제 수단 -->
@@ -80,7 +84,8 @@
 								<input type="text" class="col-7 border-0 no-outline" id="addressInput" value="${user.address }" readonly>
 								<button type="button" class="btn btn-dark col-2 btn-sm" id="addressUpdateBtn">수정</button>
 							</div>
-						</div>	
+						</div>
+						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요.</div>	
 						<!-- /주소 -->
 						
 						<div class="d-flex justify-content-end">
@@ -127,6 +132,16 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
+
+			// 연락처 수정 버튼
+		    $("#phoneNumberUpdateBtn").on("click", function() {
+		        let phoneNumberInput = $("#phoneNumberInput");
+		        if (phoneNumberInput.prop("readonly")) {
+		        	phoneNumberInput.prop("readonly", false); 
+		        } else {
+		        	phoneNumberInput.prop("readonly", true); 
+		        }
+		    });
 			
 			// 주소 수정 버튼
 		    $("#addressUpdateBtn").on("click", function() {
@@ -189,11 +204,51 @@
 			});
 			
 			// 내정보 저장 버튼
-		//	${"#saveBtn"}.on("click", function() {
-		//		
-		//	});
-			
-			
+			$("#saveBtn").on("click", function() {
+				let phoneNumberInput = $("#phoneNumberInput").val();
+				let addressInput = $("#addressInput").val();
+				let emailInput = $("#emailInput").val();
+				
+				if(phoneNumberInput == "") {
+					$("#emptyPhoneNumber").removeClass("d-none");
+					return;
+				} else if(phoneNumberInput.length != 11 || !phoneNumberInput.startsWith("010")) {
+					$("#invalidPhoneNumber").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyPhoneNumber").addClass("d-none");
+				}
+				
+				if(emailInput == "") {
+					$("#emptyEmail").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyEmail").addClass("d-none");
+				}
+				
+				if(addressInput == "") {
+					$("#emptyAddress").removeClass("d-none");
+					return;
+				} else {
+					$("#emptyAddress").addClass("d-none");
+				}
+				$.ajax({
+					type:"put"
+					, url:"/mypage/updateMyInfo"
+					, data:{"phoneNumber":phoneNumberInput, "email":emailInput, "address":addressInput}
+					, success:function(data) {
+						
+						if(data.result == "success") { 
+							location.reload();
+						} else {
+							alert("정보 수정 실패.");
+						}
+					}
+					, error:function() {
+						alert("정보 수정 에러");
+					}
+				});
+			});
 		});
 	</script>	
 </body>

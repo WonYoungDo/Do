@@ -74,4 +74,16 @@
 			`id` = #{id}
  	</select>
  	
+ 	<update id="updateMyInfo" parameterType="map">
+ 		UPDATE
+ 			`user`
+		SET
+			`phoneNumber` = #{phoneNumber}
+			, `email` = #{email}
+			, `address` = #{address}	
+			, `updatedAT` = now()
+		WHERE 
+			`id` = #{userId}
+ 	</update>
+ 	
  </mapper>
