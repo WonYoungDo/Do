@@ -18,6 +18,6 @@ public class OrderService {
 			, int payId
 			, String request
 			, String address) {
-		return orderRepository.insertOrder(userId, goodsId, payId, request, address);
+		return orderRepository.insertOrder(userId, goodsId, payId, request, address, "주문완료");
 	}
 }

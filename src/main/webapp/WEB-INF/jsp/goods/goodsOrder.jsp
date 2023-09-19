@@ -77,7 +77,7 @@
 	<script>
 		$(document).ready(function() {
 			
-			let params = new URLSearchParams(location.search);
+			var params = new URLSearchParams(location.search);
 			let count = params.get("count");
 			let totalPrice = params.get("totalPrice");
 			let goodsName = decodeURIComponent(params.get("goodsName"));
@@ -119,7 +119,6 @@
 			            return;
 			        }
 			    }
-			   	alert(goodsId + " " + payId);
 			   
 				$.ajax({
 					type:"put"
@@ -127,13 +126,13 @@
 					, data:{"goodsId":goodsId, "payId":payId, "request":request, "address":address}
 					, success:function(data) {
 						if(data.result == "success") {
-							alert("결제되었습니다.");
+							alert("주문이 완료되었습니다.");
 						} else {
-							alert("결제 실패");
+							alert("주문 실패");
 						}
 					}
 					, error:function() {
-						alert("결제 에러");
+						alert("주문 에러");
 					}
 				});
 			});

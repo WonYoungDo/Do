@@ -12,5 +12,6 @@ public interface OrderRepository {
 			, @Param("goodsId") int goodsId
 			, @Param("payId") int payId
 			, @Param("request") String request
-			, @Param("address") String address);
+			, @Param("address") String address
+			, @Param("delivery") String delivery);
 }

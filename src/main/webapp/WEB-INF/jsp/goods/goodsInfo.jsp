@@ -112,8 +112,8 @@
 		    $("a[type='button']").on("click", function(e) {
 		    	e.preventDefault();
 		    	let href = $(this).attr("href");
-		    	href += "&goodsId=" + goodsId;
-		    	href += "?count=" + count;
+		    	href += "?goodsId=" + goodsId;
+		    	href += "&count=" + count;
 		    	href += "&totalPrice=" + totalPrice * count;
 		    	href += "&goodsName=" + encodeURIComponent(goodsName);
 				window.location.href = href;
