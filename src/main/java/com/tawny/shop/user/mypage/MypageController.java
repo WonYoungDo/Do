@@ -40,7 +40,7 @@ public class MypageController {
 	@GetMapping("/order/list")
 	public String orderList(Model model, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
-		List<Order> orderList = orderService.getOrderList(userId);
+		List<Order> orderList = orderService.getOrderList(userId, false);
 		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
 	}

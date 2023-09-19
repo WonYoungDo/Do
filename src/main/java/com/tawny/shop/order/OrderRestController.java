@@ -27,9 +27,11 @@ public class OrderRestController {
 			, @RequestParam("payId") int payId
 			, @RequestParam("request") String request
 			, @RequestParam("address") String address
+			, @RequestParam("quantity") int quantity
+			, @RequestParam("totalPrice") int totalPrice
 			, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
-		int count = orderService.addOrder(userId, goodsId, payId, request, address);
+		int count = orderService.addOrder(userId, goodsId, payId, request, address, quantity, totalPrice);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(count != 0) {

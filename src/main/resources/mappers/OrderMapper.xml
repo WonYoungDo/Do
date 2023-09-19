@@ -15,6 +15,8 @@
 			, `request`
 			, `address`
 			, `delivery`
+			, `quantity`
+			, `totalPrice`
 		)
 		VALUE
 		(
@@ -24,10 +26,12 @@
 			, #{request}
 			, #{address}
 			, #{delivery}
+			, #{quantity}
+			, #{totalPrice}
 		)
  	</insert>
 	
-		<select id="selectOrderList" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+	<select id="selectOrderList" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
  		SELECT
  			`id`
  			, `userId`
@@ -36,12 +40,20 @@
 			, `delivery`
 			, `address`
 			, `request`
+			, `quantity`
+			, `totalPrice`
 			, `createdAT`
 			, `updatedAT` 
 		FROM
 			`order`
 		WHERE
-			`id` = #{userId}
+			`userId` = #{userId}
+      	<if test="recent == true">
+       	AND 
+          	createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+      	</if>
+		ORDER BY
+			`createdAT` DESC;
  	</select>
-	
+ 	
 </mapper>

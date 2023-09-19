@@ -107,6 +107,8 @@
 				let goodsId = params.get("goodsId");
 				let payId = $("#card").val();
 				let request = $("#requestInput").val();
+				let totalPrice = params.get("totalPrice");
+				let count = params.get("count");
 				let address;				
 				
 				// 배송지 직접입력 유효성 검사
@@ -123,10 +125,11 @@
 				$.ajax({
 					type:"put"
 					, url:"/goods/order"
-					, data:{"goodsId":goodsId, "payId":payId, "request":request, "address":address}
+					, data:{"goodsId":goodsId, "payId":payId, "request":request, "address":address, "quantity":count, "totalPrice":totalPrice}
 					, success:function(data) {
 						if(data.result == "success") {
 							alert("주문이 완료되었습니다.");
+							location.href="/do/user/mypage/order/list";
 						} else {
 							alert("주문 실패");
 						}

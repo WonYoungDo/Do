@@ -25,18 +25,28 @@
 			<div class="mypage col-6 d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
-					<div class="mt-4 p-1 bg-info">
+					<div class="font-weight-bold mt-1">
+						<a href="#" id="recent" class="link">최근 1개월</a>
+						<a href="#" id="all" class="link">전체조회</a>
+					</div>
+					<div class="mt-1 p-1">
 						<c:forEach var="order" items="${orderList }">
-							<div class="d-flex">
-								<b>${order.delivery }</b> - 
-					    		<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>
+							<div class="d-flex border">
+								<div class="p-0 order-image">
+									<img alt="${order.goods.goodsName }" src="${order.goods.imagePath }" class="order-img">
+								</div>
+								<div class="pl-1">
+									<div class="d-flex">
+										<b>${order.delivery }</b> - 
+							    		<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>
+									</div>
+									<div class="small">
+										${order.goods.goodsName } <br>
+										총 가격 : ${order.totalPrice } <br>
+										구매 수량 : ${order.quantity }
+									</div>
+								</div>
 							</div>
-							<div>
-								${order.goods.goodsName } <br>
-								${order.goods.price } <br>
-								${order.goods.count }
-							</div>
-							
 						</c:forEach>
 					</div>
 				</div>

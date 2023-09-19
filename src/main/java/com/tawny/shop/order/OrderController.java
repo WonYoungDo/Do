@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tawny.shop.manager.goods.domain.Goods;
-import com.tawny.shop.manager.goods.service.GoodsService;
 import com.tawny.shop.pay.domain.Pay;
 import com.tawny.shop.pay.service.PayService;
 import com.tawny.shop.user.member.domain.User;

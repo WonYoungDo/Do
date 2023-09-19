@@ -23,7 +23,7 @@
 					<div>
 						<a href="/do/main/goodsInfo/${goods.goodsId }" class="link">	
 							${goods.goodsName }<br>
-							${goods.price }
+							${goods.price }원
 						</a>
 					</div>
 				</div>

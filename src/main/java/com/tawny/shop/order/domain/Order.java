@@ -20,8 +20,8 @@ public class Order {
 	private String request;
 	private Date createdAT;
 	private Date updatedAT;
+	private int quantity;
+	private int totalPrice;
 
 	private Goods goods; 
-	private int quantity; // 사용자가 주문한 상품의 수량.
-	private int totalPrice; // 사용자가 결제한 총 금액.
 }
