@@ -1,7 +1,11 @@
 package com.tawny.shop.order.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.tawny.shop.order.domain.Order;
 
 @Repository
 public interface OrderRepository {
@@ -14,4 +18,7 @@ public interface OrderRepository {
 			, @Param("request") String request
 			, @Param("address") String address
 			, @Param("delivery") String delivery);
+	
+	// 사용자가 주문한 리스트 
+	public List<Order> selectOrderList(@Param("userId") int userId);
 }

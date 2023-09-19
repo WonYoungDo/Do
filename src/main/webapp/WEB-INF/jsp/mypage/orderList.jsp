@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,19 @@
 			<div class="mypage col-6 d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
-					<div class="mt-4 p-1">
+					<div class="mt-4 p-1 bg-info">
+						<c:forEach var="order" items="${orderList }">
+							<div class="d-flex">
+								<b>${order.delivery }</b> - 
+					    		<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>
+							</div>
+							<div>
+								${order.goods.goodsName } <br>
+								${order.goods.price } <br>
+								${order.goods.count }
+							</div>
+							
+						</c:forEach>
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,7 @@
 					<div class="mt-4 p-1">
 						<div>
 							<i class="bi bi-circle-fill icon-point"></i>
-							<a href="/do/user/mypage/order/cancelReturn" class="link">주문 목록</a>
+							<a href="/do/user/mypage/order/list" class="link">주문 목록</a>
 						</div>
 						<div class="my-3">
 							<i class="bi bi-circle-fill icon-point"></i>

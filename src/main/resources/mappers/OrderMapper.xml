@@ -26,5 +26,22 @@
 			, #{delivery}
 		)
  	</insert>
-
+	
+		<select id="selectOrderList" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+			, `goodsId`
+			, `payId`
+			, `delivery`
+			, `address`
+			, `request`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`order`
+		WHERE
+			`id` = #{userId}
+ 	</select>
+	
 </mapper>

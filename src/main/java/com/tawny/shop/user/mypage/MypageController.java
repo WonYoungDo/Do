@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tawny.shop.order.domain.Order;
+import com.tawny.shop.order.service.OrderService;
 import com.tawny.shop.pay.domain.Pay;
 import com.tawny.shop.pay.service.PayService;
 import com.tawny.shop.user.member.domain.User;
@@ -25,21 +27,31 @@ public class MypageController {
 	@Autowired
 	private PayService payService;
 	
+	@Autowired
+	private OrderService orderService;
+	
+	// 마이페이지 화면
 	@GetMapping("")
 	public String mypage() {
 		return "mypage/mypage";
 	}
 	
+	// 마이페이지 -> 주문 목록 화면
 	@GetMapping("/order/list")
-	public String orderList() {
+	public String orderList(Model model, HttpSession session) {
+		int userId = (Integer)session.getAttribute("userId");
+		List<Order> orderList = orderService.getOrderList(userId);
+		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
 	}
 	
+	// 마이페이지 -> 취소/반품 조회 화면
 	@GetMapping("/order/cancelReturn")
 	public String cancelReturnList() {
 		return "mypage/cancelReturn";
 	}
 	
+	// 마이페이지 -> 내정보 화면
 	@GetMapping("/info")
 	public String mypageInfo(Model model, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
