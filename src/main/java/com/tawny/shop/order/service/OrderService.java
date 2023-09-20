@@ -33,17 +33,12 @@ public class OrderService {
 		return orderRepository.insertOrder(userId, goodsId, payId, request, address, "주문완료", quantity, totalPrice);
 	}
 	
-	
-	
-	
-	
 	// 사용자가 주문한 상품 정보 리스트
-	public List<Order> getOrderList(int userId, boolean recent) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("userId", userId);
-	    params.put("recent", recent);
-	    
-	    List<Order> orderList = orderRepository.selectOrderList(params);
+	public List<Order> getOrderList(int userId, String orderListType) {
+		if (orderListType == null) {
+	        orderListType = "recent";
+	    }
+	    List<Order> orderList = orderRepository.selectOrderList(userId, orderListType);
 		for(Order order : orderList) {
 			Goods goods = goodsService.getGoods(order.getGoodsId());
 			order.setGoods(goods);   

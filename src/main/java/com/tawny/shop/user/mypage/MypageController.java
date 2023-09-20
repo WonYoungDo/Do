@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.shop.order.domain.Order;
 import com.tawny.shop.order.service.OrderService;
@@ -38,15 +39,10 @@ public class MypageController {
 	
 	// 마이페이지 -> 주문 목록 화면
 	@GetMapping("/order/list")
-	public String orderList(Model model, HttpSession session) {
+	public String orderList(Model model, HttpSession session, @RequestParam(value="orderListType", required = false) String orderListType) {
 		int userId = (Integer)session.getAttribute("userId");
-		
-		List<Order> recentOrderList = orderService.getOrderList(userId, true);
-		model.addAttribute("recentOrderList",recentOrderList);
-		
-		List<Order> allOrderLis=orderService.getOrderList(userId,false);
-		model.addAttribute("allOrderLis",allOrderLis);
-		
+		List<Order> orderList = orderService.getOrderList(userId, orderListType);
+		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
 	}
 	

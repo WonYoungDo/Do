@@ -25,25 +25,35 @@
 			<div class="mypage col-6 d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
-					<div class="font-weight-bold mt-1">
-						<a href="#" id="recent" class="link">최근 1개월</a>
-						<a href="#" id="all" class="link">전체조회</a>
+					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
+						<a href="/do/user/mypage/order/list?orderListType=recent" class="link">최근 1개월</a>
+    					<a href="/do/user/mypage/order/list?orderListType=all" class="link">전체조회</a>
 					</div>
-					<div class="order-list-container mt-1 p-1">
+					<div class="mypage-order-list mt-1 p-1">
 						<c:forEach var="order" items="${orderList }">
 							<div class="d-flex border">
 								<div class="p-0 order-image">
-									<img alt="${order.goods.goodsName }" src="${order.goods.imagePath }" class="order-img">
+									<a href="/do/main/goodsInfo/${order.goods.id }">
+										<img alt="${order.goods.goodsName }" src="${order.goods.imagePath }" class="order-img">
+									</a>
 								</div>
-								<div class="pl-1">
+								<div class="col-10 pl-1">
 									<div class="d-flex">
-										<b>${order.delivery }</b> - 
-							    		<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>
+										<a href="/do/main/goodsInfo/${order.goods.id }" class="link">
+											<b>${order.delivery }</b> - 
+								    		(<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>)
+										</a>
 									</div>
-									<div class="small">
-										${order.goods.goodsName } <br>
-										총 가격 : ${order.totalPrice } <br>
-										구매 수량 : ${order.quantity }
+									<div class="small d-flex justify-content-between">
+										<a href="/do/main/goodsInfo/${order.goods.id }" class="link">
+											${order.goods.goodsName } <br>
+											총 가격 : ${order.totalPrice }원 <br>
+											구매 수량 : ${order.quantity }개
+										</a>
+										<div class="pl-5 pt-2">
+											<button type="button" class="btn btn-sm btn-dark p-0 form-control col-12 mb-1" id="cancelBtn">주문취소</button>
+											<button type="button" class="btn btn-sm btn-dark p-0 form-control" id="returnBtn">반품</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -66,52 +76,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
-			alert()
-			// 페이지 로드 시 최근 1개월 주문 목록 출력
-			$.get("/mypage/order/list/recent", function(data) {
-	         	displayOrderList(data);
-			});
 			
-		    $('#recent').click(function(e) {
-		        e.preventDefault();
-		        $.get("/mypage/order/list/recent", function(data) {
-		            displayOrderList(data); // 주문 목록을 화면에 표시하는 함수 호출
-		        });
-		    });
-
-		    $('#all').click(function(e) {
-		        e.preventDefault();
-		        $.get("/mypage/order/list/all", function(data) {
-		            displayOrderList(data); // 주문 목록을 화면에 표시하는 함수 호출
-		        });
-		    });
-		    
-		    function displayOrderList(orderList) {
-		    	
-		    	var container = $('.order-list-container');
-    	   	 	container.empty(); // 기존 내용 비우기
-
-    	   		if (orderList.length === 0) { 
-    	        	container.append('<p>주문 목록이 없습니다.</p>');
-    	        return;
-    	   		}
-    	   	 	
-	    	   	orderList.forEach(function(order) {
-	    	         var orderDiv = `
-	    	             <div class='d-flex border'>
-	    	                 <div class='p-0 order-image'>
-	    	                     <img alt='${order.goods.goodsName}' src='${order.goods.imagePath}'class='order-img'>
-	    	                 </div>
-	    	                 <div class='pl-1'>
-	    	                 	 <b>${order.delivery}</b> - ${order.createdAT}
-    	                     	 ${order.goods.goodsName}<br/>
-	    	                     총 가격 : ${order.totalPrice}<br/>
-	    	                     구매 수량 : ${order.quantity}
-	    	                 </div>
-	    	             </div>`;
-	    	         
-	    	         container.append(orderDiv);
-			    }
 		});
 	</script>
 </body>

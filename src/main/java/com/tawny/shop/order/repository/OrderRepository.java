@@ -23,5 +23,5 @@ public interface OrderRepository {
 			, @Param("totalPrice") int totalPrice);
 	
 	// 사용자가 주문한 리스트 
-	public List<Order> selectOrderList(Map<String, Object> params);
+	public List<Order> selectOrderList(@Param("userId") int userId, @Param("orderListType") String orderListType);
 }

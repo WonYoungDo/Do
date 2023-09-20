@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #wrap {
-	width: 1200%;
+	width: 1200px;
 	margin:auto;
 	background-color: white;
 }
@@ -100,6 +100,10 @@ section > .mypage {
 }
 
 /* mypage -> orderList */
+.mypage-order-list {
+  	height: 480px;
+    overflow-y: auto;
+}
 .order-image {
     height: 100px;
     width: 80px;

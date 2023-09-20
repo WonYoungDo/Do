@@ -26,9 +26,6 @@ public class MypageRestController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private OrderService orderService;
-	
 	// 내정보 수정
 	@PutMapping("/updateMyInfo")
 	public Map<String, String> updateMyInfo(
@@ -47,20 +44,5 @@ public class MypageRestController {
 		}
 		return resultMap;
 	}
-	
-	// 주문 목록(기간 별로 보여주기)
-    @GetMapping("/order/list/recent")
-    public ResponseEntity<List<Order>> getRecentOrderList(HttpSession session){
-    	int userId = (Integer)session.getAttribute("userId");
-  		List<Order> recentOrderList = orderService.getOrderList(userId, true);
-      	return new ResponseEntity<>(recentOrderList, HttpStatus.OK);
-    }
-
-    @GetMapping("/order/list/all")
-    public ResponseEntity<List<Order>> getAllOrderList(HttpSession session){
-    	int userId = (Integer)session.getAttribute("userId");
-    	List<Order> allOrders = orderService.getOrderList(userId, false);
-    	return new ResponseEntity<>(allOrders, HttpStatus.OK);
-    }
 	
 }

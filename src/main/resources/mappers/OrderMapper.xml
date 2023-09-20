@@ -48,10 +48,15 @@
 			`order`
 		WHERE
 			`userId` = #{userId}
-      	<if test="recent == true">
-       	AND 
-          	createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
-      	</if>
+		AND 
+		<choose>
+			<when test="orderListType == 'all'">
+				1 = 1 
+			</when>
+			<otherwise>
+				createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+			</otherwise>
+		</choose>
 		ORDER BY
 			`createdAT` DESC;
  	</select>
