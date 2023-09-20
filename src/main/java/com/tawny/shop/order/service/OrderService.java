@@ -43,7 +43,7 @@ public class OrderService {
 		params.put("userId", userId);
 	    params.put("recent", recent);
 	    
-	    List<Order> orderList = orderRepository.selectOrderList(userId, params);
+	    List<Order> orderList = orderRepository.selectOrderList(params);
 		for(Order order : orderList) {
 			Goods goods = goodsService.getGoods(order.getGoodsId());
 			order.setGoods(goods);   

@@ -16,7 +16,7 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
 		<section class="d-flex p-0 border border-dark">
-		
+			
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
@@ -29,7 +29,7 @@
 						<a href="#" id="recent" class="link">최근 1개월</a>
 						<a href="#" id="all" class="link">전체조회</a>
 					</div>
-					<div class="mt-1 p-1">
+					<div class="order-list-container mt-1 p-1">
 						<c:forEach var="order" items="${orderList }">
 							<div class="d-flex border">
 								<div class="p-0 order-image">
@@ -60,9 +60,59 @@
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
-	</div>ㅗ
+	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+	<script>
+		$(document).ready(function() {
+			alert()
+			// 페이지 로드 시 최근 1개월 주문 목록 출력
+			$.get("/mypage/order/list/recent", function(data) {
+	         	displayOrderList(data);
+			});
+			
+		    $('#recent').click(function(e) {
+		        e.preventDefault();
+		        $.get("/mypage/order/list/recent", function(data) {
+		            displayOrderList(data); // 주문 목록을 화면에 표시하는 함수 호출
+		        });
+		    });
+
+		    $('#all').click(function(e) {
+		        e.preventDefault();
+		        $.get("/mypage/order/list/all", function(data) {
+		            displayOrderList(data); // 주문 목록을 화면에 표시하는 함수 호출
+		        });
+		    });
+		    
+		    function displayOrderList(orderList) {
+		    	
+		    	var container = $('.order-list-container');
+    	   	 	container.empty(); // 기존 내용 비우기
+
+    	   		if (orderList.length === 0) { 
+    	        	container.append('<p>주문 목록이 없습니다.</p>');
+    	        return;
+    	   		}
+    	   	 	
+	    	   	orderList.forEach(function(order) {
+	    	         var orderDiv = `
+	    	             <div class='d-flex border'>
+	    	                 <div class='p-0 order-image'>
+	    	                     <img alt='${order.goods.goodsName}' src='${order.goods.imagePath}'class='order-img'>
+	    	                 </div>
+	    	                 <div class='pl-1'>
+	    	                 	 <b>${order.delivery}</b> - ${order.createdAT}
+    	                     	 ${order.goods.goodsName}<br/>
+	    	                     총 가격 : ${order.totalPrice}<br/>
+	    	                     구매 수량 : ${order.quantity}
+	    	                 </div>
+	    	             </div>`;
+	    	         
+	    	         container.append(orderDiv);
+			    }
+		});
+	</script>
 </body>
 </html>
