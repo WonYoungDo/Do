@@ -47,21 +47,15 @@
 		FROM
 			`order`
 		WHERE
-			`userId` = #{userId}
-		AND 
-		<choose>
-			<when test="orderListType == 'all'">
-				1 = 1 
-			</when>
-			<otherwise>
-				createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
-			</otherwise>
-		</choose>
+			`userId` = #{userId} 
+		<if test="elapsedTime != 'all'">
+			AND createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		</if>
 		ORDER BY
 			`createdAT` DESC;
  	</select>
  	
- 	<update id="updateOrderDelivery" parameterType="string">
+ 	<update id="updateOrderDelivery" parameterType="map">
  		UPDATE
  			`order`
 		SET
@@ -71,4 +65,23 @@
 			`id` = #{orderId}
  	</update>
  	
+ 	<select id="selectOrder" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+			, `goodsId`
+			, `payId`
+			, `delivery`
+			, `address`
+			, `request`
+			, `quantity`
+			, `totalPrice`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`order`
+		WHERE
+			`id` = #{orderId}
+	</select>
+		
 </mapper>

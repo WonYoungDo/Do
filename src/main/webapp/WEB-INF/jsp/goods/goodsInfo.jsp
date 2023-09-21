@@ -59,7 +59,12 @@
 										${goods.price }원
 									</div>
 								</div>
-								<a type="button" href="/do/goodsOrder" class="btn btn-dark form-control text-white">바로 구매</a>
+								let url = "/do/goodsOrder";
+								<c:if test="${empty sessionScope.user }">
+									url = "/do/login";
+								</c:if>
+								
+								<a type="button" href="url" class="btn btn-dark form-control text-white" id="paymentBtn">바로 구매</a>
 							</div>
 						</div>
 						
@@ -109,7 +114,7 @@
 		    });
 		    
 			// 바로 구매 버튼 클릭 시 URL에 파라미터 추가
-		    $("a[type='button']").on("click", function(e) {
+		    $("#paymentBtn").on("click", function(e) {
 		    	e.preventDefault();
 		    	let href = $(this).attr("href");
 		    	href += "?goodsId=" + goodsId;

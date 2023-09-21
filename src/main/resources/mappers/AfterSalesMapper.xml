@@ -5,7 +5,7 @@
  
  <mapper namespace="com.tawny.shop.after.repository.AfterSalesRepository">
  	
- 		<insert id="insertAfterSales" parameterType="map">
+	<insert id="insertAfterSales" parameterType="map">
  		INSERT INTO
  			`after_sales`
 		(
@@ -24,5 +24,26 @@
 			, #{cancelReason}
 		)
  	</insert>
+ 	
+ 	<select id="selectAfterSalesList" resultType="com.tawny.shop.after.domain.AfterSales" parameterType="map">
+ 		SELECT
+ 			id 
+ 			, `userId`
+			, `goodsId`
+			, `payId`
+			, `orderId`
+			, `cancelReason`
+			, `createdAT`
+			, `updatedAT`
+		FROM
+			`after_sales`
+		WHERE
+			`userId` = #{userId}
+		<if test="elapsedTime != 'all'">
+			AND createdAT >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+		</if>	
+		ORDER BY
+			 `createdAT` DESC
+ 	</select>
  	
  </mapper>

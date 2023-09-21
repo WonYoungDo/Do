@@ -26,8 +26,8 @@
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
 					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
-						<a href="/do/user/mypage/order/list?orderListType=recent" class="link">최근 1개월</a>
-    					<a href="/do/user/mypage/order/list?orderListType=all" class="link">전체조회</a>
+						<a href="/do/user/mypage/order/list?elapsedTime=recent" class="link">최근 1개월</a>
+    					<a href="/do/user/mypage/order/list?elapsedTime=all" class="link">전체조회</a>
 					</div>
 					<div class="mypage-order-list mt-1 p-1">
 						<c:forEach var="order" items="${orderList }">
@@ -46,7 +46,7 @@
 									</div>
 									<div class="small d-flex justify-content-between">
 										<a href="/do/main/goodsInfo/${order.goods.id }" class="link">
-											${order.goods.goodsName } <br>
+											<b>${order.goods.goodsName }</b> <br>
 											총 가격 : ${order.totalPrice }원 <br>
 											구매 수량 : ${order.quantity }개
 										</a>
@@ -129,7 +129,6 @@
 					return;
 				}
 				
-				alert(orderId + " " + goodsId + " " + payId + " " + deliveryStatus);
 				$.ajax({
 					type:"put"
 					, url:"/after/sales"

@@ -23,8 +23,11 @@ public interface OrderRepository {
 			, @Param("totalPrice") int totalPrice);
 	
 	// 사용자가 주문한 리스트 
-	public List<Order> selectOrderList(@Param("userId") int userId, @Param("orderListType") String orderListType);
+	public List<Order> selectOrderList(@Param("userId") int userId, @Param("elapsedTime") String elapsedTime);
 	
 	// 사용자가 취소/반품 요청 변경 저장
 	public int updateOrderDelivery(@Param("orderId") int orderId, @Param("deliveryStatus") String deliveryStatus);
+	
+	// orderId를 기반으로한 주문 정보 가져오기
+	public Order selectOrder(@Param("orderId") int orderId);
 }

@@ -99,7 +99,7 @@ section > .mypage {
 	height: 570px;
 }
 
-/* mypage -> orderList */
+/* mypage -> cancel/return, orderList */
 .mypage-order-list {
   	height: 480px;
     overflow-y: auto;

@@ -33,12 +33,12 @@ public class OrderService {
 		return orderRepository.insertOrder(userId, goodsId, payId, request, address, "주문완료", quantity, totalPrice);
 	}
 	
-	// 사용자가 주문한 상품 정보 리스트
-	public List<Order> getOrderList(int userId, String orderListType) {
-		if (orderListType == null) {
-	        orderListType = "recent";
+	// 사용자가 요청한 주문 정보 리스트
+	public List<Order> getOrderList(int userId, String elapsedTime) {
+		if (elapsedTime == null) {
+			elapsedTime = "recent";
 	    }
-	    List<Order> orderList = orderRepository.selectOrderList(userId, orderListType);
+	    List<Order> orderList = orderRepository.selectOrderList(userId, elapsedTime);
 		for(Order order : orderList) {
 			Goods goods = goodsService.getGoods(order.getGoodsId());
 			order.setGoods(goods);   
@@ -57,6 +57,11 @@ public class OrderService {
 			return orderRepository.updateOrderDelivery(orderId, "반품 요청 중");
 		}
 		return -1;
+	}
+	
+	// orderId를 기반으로한 주문 정보
+	public Order getOrder(int orderId) {
+		return orderRepository.selectOrder(orderId);
 	}
 	
 	

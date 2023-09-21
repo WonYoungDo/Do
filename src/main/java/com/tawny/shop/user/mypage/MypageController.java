@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tawny.shop.after.domain.AfterSales;
+import com.tawny.shop.after.dto.AfterSalesDetail;
+import com.tawny.shop.after.service.AfterSalesService;
 import com.tawny.shop.order.domain.Order;
 import com.tawny.shop.order.service.OrderService;
 import com.tawny.shop.pay.domain.Pay;
@@ -31,6 +34,9 @@ public class MypageController {
 	@Autowired
 	private OrderService orderService;
 	
+	@Autowired
+	private AfterSalesService afterSalesService;
+	
 	// 마이페이지 화면
 	@GetMapping("")
 	public String mypage() {
@@ -39,16 +45,19 @@ public class MypageController {
 	
 	// 마이페이지 -> 주문 목록 화면
 	@GetMapping("/order/list")
-	public String orderList(Model model, HttpSession session, @RequestParam(value="orderListType", required = false) String orderListType) {
+	public String orderList(Model model, HttpSession session, @RequestParam(value="elapsedTime", required = false) String elapsedTime) {
 		int userId = (Integer)session.getAttribute("userId");
-		List<Order> orderList = orderService.getOrderList(userId, orderListType);
+		List<Order> orderList = orderService.getOrderList(userId, elapsedTime);
 		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
 	}
 	
 	// 마이페이지 -> 취소/반품 조회 화면
 	@GetMapping("/order/cancelReturn")
-	public String cancelReturnList() {
+	public String cancelReturnList(Model model, HttpSession session, @RequestParam(value="elapsedTime", required = false) String elapsedTime) {
+		int userId = (Integer)session.getAttribute("userId");
+		List<AfterSalesDetail> afterSalesList = afterSalesService.getAfterSalesList(userId, elapsedTime);
+		model.addAttribute("afterSalesList", afterSalesList);
 		return "mypage/cancelReturn";
 	}
 	

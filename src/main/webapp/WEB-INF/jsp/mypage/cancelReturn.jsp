@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,37 @@
 			<!-- 취소/반품 조회 -->
 			<div class="mypage col-6 d-flex justify-content-center">	
 				<div class="col-10">
-					<h4 class="pt-3 pr-5 mr-5">취소/반품 조회</h4>
-					<div class="mt-4 p-1">
+					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
+					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
+						<a href="/do/user/mypage/order/cancelReturn?elapsedTime=recent" class="link">최근 1개월</a>
+    					<a href="/do/user/mypage/order/cancelReturn?elapsedTime=all" class="link">전체조회</a>
+					</div>
+					<div class="mypage-order-list mt-1 p-1">
+						<c:forEach var="afterSales" items="${afterSalesList }">
+							<div class="d-flex border">
+								<div class="p-0 order-image">
+									<a href="/do/main/goodsInfo/${afterSales.goods.id }">
+										<img alt="${afterSales.goods.goodsName }" src="${afterSales.goods.imagePath }" class="order-img">
+									</a>
+								</div>
+								<div class="col-10 pl-1">
+									<div class="d-flex">
+										<a href="/do/main/goodsInfo/${afterSales.goods.id }" class="link">
+											<b>${afterSales.order.delivery }</b> - 
+								    		(<fmt:formatDate value="${afterSales.afterSales.createdAT}" pattern="yyyy-MM-dd"/>)
+										</a>
+									</div>
+									<div class="small d-flex justify-content-between">
+										<a href="/do/main/goodsInfo/${afterSales.goods.id }" class="link">
+											<b>${afterSales.goods.goodsName }</b> <br>
+											총 가격 : ${afterSales.order.totalPrice }원 <br>
+											구매 수량 : ${afterSales.order.quantity }개 <br>
+											주문 날짜 : <fmt:formatDate value="${afterSales.order.createdAT}" pattern="yyyy-MM-dd"/>
+										</a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
