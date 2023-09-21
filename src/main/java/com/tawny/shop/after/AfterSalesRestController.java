@@ -18,19 +18,20 @@ public class AfterSalesRestController {
 	@Autowired
 	private AfterSalesService afterSalesService;
 	
-	// 주문 정보 저장
-	@PutMapping("/goods/order")
+	// 반품/취소 정보 저장
+	@PutMapping("/after/sales")
 	public Map<String, String> Order(
 			@RequestParam("goodsId") int goodsId
 			, @RequestParam("payId") int payId
 			, @RequestParam("orderId") int orderId
 			, @RequestParam("cancelReason") String cancelReason
+			, @RequestParam("deliveryStatus") String deliveryStatus
 			, HttpSession session) {
 		int userId = (Integer)session.getAttribute("userId");
-		int count = afterSalesService.addAfterSales(userId, goodsId, payId, orderId, cancelReason);
+		int count = afterSalesService.addAfterSales(userId, goodsId, payId, orderId, cancelReason, deliveryStatus);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(count != 0) {
+		if(count == 1) {
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");

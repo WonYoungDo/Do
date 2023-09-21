@@ -46,6 +46,19 @@ public class OrderService {
 		return orderList;
 	}
 	
+	// 주문 취소/반품 정보 업데이트 
+	public int addDeliveryStatus(int orderId, String deliveryStatus) {
+		
+		if("cancel".equalsIgnoreCase(deliveryStatus)) {
+			return orderRepository.updateOrderDelivery(orderId, "취소 요청 중");
+		} 
+		
+		if("return".equalsIgnoreCase(deliveryStatus)) {
+			return orderRepository.updateOrderDelivery(orderId, "반품 요청 중");
+		}
+		return -1;
+	}
+	
 	
 
 }

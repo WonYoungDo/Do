@@ -24,4 +24,7 @@ public interface OrderRepository {
 	
 	// 사용자가 주문한 리스트 
 	public List<Order> selectOrderList(@Param("userId") int userId, @Param("orderListType") String orderListType);
+	
+	// 사용자가 취소/반품 요청 변경 저장
+	public int updateOrderDelivery(@Param("orderId") int orderId, @Param("deliveryStatus") String deliveryStatus);
 }

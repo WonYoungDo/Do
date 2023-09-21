@@ -51,8 +51,14 @@
 											구매 수량 : ${order.quantity }개
 										</a>
 										<div class="pl-5 pt-2">
-											<button type="button" class="btn btn-sm btn-dark p-0 form-control col-12 mb-1" id="cancelBtn">주문취소</button>
-											<button type="button" class="btn btn-sm btn-dark p-0 form-control" id="returnBtn">반품</button>
+											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control col-12 mb-1" id="cancelBtn" data-toggle="modal" data-target="#moreModal" 
+												data-order-id="${order.id}" data-goods-id="${order.goods.id}" data-pay-id="${order.payId}">
+												주문취소
+											</button>
+											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control" id="returnBtn"  data-toggle="modal" data-target="#moreModal"
+												data-order-id="${order.id}" data-goods-id="${order.goods.id}" data-pay-id="${order.payId}">
+												반품
+											</button>
 										</div>
 									</div>
 								</div>
@@ -71,11 +77,77 @@
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	      	<h4 class="py-5">취소/반품 사유를 입력해주세요</h4>
+	      	<div class="d-flex mb-1">
+	      		<textarea rows="5" cols="100" id="cancelReasonInput"></textarea>
+	      	</div>
+	      	<div class="d-flex justify-content-end">
+	      		<button type="button" class="btn btn-dark mt-5" id="saveCancelReasonBtn">저장</button>
+	      	</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
+		    let orderId;
+		    let goodsId;
+		    let payId;
+			let deliveryStatus;
+			let guide;
+
+		    // 주문 취소/반품 버튼 
+		    $(".order-btn").on("click", function() {
+		        orderId = $(this).data("order-id"); 
+		        goodsId = $(this).data("goods-id");
+		        payId = $(this).data("pay-id");
+		        
+		        if ($(this).attr('id') === 'cancelBtn') {
+		            guide = '주문 취소';
+		            deliveryStatus = 'cancel';
+		        } else if ($(this).attr('id') === 'returnBtn') {
+		            guide = '반품 요청';
+		            deliveryStatus = 'return';
+		        }
+		    });
+		    
+			// 주문 취소/반품 버튼 
+			$("#saveCancelReasonBtn").on("click", function() {
+				let cancelReason = $("#cancelReasonInput").val();
+				
+				// 유효성 검사
+				if(cancelReason == "") {
+					alert("사유를 입력해주세요");
+					return;
+				}
+				
+				alert(orderId + " " + goodsId + " " + payId + " " + deliveryStatus);
+				$.ajax({
+					type:"put"
+					, url:"/after/sales"
+					, data:{"orderId":orderId, "goodsId":goodsId, "payId":payId, "cancelReason":cancelReason, "deliveryStatus": deliveryStatus}
+					, success:function(data) {
+						
+						if(data.result == "success") { 
+							location.href="/do/user/mypage/order/cancelReturn";
+						} else {
+							alert(guide + " 실패");
+						} 
+						
+					}
+					, error:function() {
+						alert(guide + " 에러");
+					}
+				});
+			});
 			
 		});
 	</script>

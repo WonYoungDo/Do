@@ -12,9 +12,7 @@ public class AfterSales {
 	private int userId;
 	private int goodsId;
 	private int payId;
-	private String delivery;
-	private int quantity;
-	private int totalPrice;
+	private String cancelReason;
 	private Date createdAT;
 	private Date updatedAT;
 }

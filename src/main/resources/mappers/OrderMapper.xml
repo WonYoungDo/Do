@@ -61,4 +61,14 @@
 			`createdAT` DESC;
  	</select>
  	
+ 	<update id="updateOrderDelivery" parameterType="string">
+ 		UPDATE
+ 			`order`
+		SET
+			`delivery` = #{deliveryStatus}
+			, `updatedAT` = now()
+		WHERE
+			`id` = #{orderId}
+ 	</update>
+ 	
 </mapper>
