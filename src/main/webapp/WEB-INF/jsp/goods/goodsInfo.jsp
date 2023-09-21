@@ -59,12 +59,7 @@
 										${goods.price }원
 									</div>
 								</div>
-								let url = "/do/goodsOrder";
-								<c:if test="${empty sessionScope.user }">
-									url = "/do/login";
-								</c:if>
-								
-								<a type="button" href="url" class="btn btn-dark form-control text-white" id="paymentBtn">바로 구매</a>
+								<a type="button" href="/do/goodsOrder" class="btn btn-dark form-control text-white" id="paymentBtn">바로 구매</a>
 							</div>
 						</div>
 						
@@ -113,16 +108,29 @@
 		        }
 		    });
 		    
-			// 바로 구매 버튼 클릭 시 URL에 파라미터 추가
-		    $("#paymentBtn").on("click", function(e) {
-		    	e.preventDefault();
-		    	let href = $(this).attr("href");
-		    	href += "?goodsId=" + goodsId;
-		    	href += "&count=" + count;
-		    	href += "&totalPrice=" + totalPrice * count;
-		    	href += "&goodsName=" + encodeURIComponent(goodsName);
-				window.location.href = href;
-		    });
+			// 로그인이 되어있지 않으면 로그인 페이지로 이동 
+			let userId = "${sessionScope.userId}";
+			$("#paymentBtn").on("click", function(e) {
+				e.preventDefault();
+
+				if(userId == "") {
+				    let result = confirm("로그인 후에만 이용이 가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+				    if (result) {
+				        window.location.href = "/do/login";
+				    }
+				} else {
+					// 바로 구매 버튼 클릭 시 URL에 파라미터 추가
+				    $("#paymentBtn").on("click", function(e) {
+				    	e.preventDefault();
+				    	let href = $(this).attr("href");
+				    	href += "?goodsId=" + goodsId;
+				    	href += "&count=" + count;
+				    	href += "&totalPrice=" + totalPrice * count;
+				    	href += "&goodsName=" + encodeURIComponent(goodsName);
+						window.location.href = href;
+				    });
+				}   
+			});
 		});
 	</script>
 </body>
