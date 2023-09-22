@@ -60,7 +60,7 @@
 			            <a href="#" class="nav-link text-dark font-weight-bold main-category">주문관리</a>
 			            <div class="d-none sub-category">
 			                <ul class="d-flex flex-row justify-content-around">
-			                    <li><a href="#" class="dropdown-item">주문내역</a></li>
+			                    <li><a href="/do/manager/order/details" class="dropdown-item">주문내역</a></li>
 			                </ul>
 			            </div>
 		       		</li>

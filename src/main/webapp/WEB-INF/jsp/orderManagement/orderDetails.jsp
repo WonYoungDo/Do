@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>취소 반품 조회</title>
+<title>주문 내역</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
@@ -30,26 +30,26 @@
     					<a href="/do/user/mypage/order/cancelReturn?elapsedTime=all" class="link">전체조회</a>
 					</div>
 					<div class="mypage-order-list mt-1 p-1">
-						<c:forEach var="afterSales" items="${afterSalesList }">
+						<c:forEach var="allOrderList" items="${allOrderDetailList }">
 							<div class="d-flex border">
 								<div class="p-0 order-image">
-									<a href="/do/main/goodsInfo/${afterSales.goods.id }">
-										<img alt="${afterSales.goods.goodsName }" src="${afterSales.goods.imagePath }" class="order-img">
+									<a href="/do/main/goodsInfo/${allOrderList.goods.id }">
+										<img alt="${allOrderList.goods.goodsName }" src="${allOrderList.goods.imagePath }" class="order-img">
 									</a>
 								</div>
 								<div class="col-10 pl-1">
 									<div class="d-flex">
-										<a href="/do/main/goodsInfo/${afterSales.goods.id }" class="link">
-											<b>${afterSales.order.delivery }</b> - 
-								    		(<fmt:formatDate value="${afterSales.afterSales.createdAT}" pattern="yyyy-MM-dd"/>)
+										<a href="/do/main/goodsInfo/${allOrderList.goods.id }" class="link">
+											<b>${allOrderList.order.delivery }</b> 
+								    		(<fmt:formatDate value="${allOrderList.order.updatedAT }" pattern="yyyy-MM-dd"/>)
 										</a>
 									</div>
 									<div class="small d-flex justify-content-between">
-										<a href="/do/main/goodsInfo/${afterSales.goods.id }" class="link">
-											<b>${afterSales.goods.goodsName }</b> <br>
-											총 가격 : ${afterSales.order.totalPrice }원 <br>
-											구매 수량 : ${afterSales.order.quantity }개 <br>
-											주문 날짜 : <fmt:formatDate value="${afterSales.order.createdAT}" pattern="yyyy-MM-dd"/>
+										<a href="/do/main/goodsInfo/${allOrderList.goods.id }" class="link">
+											<b>${allOrderList.goods.goodsName }</b> <br>
+											총 가격 : ${allOrderList.order.totalPrice }원 <br>
+											구매 수량 : ${allOrderList.order.quantity }개 <br>
+											주문 날짜 : <fmt:formatDate value="${allOrderList.order.createdAT }" pattern="yyyy-MM-dd"/>
 										</a>
 									</div>
 								</div>

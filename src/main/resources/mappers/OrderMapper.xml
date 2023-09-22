@@ -83,5 +83,24 @@
 		WHERE
 			`id` = #{orderId}
 	</select>
+	
+	<select id="selectAllOrderList" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+			, `goodsId`
+			, `payId`
+			, `delivery`
+			, `address`
+			, `request`
+			, `quantity`
+			, `totalPrice`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`order`
+		ORDER BY
+			`createdAT` DESC;
+ 	</select>
 		
 </mapper>

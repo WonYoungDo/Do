@@ -30,4 +30,7 @@ public interface OrderRepository {
 	
 	// orderId를 기반으로한 주문 정보 가져오기
 	public Order selectOrder(@Param("orderId") int orderId);
+
+	// 모든 주문 정보 가져오기
+	public List<Order> selectAllOrderList();
 }

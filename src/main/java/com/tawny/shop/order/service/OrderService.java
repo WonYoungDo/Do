@@ -64,6 +64,9 @@ public class OrderService {
 		return orderRepository.selectOrder(orderId);
 	}
 	
-	
+	// 모든 주문 정보
+	public List<Order> getAllOrderList() {
+		return orderRepository.selectAllOrderList();
+	}
 
 }
