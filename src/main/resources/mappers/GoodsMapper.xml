@@ -78,5 +78,14 @@
 		WHERE
 			`id` = #{id}
  	</select>
+ 	 	
+ 	<update id="updateSubtractGoodsCount" parameterType="int">
+ 		UPDATE
+ 			`goods`
+		SET
+			`count` = `count` - #{orderQuantity}
+		WHERE
+			`id` = #{goodsId}
+ 	</update>
  	
  </mapper>

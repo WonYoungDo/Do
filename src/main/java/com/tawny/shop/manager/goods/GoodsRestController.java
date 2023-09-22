@@ -49,7 +49,7 @@ public class GoodsRestController {
 			, @RequestParam("price") int price
 			, @RequestParam("count") int count
 			, @RequestParam("category") String category) {
-		int goodsUpdate = goodsService.goodsUpdate(goodsId, goodsName, price, count, category); 
+		int goodsUpdate = goodsService.addGoodsUpdate(goodsId, goodsName, price, count, category); 
 	
 		Map<String, String> resultMap = new HashMap<>();
 		if(goodsUpdate != 0) {

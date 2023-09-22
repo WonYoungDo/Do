@@ -49,4 +49,6 @@ public class GoodsController {
 		
 		return "goods/goodsList";
 	}
+	
+	
 }

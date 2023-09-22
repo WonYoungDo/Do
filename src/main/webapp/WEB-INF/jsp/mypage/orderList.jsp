@@ -30,33 +30,33 @@
     					<a href="/do/user/mypage/order/list?elapsedTime=all" class="link">전체조회</a>
 					</div>
 					<div class="mypage-order-list mt-1 p-1">
-						<c:forEach var="order" items="${orderList }">
+						<c:forEach var="orderDetail" items="${orderDetailList }">
 							<div class="d-flex border">
 								<div class="p-0 order-image">
-									<a href="/do/main/goodsInfo/${order.goods.id }">
-										<img alt="${order.goods.goodsName }" src="${order.goods.imagePath }" class="order-img">
+									<a href="/do/main/goodsInfo/${orderDetail.goods.id }">
+										<img alt="${orderDetail.goods.goodsName }" src="${orderDetail.goods.imagePath }" class="order-img">
 									</a>
 								</div>
 								<div class="col-10 pl-1">
 									<div class="d-flex">
-										<a href="/do/main/goodsInfo/${order.goods.id }" class="link">
-											<b>${order.delivery }</b> - 
-								    		(<fmt:formatDate value="${order.createdAT}" pattern="yyyy-MM-dd"/>)
+										<a href="/do/main/goodsInfo/${orderDetail.goods.id }" class="link">
+											<b>${orderDetail.order.delivery }</b> - 
+								    		(<fmt:formatDate value="${orderDetail.order.createdAT}" pattern="yyyy-MM-dd"/>)
 										</a>
 									</div>
-									<div class="small d-flex justify-content-between">
-										<a href="/do/main/goodsInfo/${order.goods.id }" class="link">
-											<b>${order.goods.goodsName }</b> <br>
-											총 가격 : ${order.totalPrice }원 <br>
-											구매 수량 : ${order.quantity }개
+									<div class="small d-flex justify-content-between pt-1">
+										<a href="/do/main/goodsInfo/${orderDetail.goods.id }" class="link">
+											<b>${orderDetail.goods.goodsName }</b> <br>
+											총 가격 : ${orderDetail.order.totalPrice }원 <br>
+											구매 수량 : ${orderDetail.order.quantity }개
 										</a>
-										<div class="pl-5 pt-2">
+										<div class="pl-5 pt-3 mt-1">
 											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control col-12 mb-1" id="cancelBtn" data-toggle="modal" data-target="#moreModal" 
-												data-order-id="${order.id}" data-goods-id="${order.goods.id}" data-pay-id="${order.payId}">
+												data-order-id="${orderDetail.order.id}" data-goods-id="${orderDetail.goods.id}" data-pay-id="${orderDetail.order.payId}">
 												주문취소
 											</button>
 											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control" id="returnBtn"  data-toggle="modal" data-target="#moreModal"
-												data-order-id="${order.id}" data-goods-id="${order.goods.id}" data-pay-id="${order.payId}">
+												data-order-id="${orderDetail.order.id}" data-goods-id="${orderDetail.goods.id}" data-pay-id="${orderDetail.order.payId}">
 												반품
 											</button>
 										</div>

@@ -22,6 +22,4 @@ public class Order {
 	private Date updatedAT;
 	private int quantity;
 	private int totalPrice;
-
-	private Goods goods; 
 }

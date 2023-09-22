@@ -28,8 +28,13 @@ public class GoodsService {
 	}
 	
 	// 상품 수정 기능
-	public int goodsUpdate(int goodsId, String goodsName, int price, int count, String category) {
+	public int addGoodsUpdate(int goodsId, String goodsName, int price, int count, String category) {
 		return goodsRepository.goodsUpdate(goodsId, goodsName, price, count, category);
+	}
+	
+	// 상품 재고 업데이트 기능
+	public Goods subtractGoodsCount(int goodsId, int orderQuantity) {
+		return goodsRepository.updateSubtractGoodsCount(orderQuantity, goodsId);
 	}
 	
 	// id를 기반으로 등록된 상품 정보 
@@ -41,4 +46,6 @@ public class GoodsService {
 	public List<Goods> getGoodsId(int id) {
 		return goodsRepository.findByGoodsId(id);
 	}
+	
+
 }
