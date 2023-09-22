@@ -1,32 +1,51 @@
 @charset "UTF-8";
 
 #wrap {
-	width: 1200px;
-	margin:auto;
+	width: 100vw;
+	min-height: 100vh;
 	background-color: white;
 }
 
-
+/* header */
 header > .logo {
-	height: 100px;
+	height: 11vh;
+	width: 10vw;
 }
 header > nav > .search {
-	height: 50px;
+	height: 5.5vh;
+	width: 90vw;
 }
 header > nav > .category {
-	height: 50px;
-}
-header > .gap {
-	height: 30px;
+	height: 5.5vh;
+	width: 90vw;
 }
 header > nav > .category > .login-user {
-	width: 100px;
+	width: 10vw;
+}
+
+.gap {
+	height: 3.5vh;
 }
 
 /* portal */
-section > .goods {
+.portal {
+	height: 75.5vh;
+	width: 73vw;
+	overflow-y: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start; /* 시작점을 기준으로 아이템들을 배치합니다 */
+	align-items: start; /* 아이템들의 상단을 기준으로 정렬합니다 */
+}
+.portal > .goods {
 	margin-top:10px;
-	width:300px;
+	width:17vw;
+	height: 25vh;
+}
+
+/* best-goods */
+section > .best-goods {
+	width: 18.5vw;
 }
 
 /* goods-info */
@@ -115,7 +134,7 @@ section > .mypage {
 }
 
 footer {
-	height: 100px;
+	height: 10vh;
 }
 
 

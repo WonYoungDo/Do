@@ -33,13 +33,9 @@ public class OrderService {
 			, int quantity
 			, int totalPrice) {
 		
-		Goods goods = goodsService.getGoods(goodsId);
-		
-		
 		if(goodsService.subtractGoodsCount(goodsId, quantity) == 0) {
 			throw new IllegalArgumentException("재고가 부족합니다.");
 		}
-		
 		
 		return orderRepository.insertOrder(userId, goodsId, payId, request, address, "주문완료", quantity, totalPrice);
 	}

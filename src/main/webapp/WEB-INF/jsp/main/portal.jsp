@@ -11,24 +11,35 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container bg-white p-0">
+	<div id="wrap" class="bg-white p-1">
+		
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section class="d-flex flex-wrap border border-dark">
+		
+		<section class="d-flex">
+			<!-- 베스트 상품1 -->
+			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
+			<!-- /베스트 상품1 -->
 			
-			<c:forEach var="goods" items="${goodsList }">
-				<div class="goods col-3 small">
-					<a href="/do/main/goodsInfo/${goods.goodsId }" class="link">
-						<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
-					</a>	
-					<div>
-						<a href="/do/main/goodsInfo/${goods.goodsId }" class="link">	
-							${goods.goodsName }<br>
-							${goods.price }원
-						</a>
+			<div class="portal">
+				<c:forEach var="goods" items="${goodsList }">
+					<div class="goods small p-2">
+						<a href="/do/main/goodsInfo/${goods.goodsId }" class="link">
+							<img alt="${goods.goodsId }" src="${goods.imagePath }" class="w-100 h-75">
+						</a>	
+						<div class="small p-1">
+							<a href="/do/main/goodsInfo/${goods.goodsId }" class="link">	
+								<b>${goods.goodsName }</b> <br>
+								${goods.price }원
+							</a>
+						</div>
 					</div>
-				</div>
-			</c:forEach>
-
+				</c:forEach>
+			</div>
+			
+			<!-- 베스트 상품2 -->
+			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
+			<!-- /베스트 상품2 -->
+				
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>

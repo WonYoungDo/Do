@@ -88,4 +88,20 @@
 			`id` = #{goodsId}
  	</update>
  	
+ 	<select id="selectGoodsSearch" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="String">
+ 		SELECT
+ 			`id`
+ 			, `goodsName`
+			, `price`
+			, `count`
+			, `category`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`goods`
+		WHERE
+			`goodsName` LIKE CONCAT('%', #{keyword}, '%')
+ 	</select>
+ 	
  </mapper>

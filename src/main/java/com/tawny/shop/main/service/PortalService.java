@@ -48,4 +48,5 @@ public class PortalService {
 	public Goods getGoods(int id) {
 		return goodsRepository.selectGoods(id);
 	}
+	
 }

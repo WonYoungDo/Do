@@ -33,7 +33,7 @@ public class GoodsService {
 	}
 	
 	// 상품 재고 업데이트 기능
-	public Goods subtractGoodsCount(int goodsId, int orderQuantity) {
+	public int subtractGoodsCount(int goodsId, int orderQuantity) {
 		return goodsRepository.updateSubtractGoodsCount(orderQuantity, goodsId);
 	}
 	
@@ -47,5 +47,9 @@ public class GoodsService {
 		return goodsRepository.findByGoodsId(id);
 	}
 	
+	// 검색 기능 
+	public List<Goods> getGoodsSearch(String keyword) {
+		return goodsRepository.selectGoodsSearch(keyword);
+	}
 
 }

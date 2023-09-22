@@ -3,18 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <header class="d-flex">
-	<div class="logo col-2 p-0 border border-dark">
+	<div class="logo p-0 border border-dark">
 		<a href="/do/main/portal">
 			<img alt="로고" src="/static/image/로고.1.png" class="col-12 h-100">
 		</a>
 	</div>
-	<nav class="col-10 p-0">
+	<nav class="p-0">
 		<!-- 카테고리1 -->
 		<div class="search border border-dark d-flex justify-content-between align-items-center">
 			<!-- 검색 -->
 			<div class="pl-3">
 				<i class="bi bi-search icon-md"></i>
-				<input type="text" class="border-input">
+				<input type="text" class="border-input no-outline">
 				<button type="button" class="d-none">검색</button>
 			</div>
 			<!-- /검색 -->
@@ -203,7 +203,7 @@
 		
 	</nav>
 </header>
-<div class="gap bg-dark border border-dark">1</div>
+<div class="gap bg-dark border border-dark"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
