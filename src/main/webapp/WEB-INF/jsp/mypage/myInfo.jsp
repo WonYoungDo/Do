@@ -164,6 +164,7 @@
 		    });
 			
 			// 결제 수단 등록
+			var newCard;
 			$("#saveCardBtn").on("click", function() {
 				let card = $("#cardInput").val();		
 				let cardNumber = $("#cardNumberInput").val();	
@@ -184,23 +185,14 @@
 				    return;
 				}
 				
-				$.ajax({
-					type:"put"
-					, url:"/card/register"
-					, data:{"card":card, "cardNumber":cardNumber}
-					, success:function(data) {
-						
-						if(data.result == "success") { 
-							location.reload();
-						} else {
-							alert("카드 등록 실패");
-						} 
-						
-					}
-					, error:function() {
-						alert("카드 등록 에러");
-					}
-				});
+				newCard = {"card":card, "cardNumber":cardNumber};	
+				
+				$("#moreModal").modal("hide");
+			});
+			
+			// modal창 뒷배경 없애기
+			$('#moreModal').on('hidden.bs.modal', function (e) {
+			    $('.modal-backdrop').remove(); 
 			});
 			
 			// 내정보 저장 버튼
@@ -232,6 +224,30 @@
 				} else {
 					$("#emptyAddress").addClass("d-none");
 				}
+				
+				// 카드 등록 아작스
+				if(newCard) {
+					$.ajax({
+						type:"put"
+						, url:"/card/register"
+						, data:newCard
+						, success:function(data) {
+							
+							if(data.result == "success") { 
+								
+							} else {
+								alert("카드 등록 실패");
+							} 
+							
+						}
+						, error:function() {
+							alert("카드 등록 에러");
+						}
+					});
+				} 
+				
+				
+				// 내정보 저장 아작스
 				$.ajax({
 					type:"put"
 					, url:"/mypage/updateMyInfo"

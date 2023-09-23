@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.main.service.PortalService;
@@ -21,11 +22,20 @@ public class PortalController {
 	@Autowired
 	private PortalService portalService;
 	
+	@Autowired
+	private GoodsService goodsService;
+	
 	// 메인 포털 화면
 	@GetMapping("/main/portal")
-	public String portal(Model model) {
-		List<GoodsDetail> goodsList = portalService.getGoodsList();
-		model.addAttribute("goodsList", goodsList);
+	public String portal(Model model, @RequestParam(value="keyword", required=false) String keyword) {
+		
+		if(keyword != null && !keyword.isEmpty()) {
+			List<Goods> goodsList = goodsService.getGoodsSearch(keyword);
+			model.addAttribute("goodsList", goodsList);
+		} else {
+			List<GoodsDetail> goodsList = portalService.getGoodsList();
+			model.addAttribute("goodsList", goodsList);
+		}
 		return "main/portal";
 	}
 	

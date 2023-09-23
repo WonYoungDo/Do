@@ -431,11 +431,11 @@
 				
 				
 				let joinUrl;
-				let resultData = {"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email};
+				let resultData;
 				if(userBtn) { // 사용자로 로그인 할 때
 					joinUrl = "/user/join";
-					resultData["address"] = address;		
-					
+					resultData = {"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber, "email":email};
+				
 					if(address == "") {
 						$("#emptyAddress").removeClass("d-none");
 						return;
@@ -445,6 +445,7 @@
 					
 				} else if(managerBtn) {
 					joinUrl = "/manager/join";
+					resultData = {"loginId":id, "pw":pw, "name":name, "phoneNumber":phoneNumber, "email":email};
 				}
 				
 				$.ajax({

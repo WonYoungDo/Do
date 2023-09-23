@@ -30,7 +30,7 @@
 						<div class="d-flex justify-content-between align-items-center py-2">
 							<div class="font-weight-bold" id="address">배송지 : ${user.address }</div>   
 							<input type="text" class="d-none col-9" id="newAddress">
-							<button type="button" class="btn btn-sm ml-1" id="addressDirectBtn">직접입력</button>
+							<button type="button" class="btn btn-sm btn-dark ml-1" id="addressDirectBtn">직접입력</button>
 						</div>
 						<div class="small">
 							<div class="order-goods-name"></div>
@@ -40,9 +40,13 @@
 					</div>
 					
 					<div class="pay-method my-3 border p-1">
-						<b>결제 수단</b> 
+						<div class="d-flex justify-content-between">
+							<b>결제 수단</b>
+							<button type="button" class="btn btn-sm btn-dark mt-1" data-toggle="modal" data-target="#moreModal">카드등록</button>
+						</div>
 						<div class="pt-2">
 							<select id="card" class="form-control">
+						 			<option class="d-none" value="no-card">결제 수단을 등록해주세요</option>
 							 	<c:forEach var="card" items="${pay}">
 									<option  value="${card.id}">${card.card }-${card.cardNumber }</option>
 								</c:forEach>
@@ -70,6 +74,27 @@
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	      	<h4 class="py-5">결제 수단을 입력해주세요</h4>
+	      	<div class="d-flex mb-1">
+	      		<label class="col-3 mt-1 pl-4">카드 :</label>
+	      		<input type="text" class="col-9" id="cardInput">
+	      	</div>
+	      	<div class="d-flex">
+	      		<label class="col-3 mt-1">카드 번호 :</label>
+	      		<input type="text" class="col-9" id="cardNumberInput">
+	      	</div>
+	      	<div class="d-flex justify-content-end">
+	      		<button type="button" class="btn btn-dark mt-5" id="saveCardBtn">등록</button>
+	      	</div>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -101,6 +126,46 @@
 			    }
 			});
 			
+			// 결제 수단 등록
+			$("#saveCardBtn").on("click", function() {
+				let card = $("#cardInput").val();		
+				let cardNumber = $("#cardNumberInput").val();	
+				
+				if(card == "") {
+					alert("카드사를 입력해주세요.");
+					return;
+				} else if(/[0-9]/.test(card)) {
+					alert("이름이 올바르지 않습니다.");
+					return;
+				}
+				
+				if(cardNumber == "") {
+					alert("카드 번호를 입력해주세요.");
+					return;
+				} else if(/[a-zA-Z가-힣]/.test(cardNumber)) {
+				    alert("숫자로 입력해주세요.");
+				    return;
+				}
+				
+				$.ajax({
+					type:"put"
+					, url:"/card/register"
+					, data:{"card":card, "cardNumber":cardNumber}
+					, success:function(data) {
+						
+						if(data.result == "success") { 
+							location.reload();
+						} else {
+							alert("카드 등록 실패");
+						} 
+						
+					}
+					, error:function() {
+						alert("카드 등록 에러");
+					}
+				});
+			});
+			
 			// 결제하기 버튼
 			$("#payBtn").on("click", function() {
 				let userId = $(".pay-info").data("user-id");
@@ -121,7 +186,13 @@
 			            return;
 			        }
 			    }
-			   
+				
+				// 결제 수단 유효성 검사
+			    if(!payId || payId == "no-card") {
+			    	$("#card option:first-child").removeClass("d-none");
+			        return;
+			    } 
+			    	
 				$.ajax({
 					type:"put"
 					, url:"/goods/order"

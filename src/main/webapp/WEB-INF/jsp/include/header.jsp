@@ -13,9 +13,11 @@
 		<div class="search border border-dark d-flex justify-content-between align-items-center">
 			<!-- 검색 -->
 			<div class="pl-3">
-				<i class="bi bi-search icon-md"></i>
-				<input type="text" class="border-input no-outline">
-				<button type="button" class="d-none">검색</button>
+				<form id="searchForm">
+					<i class="bi bi-search icon-md"></i>
+					<input type="text" class="border-input no-outline" id="searchInput">
+					<button type="submit" class="d-none">검색</button>
+				</form>
 			</div>
 			<!-- /검색 -->
 			
@@ -65,17 +67,6 @@
 			            </div>
 		       		</li>
 					<!-- /주문관리 -->
-					
-					<!-- 회원관리 -->		
-		            <li class="nav-item">
-			            <a href="#" class="nav-link text-dark font-weight-bold main-category">회원관리</a>
-			            <div class="d-none sub-category">
-			                <ul class="d-flex justify-content-around">
-			                    <li><a href="#" class="dropdown-item">회원 리스트</a></li>
-			                </ul>
-			            </div>
-			        </li>
-					<!-- /회원관리 -->
 					
 					<!-- 재고관리 -->		
 		            <li class="nav-item">
@@ -231,6 +222,36 @@
 	    $(".nav-item").on("mouseleave", function(e) {  
 			let subCategory = $(this).find(".sub-category"); 
 			subCategory.addClass('d-none'); 	
+	    });
+	    
+	    
+	    // 검색 기능 
+	    $("#searchForm").on("submit", function(e) {
+	    	e.preventDefault();
+	    	
+	    	let keyword = $("#searchInput").val();
+	    	
+	    	if(keyword == "") {
+				alert("검색어를 입력해주세요.");
+				return;
+	    	}
+	    	
+			$.ajax({
+				type:"get"
+				, url:"/goods/search"
+				, data:{"keyword":keyword}
+				, success:function(data) {
+					
+					if(data.result == "success") { 
+						location.reload();
+					} else {
+						alert(data.message);
+					}
+				}
+				, error:function() {
+					alert("검색 에러");
+				}
+			});
 	    });
 	
 	});

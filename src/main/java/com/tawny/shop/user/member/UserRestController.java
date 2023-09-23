@@ -37,10 +37,10 @@ public class UserRestController {
 			@RequestParam("loginId") String loginId
 			, @RequestParam("pw") String pw
 			, @RequestParam("name") String name
+			, @RequestParam("address") String address
 			, @RequestParam("phoneNumber") String phoneNumber
-			, @RequestParam("email") String email
-			, @RequestParam("address") String address) {
-		int count = userService.join(loginId, pw, name, phoneNumber, address, email);
+			, @RequestParam("email") String email) {
+		int count = userService.join(loginId, pw, name, phoneNumber, email, address);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(count != 0) {
