@@ -37,20 +37,20 @@ public class PortalController {
 			, @RequestParam(value="keyword", required=false) String keyword
 			, @RequestParam(value="category", required=false) String category) {
 		
-		List<OrderBestGoodsDetail> BestGoodsList = orderService.getBestGoodsList();
+//		List<OrderBestGoodsDetail> BestGoodsList = orderService.getBestGoodsList();
 		
 		if(keyword != null && !keyword.isEmpty()) { // 검색한 상품만 보여주기
 			List<Goods> goodsList = goodsService.getGoodsSearch(keyword);
 			model.addAttribute("goodsList", goodsList);
-			model.addAttribute("BestGoodsList", BestGoodsList);
+//			model.addAttribute("BestGoodsList", BestGoodsList);
 		} else if (category != null && !category.isEmpty()) { // 카테고리 별 상품 보여주기
 			List<GoodsDetail> goodsList = portalService.getGoodsListByCategory(category);
 			model.addAttribute("goodsList", goodsList);
-			model.addAttribute("BestGoodsList", BestGoodsList);
+//			model.addAttribute("BestGoodsList", BestGoodsList);
 		} else { // 전체 상품 보여주기
 			List<GoodsDetail> goodsList = portalService.getGoodsList();
 			model.addAttribute("goodsList", goodsList);
-			model.addAttribute("BestGoodsList", BestGoodsList);
+//			model.addAttribute("BestGoodsList", BestGoodsList);
 		}
 		return "main/portal";
 	}

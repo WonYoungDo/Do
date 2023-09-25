@@ -1,6 +1,7 @@
 package com.tawny.shop.order.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.tawny.shop.order.domain.Order;
 import com.tawny.shop.order.dto.OrderBestGoodsDetail;
 import com.tawny.shop.order.dto.OrderDetail;
 import com.tawny.shop.order.repository.OrderRepository;
+
 
 @Service
 public class OrderService {
@@ -86,7 +88,7 @@ public class OrderService {
 	}
 	
 	// 가장 많이 판매된 상품 정보
-	public List<OrderBestGoodsDetail> getBestGoodsList() {
+	public List<Order> getBestGoodsList() {
 		return orderRepository.selectOrderByBestGoods();
 	}
 	

@@ -103,16 +103,15 @@
 			`createdAT` DESC;
  	</select>
 		
-	<select id="selectOrderByBestGoods" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+	<select id="selectOrderByBestGoods" resultType="com.tawny.shop.order.domain.Order" parameterType="int">
  		SELECT
  			`goodsId`
- 			, SUM(`quantity`) AS totalQuantity
 		FROM
 			`order`
 		GROUP BY
-			`goodsID`
+			`goodsId`
 		ORDER BY
-			`totalQuantity` DESC
+			SUM(`quantity`) DESC
 		LIMIT 2;
  	</select>	
  	

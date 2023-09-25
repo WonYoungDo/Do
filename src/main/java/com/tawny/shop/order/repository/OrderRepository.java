@@ -39,6 +39,6 @@ public interface OrderRepository {
 	public List<Order> selectAllOrderList();
 	
 	// 베스트 상품 가져오기
-	public List<OrderBestGoodsDetail> selectOrderByBestGoods();
+	public List<Order> selectOrderByBestGoods();
 	
 }

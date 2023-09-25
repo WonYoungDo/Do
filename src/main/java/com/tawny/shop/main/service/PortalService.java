@@ -10,6 +10,7 @@ import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.repository.GoodsRepository;
 import com.tawny.shop.manager.goods.service.GoodsService;
+import com.tawny.shop.order.domain.Order;
 import com.tawny.shop.order.dto.OrderBestGoodsDetail;
 import com.tawny.shop.order.service.OrderService;
 
@@ -70,22 +71,15 @@ public class PortalService {
 	// 가장 많이 팔린 상품 보여주기
 	public List<OrderBestGoodsDetail> getBestGoodsList(int limit) {
 		 
+	    List<Order> orderBestGoodsList = orderService.getBestGoodsList();
 	    
 	    List<OrderBestGoodsDetail> bestGoodsList = new ArrayList<>();
-	    for (Map<String, Object> result : results) {
-	        Long goodsId = (Long) result.get("goodsId");
-	        Integer totalQuantity = (Integer) result.get("totalQuantity");
-
-	        Order order = orderRepository.findOrderById(goodsId); // 여기서는 적절한 메소드를 호출하여 Order 객체를 가져와야 합니다.
-	        Goods goods = goodsRepository.findGoodsById(goodsId); // 여기서는 적절한 메소드를 호출하여 Goods 객체를 가져와야 합니다.
-
-	        OrderBestGoodsDetail detail = OrderBestGoodsDetail.builder()
-	                .order(order)
-	                .goods(goods)
-	                .totalQuantity(totalQuantity)
-	                .build();
-
-	        bestGoodsList.add(detail);
+	    for(Order bestGoods : orderBestGoodsList) {
+	    	
+	    	OrderBestGoodsDetail orderBestGoodsDetail = OrderBestGoodsDetail.builder()
+	    			                 										.goods(goods)
+	    																	.build();
+	    	bestGoodsList.add(orderBestGoodsDetail);
 	    }
 		 return bestGoodsList;
 	}
