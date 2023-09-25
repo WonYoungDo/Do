@@ -19,6 +19,7 @@ public class OrderManagementController {
 	@Autowired
 	private OrderManagementService OrderManagementService;
 	
+	// 사용자들이 주문한 모든 정보 리스트
 	@GetMapping("/details")
 	public String OrderManagement(Model model)	{
 		List<AllOrderDetail> allOrderDetailList = OrderManagementService.getAllOrderDetail();

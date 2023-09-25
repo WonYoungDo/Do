@@ -40,5 +40,8 @@ public interface GoodsRepository {
 	
 	// 검색 기능(해당 되는 키워드와 일치하는 상품 정보 가져오기) 
 	public List<Goods> selectGoodsSearch(@Param("keyword") String keyword);
+	
+	// 카테고리 분류(해당 되는 카테고와 일치하는 상품 정보 가져오기) 
+	public List<Goods> selectGoodsCategory(@Param("category") String category);
 		
 }

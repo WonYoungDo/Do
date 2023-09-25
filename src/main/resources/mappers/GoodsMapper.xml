@@ -104,4 +104,20 @@
 			`goodsName` LIKE CONCAT('%', #{keyword}, '%')
  	</select>
  	
+ 	<select id="selectGoodsCategory" resultType="com.tawny.shop.manager.goods.domain.Goods" parameterType="String">
+ 		SELECT
+ 			`id`
+ 			, `goodsName`
+			, `price`
+			, `count`
+			, `category`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT` 
+		FROM
+			`goods`
+		WHERE
+			`category` LIKE CONCAT(#{category}, '%')
+ 	</select>
+ 	
  </mapper>

@@ -14,6 +14,8 @@ import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.service.GoodsService;
+import com.tawny.shop.order.dto.OrderBestGoodsDetail;
+import com.tawny.shop.order.service.OrderService;
 
 @Controller
 @RequestMapping("/do")
@@ -25,19 +27,35 @@ public class PortalController {
 	@Autowired
 	private GoodsService goodsService;
 	
+	@Autowired
+	private OrderService orderService;
+	
 	// 메인 포털 화면
 	@GetMapping("/main/portal")
-	public String portal(Model model, @RequestParam(value="keyword", required=false) String keyword) {
+	public String portal(
+			Model model
+			, @RequestParam(value="keyword", required=false) String keyword
+			, @RequestParam(value="category", required=false) String category) {
 		
-		if(keyword != null && !keyword.isEmpty()) {
+		List<OrderBestGoodsDetail> BestGoodsList = orderService.getBestGoodsList();
+		
+		if(keyword != null && !keyword.isEmpty()) { // 검색한 상품만 보여주기
 			List<Goods> goodsList = goodsService.getGoodsSearch(keyword);
 			model.addAttribute("goodsList", goodsList);
-		} else {
+			model.addAttribute("BestGoodsList", BestGoodsList);
+		} else if (category != null && !category.isEmpty()) { // 카테고리 별 상품 보여주기
+			List<GoodsDetail> goodsList = portalService.getGoodsListByCategory(category);
+			model.addAttribute("goodsList", goodsList);
+			model.addAttribute("BestGoodsList", BestGoodsList);
+		} else { // 전체 상품 보여주기
 			List<GoodsDetail> goodsList = portalService.getGoodsList();
 			model.addAttribute("goodsList", goodsList);
+			model.addAttribute("BestGoodsList", BestGoodsList);
 		}
 		return "main/portal";
 	}
+	
+	
 	
 	// 개별 상품 정보
 	@GetMapping("/main/goodsInfo/{id}")

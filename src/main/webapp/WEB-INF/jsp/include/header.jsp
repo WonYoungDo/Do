@@ -114,13 +114,13 @@
 					
 					<!-- OUTER -->		
 		            <li class="nav-item">
-			            <a href="#" class="nav-link text-dark font-weight-bold main-category">OUTER</a>
+			            <a href="/do/main/portal?category=OUTER" class="nav-link text-dark font-weight-bold main-category">OUTER</a>
 			            <div class="d-none sub-category">
 			                <ul class="d-flex justify-content-around">
-			                    <li><a href="#" class="dropdown-item">패딩</a></li>
-			                    <li><a href="#" class="dropdown-item">코트</a></li>
-			                    <li><a href="#" class="dropdown-item">집업</a></li>
-			                    <li><a href="#" class="dropdown-item">자켓</a></li>
+			                    <li><a href="/do/main/portal?category=OUTER-패딩" class="dropdown-item">패딩</a></li>
+			                    <li><a href="/do/main/portal?category=OUTER-코트" class="dropdown-item">코트</a></li>
+			                    <li><a href="/do/main/portal?category=OUTER-집업" class="dropdown-item">집업</a></li>
+			                    <li><a href="/do/main/portal?category=OUTER-자켓" class="dropdown-item">자켓</a></li>
 			                </ul>
 			            </div>
 		            </li>
@@ -128,15 +128,15 @@
 					
 					<!-- PANTS -->		
 		            <li class="nav-item">
-			            <a href="#" class="nav-link text-dark font-weight-bold main-category">PANTS</a>
+			            <a href="/do/main/portal?category=PANTS" class="nav-link text-dark font-weight-bold main-category">PANTS</a>
 			            <div class="d-none sub-category">
 			                <ul class="d-flex justify-content-around">
-			                    <li><a href="#" class="dropdown-item">슬랙스</a></li>
-			                    <li><a href="#" class="dropdown-item">청바지</a></li>
-			                    <li><a href="#" class="dropdown-item">데님</a></li>
-			                    <li><a href="#" class="dropdown-item">조거</a></li>
-			                    <li><a href="#" class="dropdown-item">반바지</a></li>
-			                    <li><a href="#" class="dropdown-item">트레이닝</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-슬랙스" class="dropdown-item">슬랙스</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-청바지" class="dropdown-item">청바지</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-데님" class="dropdown-item">데님</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-조거" class="dropdown-item">조거</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-반바지" class="dropdown-item">반바지</a></li>
+			                    <li><a href="/do/main/portal?category=PANTS-트레이닝" class="dropdown-item">트레이닝</a></li>
 			                </ul>
 			            </div>
 			        </li>
@@ -144,15 +144,15 @@
 					
 					<!-- SHOES -->		
 		            <li class="nav-item">
-			            <a href="#" class="nav-link text-dark font-weight-bold main-category">SHOES</a>
+			            <a href="/do/main/portal?category=SHOES" class="nav-link text-dark font-weight-bold main-category">SHOES</a>
 			            <div class="d-none sub-category">
 			                <ul class="d-flex justify-content-around">
-			                    <li><a href="#" class="dropdown-item">단화</a></li>
-			                    <li><a href="#" class="dropdown-item">운동화</a></li>
-			                    <li><a href="#" class="dropdown-item">로퍼</a></li>
-			                    <li><a href="#" class="dropdown-item">구두</a></li>
-			                    <li><a href="#" class="dropdown-item">샌들</a></li>
-			                    <li><a href="#" class="dropdown-item">슬리퍼</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-단화" class="dropdown-item">단화</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-운동화" class="dropdown-item">운동화</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-로퍼" class="dropdown-item">로퍼</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-구두" class="dropdown-item">구두</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-샌들" class="dropdown-item">샌들</a></li>
+			                    <li><a href="/do/main/portal?category=SHOES-슬리퍼" class="dropdown-item">슬리퍼</a></li>
 			                </ul>
 			            </div>
 			        </li>
@@ -160,18 +160,18 @@
 					
 					<!-- ACC -->		
 		            <li class="nav-item">
-			            <a href="#" class="nav-link text-dark font-weight-bold main-category">ACC</a>
+			            <a href="/do/main/portal?category=ACC" class="nav-link text-dark font-weight-bold main-category">ACC</a>
 			            <div class="d-none sub-category">
 			                <ul class="d-flex justify-content-around">
-			                    <li><a href="#" class="dropdown-item">가방</a></li>
-			                    <li><a href="#" class="dropdown-item">지갑</a></li>
-			                    <li><a href="#" class="dropdown-item">벨트</a></li>
-			                    <li><a href="#" class="dropdown-item">모자</a></li>
-			                    <li><a href="#" class="dropdown-item">넥타이</a></li>
-			                    <li><a href="#" class="dropdown-item">머플러</a></li>
-			                    <li><a href="#" class="dropdown-item">팔찌</a></li>
-			                    <li><a href="#" class="dropdown-item">반지</a></li>
-			                    <li><a href="#" class="dropdown-item">양말</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-가방" class="dropdown-item">가방</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-지갑" class="dropdown-item">지갑</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-벨트" class="dropdown-item">벨트</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-모자" class="dropdown-item">모자</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-넥타이" class="dropdown-item">넥타이</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-머플러" class="dropdown-item">머플러</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-팔찌" class="dropdown-item">팔찌</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-반지" class="dropdown-item">반지</a></li>
+			                    <li><a href="/do/main/portal?category=ACC-양말" class="dropdown-item">양말</a></li>
 			                </ul>
 			            </div>
 			        </li>

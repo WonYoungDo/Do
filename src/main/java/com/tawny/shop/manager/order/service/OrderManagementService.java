@@ -26,6 +26,7 @@ public class OrderManagementService {
 	@Autowired
 	private OrderService orderService;
 	
+	// 사용자들이 주문한 모든 주문내역 정보
 	public List<AllOrderDetail> getAllOrderDetail() {
 		
 		List<Order> orderList = orderService.getAllOrderList();

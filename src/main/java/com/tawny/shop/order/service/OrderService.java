@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.service.GoodsService;
 import com.tawny.shop.order.domain.Order;
+import com.tawny.shop.order.dto.OrderBestGoodsDetail;
 import com.tawny.shop.order.dto.OrderDetail;
 import com.tawny.shop.order.repository.OrderRepository;
 
@@ -83,5 +84,11 @@ public class OrderService {
 	public List<Order> getAllOrderList() {
 		return orderRepository.selectAllOrderList();
 	}
+	
+	// 가장 많이 판매된 상품 정보
+	public List<OrderBestGoodsDetail> getBestGoodsList() {
+		return orderRepository.selectOrderByBestGoods();
+	}
+	
 
 }

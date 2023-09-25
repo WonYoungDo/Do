@@ -103,4 +103,17 @@
 			`createdAT` DESC;
  	</select>
 		
+	<select id="selectOrderByBestGoods" resultType="com.tawny.shop.order.domain.Order" parameterType="map">
+ 		SELECT
+ 			`goodsId`
+ 			, SUM(`quantity`) AS totalQuantity
+		FROM
+			`order`
+		GROUP BY
+			`goodsID`
+		ORDER BY
+			`totalQuantity` DESC
+		LIMIT 2;
+ 	</select>	
+ 	
 </mapper>

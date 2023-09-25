@@ -10,12 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class OrderDetail {
+public class OrderBestGoodsDetail {
 	
-	// 주문한 상품 정보
-	private Goods goods; 
-	
-	// 주문 정보
-	private Order Order; 
-	
+	 private Order order;
+	 
+	 private Goods goods;
+	 
+	 // 사용자가 주문한 상품 총 수량
+     private int totalQuantity;
 }

@@ -51,5 +51,10 @@ public class GoodsService {
 	public List<Goods> getGoodsSearch(String keyword) {
 		return goodsRepository.selectGoodsSearch(keyword);
 	}
-
+	
+	// 카테고리에 따른 상품 정보 
+	public List<Goods> getGoodsCategory(String category) {
+		return goodsRepository.selectGoodsCategory(category);
+	}
+	
 }
