@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
+import com.tawny.shop.manager.goods.dto.GoodsDetail;
 import com.tawny.shop.manager.goods.service.GoodsService;
 
 @Controller

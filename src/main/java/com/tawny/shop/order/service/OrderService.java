@@ -1,7 +1,6 @@
 package com.tawny.shop.order.service;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.service.GoodsService;
 import com.tawny.shop.order.domain.Order;
-import com.tawny.shop.order.dto.OrderBestGoodsDetail;
 import com.tawny.shop.order.dto.OrderDetail;
 import com.tawny.shop.order.repository.OrderRepository;
 
@@ -25,6 +23,8 @@ public class OrderService {
 	@Autowired
 	private GoodsService goodsService;
 	
+	public static final String ORDER_COMPLETE = "주문완료";
+	
 	// 사용자가 주문한 내용
 	@Transactional
 	public int addOrder(
@@ -35,12 +35,9 @@ public class OrderService {
 			, String address
 			, int quantity
 			, int totalPrice) {
+		goodsService.subtractGoodsCount(goodsId, quantity);
 		
-		if(goodsService.subtractGoodsCount(goodsId, quantity) == 0) {
-			throw new IllegalArgumentException("재고가 부족합니다.");
-		}
-		
-		return orderRepository.insertOrder(userId, goodsId, payId, request, address, "주문완료", quantity, totalPrice);
+		return orderRepository.insertOrder(userId, goodsId, payId, request, address, ORDER_COMPLETE, quantity, totalPrice);
 	}
 	
 	// 사용자가 요청한 주문 정보 리스트

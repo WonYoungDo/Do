@@ -1,4 +1,4 @@
-package com.tawny.shop.main.dto;
+package com.tawny.shop.manager.goods.dto;
 
 import lombok.Builder;
 import lombok.Getter;

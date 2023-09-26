@@ -3,9 +3,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tawny.shop.common.FileManager;
+import com.tawny.shop.exception.OutOfStockException;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.repository.GoodsRepository;
 
@@ -33,7 +35,14 @@ public class GoodsService {
 	}
 	
 	// 상품 재고 업데이트 기능
+	@Transactional
 	public int subtractGoodsCount(int goodsId, int orderQuantity) {
+		
+		Goods goods = goodsRepository.selectGoods(goodsId);
+		
+		if(goods.getCount() < orderQuantity) {
+			throw new OutOfStockException(goods.getCount());
+		}			  
 		return goodsRepository.updateSubtractGoodsCount(orderQuantity, goodsId);
 	}
 	

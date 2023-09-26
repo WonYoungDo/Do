@@ -205,8 +205,9 @@
 							alert("주문 실패");
 						}
 					}
-					, error:function() {
-						alert("주문 에러");
+					, error:function(jqXHR) {
+						var errorInfo = JSON.parse(jqXHR.responseText);
+						alert(errorInfo.message);
 					}
 				});
 			});

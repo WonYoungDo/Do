@@ -33,7 +33,9 @@ public interface GoodsRepository {
 			, @Param("category") String category);
 	
 	// 주문 수량에 따른 재고 감소 업데이트 
-	public int updateSubtractGoodsCount(@Param("orderQuantity") int orderQuantity, @Param("goodsId") int goodsId);
+	public int updateSubtractGoodsCount(
+			@Param("orderQuantity") int orderQuantity
+			, @Param("goodsId") int goodsId);
 
 	// goodsId 가져오기
 	public List<Goods> findByGoodsId(@Param("id") int id);

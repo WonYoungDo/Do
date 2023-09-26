@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tawny.shop.main.dto.GoodsDetail;
 import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
+import com.tawny.shop.manager.goods.dto.GoodsDetail;
 import com.tawny.shop.manager.goods.service.GoodsService;
 import com.tawny.shop.order.dto.OrderBestGoodsDetail;
 import com.tawny.shop.order.service.OrderService;
@@ -24,11 +24,6 @@ public class PortalController {
 	@Autowired
 	private PortalService portalService;
 	
-	@Autowired
-	private GoodsService goodsService;
-	
-	@Autowired
-	private OrderService orderService;
 	
 	// 메인 포털 화면
 	@GetMapping("/main/portal")
@@ -37,24 +32,36 @@ public class PortalController {
 			, @RequestParam(value="keyword", required=false) String keyword
 			, @RequestParam(value="category", required=false) String category) {
 		
-//		List<OrderBestGoodsDetail> BestGoodsList = orderService.getBestGoodsList();
+		bestGoodsModel(model);
+		List<GoodsDetail> goodsList;
 		
-		if(keyword != null && !keyword.isEmpty()) { // 검색한 상품만 보여주기
-			List<Goods> goodsList = goodsService.getGoodsSearch(keyword);
+		// 검색한 상품만 보여주기
+		if(keyword != null && !keyword.isEmpty()) { 
+			goodsList = portalService.getGoodsSearch(keyword);
 			model.addAttribute("goodsList", goodsList);
-//			model.addAttribute("BestGoodsList", BestGoodsList);
-		} else if (category != null && !category.isEmpty()) { // 카테고리 별 상품 보여주기
-			List<GoodsDetail> goodsList = portalService.getGoodsListByCategory(category);
+			
+		// 카테고리 별 상품 보여주기	
+		} else if (category != null && !category.isEmpty()) { 
+			goodsList = portalService.getGoodsListByCategory(category);
 			model.addAttribute("goodsList", goodsList);
-//			model.addAttribute("BestGoodsList", BestGoodsList);
-		} else { // 전체 상품 보여주기
-			List<GoodsDetail> goodsList = portalService.getGoodsList();
+		
+		// 전체 상품 보여주기
+		} else { 
+			goodsList = portalService.getGoodsList();
 			model.addAttribute("goodsList", goodsList);
-//			model.addAttribute("BestGoodsList", BestGoodsList);
 		}
 		return "main/portal";
 	}
 	
+	// 베스트 상품 보여주기 
+	public void bestGoodsModel(Model model) {
+		List<OrderBestGoodsDetail> bestGoodsList = portalService.getBestGoodsList(2);
+		OrderBestGoodsDetail bestGoods1 = bestGoodsList.get(0);
+		OrderBestGoodsDetail bestGoods2 = bestGoodsList.get(1);
+		
+		model.addAttribute("bestGoods1", bestGoods1);
+		model.addAttribute("bestGoods2", bestGoods2);
+	}
 	
 	
 	// 개별 상품 정보

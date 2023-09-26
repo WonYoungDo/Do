@@ -13,9 +13,9 @@
 		<div class="search border border-dark d-flex justify-content-between align-items-center">
 			<!-- 검색 -->
 			<div class="pl-3">
-				<form id="searchForm">
+				<form id="searchForm" action="/do/main/portal" method="get">
 					<i class="bi bi-search icon-md"></i>
-					<input type="text" class="border-input no-outline" id="searchInput">
+					<input type="text" class="border-input no-outline" name="keyword">
 					<button type="submit" class="d-none">검색</button>
 				</form>
 			</div>
@@ -224,36 +224,6 @@
 			subCategory.addClass('d-none'); 	
 	    });
 	    
-	    
-	    // 검색 기능 
-	    $("#searchForm").on("submit", function(e) {
-	    	e.preventDefault();
-	    	
-	    	let keyword = $("#searchInput").val();
-	    	
-	    	if(keyword == "") {
-				alert("검색어를 입력해주세요.");
-				return;
-	    	}
-	    	
-			$.ajax({
-				type:"get"
-				, url:"/goods/search"
-				, data:{"keyword":keyword}
-				, success:function(data) {
-					
-					if(data.result == "success") { 
-						location.reload();
-					} else {
-						alert(data.message);
-					}
-				}
-				, error:function() {
-					alert("검색 에러");
-				}
-			});
-	    });
-	
 	});
 </script>
 
