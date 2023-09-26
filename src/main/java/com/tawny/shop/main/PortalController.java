@@ -56,11 +56,16 @@ public class PortalController {
 	// 베스트 상품 보여주기 
 	public void bestGoodsModel(Model model) {
 		List<OrderBestGoodsDetail> bestGoodsList = portalService.getBestGoodsList(2);
-		OrderBestGoodsDetail bestGoods1 = bestGoodsList.get(0);
-		OrderBestGoodsDetail bestGoods2 = bestGoodsList.get(1);
 		
-		model.addAttribute("bestGoods1", bestGoods1);
-		model.addAttribute("bestGoods2", bestGoods2);
+		if(bestGoodsList == null || bestGoodsList.size() < 2) {
+			 model.addAttribute("errorMessage", "현재 판매된 상품 정보가 충분하지 않습니다.");
+		} else {
+			OrderBestGoodsDetail bestGoods1 = bestGoodsList.get(0);
+			OrderBestGoodsDetail bestGoods2 = bestGoodsList.get(1);
+			
+			model.addAttribute("bestGoods1", bestGoods1);
+			model.addAttribute("bestGoods2", bestGoods2);
+		}
 	}
 	
 	
