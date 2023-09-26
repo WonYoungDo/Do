@@ -12,8 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManager {
 	
+	
 
-	public static final String FILE_UPLOAD_PATH = "D:\\원영도\\SpringProject\\upload\\dostagram";
+	public static final String FILE_UPLOAD_PATH = "/home/ec2-user/upload";
 	
 	private static Logger logger = LoggerFactory.getLogger(FileManager.class);
 	
