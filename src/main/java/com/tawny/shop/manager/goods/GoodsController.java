@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tawny.shop.main.PortalController;
 import com.tawny.shop.main.service.PortalService;
 import com.tawny.shop.manager.goods.domain.Goods;
 import com.tawny.shop.manager.goods.dto.GoodsDetail;
@@ -24,15 +25,21 @@ public class GoodsController {
 	@Autowired
 	private GoodsService goodsService;
 	
+	@Autowired
+	private PortalController portalController;
+	
 	// 상품 등록 화면
 	@GetMapping("/goodsUpload")
-	public String goodsUpload() {
+	public String goodsUpload(Model model) {
+		portalController.bestGoodsModel(model);
 		return "goods/goodsUpload";
 	}
 	
 	// 상품 수정 화면
 	@GetMapping("/goodsUpdate/{id}")
 	public String goodsUpdate(@PathVariable("id") int id,  Model model) {
+		
+		portalController.bestGoodsModel(model);
 		
 		Goods goods = goodsService.getGoods(id);
 		model.addAttribute("goods", goods);
@@ -43,6 +50,8 @@ public class GoodsController {
 	// 상품 리스트 화면
 	@GetMapping("/goodsList")
 	public String goodsList(Model model) {
+		
+		portalController.bestGoodsModel(model);
 		
 		List<GoodsDetail> goodsList = portalService.getGoodsList();
 		model.addAttribute("goodsList", goodsList);

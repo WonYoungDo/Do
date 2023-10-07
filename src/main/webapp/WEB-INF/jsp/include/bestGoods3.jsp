@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
 <div class="best-goods p-0">
-	<img src="${bestGoods2.goods.imagePath }" class="h-100 w-100">
+	<img src="${bestGoods3.goods.imagePath }" class="h-100 w-100">
 </div>

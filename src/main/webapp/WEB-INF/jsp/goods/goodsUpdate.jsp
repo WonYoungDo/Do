@@ -11,23 +11,24 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 상품 수정 -->
-			<div class="goods-upload col-6 d-flex justify-content-center">	
-				<div class="col-10">
+			<div class="goods-update d-flex justify-content-center">	
+				<div class="col-10 bg-warning ">
 					<h4 class="pt-3 pr-5 mr-5">상품 수정</h4>
-					<div class="border mt-3">
+					<div class="border mt-3 bg-info">
+					
 						<!-- 상품 사진 -->
 						<div class="goods-image col-6 d-flex align-items-center justify-content-center border p-0">
-							<img src="${goods.imagePath }" class="w-100 h-100"> 
+							<img src="${goods.imagePath }" class="w-100"> 
 						</div>
 						<!-- /상품 사진 -->
 						
@@ -66,7 +67,7 @@
 					
 					<div class="d-flex justify-content-between my-2">
 						<button type="button" class="btn form-control btn-danger col-3" id="deleteBtn" data-goods-id="${goods.id }">삭제</button>
-						<button type="button" class="btn form-control btn-dark col-3" id="saveBtn" data-goods-id="${goods.id }">저장</button>
+						<button type="button" class="btn form-control btn-black col-3" id="saveBtn" data-goods-id="${goods.id }">저장</button>
 					</div>
 					
 				</div>
@@ -79,8 +80,6 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

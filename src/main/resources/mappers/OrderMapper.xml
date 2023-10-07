@@ -112,7 +112,7 @@
 			`goodsId`
 		ORDER BY
 			SUM(`quantity`) DESC
-		LIMIT 2;
+		LIMIT 3;
  	</select>	
  	
 </mapper>

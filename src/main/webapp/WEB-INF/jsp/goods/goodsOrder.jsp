@@ -11,16 +11,16 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 	
-			<div class="goods-payment col-6 d-flex justify-content-center">	
+			<div class="goods-payment d-flex justify-content-center">	
 				<div class="pay-box col-10">
 				
 					<h4 class="pt-3 pr-5 mr-5">주문/결제</h4>
@@ -30,7 +30,7 @@
 						<div class="d-flex justify-content-between align-items-center py-2">
 							<div class="font-weight-bold" id="address">배송지 : ${user.address }</div>   
 							<input type="text" class="d-none col-9" id="newAddress">
-							<button type="button" class="btn btn-sm btn-dark ml-1" id="addressDirectBtn">직접입력</button>
+							<button type="button" class="btn btn-sm btn-black ml-1" id="addressDirectBtn">직접입력</button>
 						</div>
 						<div class="small">
 							<div class="order-goods-name"></div>
@@ -42,7 +42,7 @@
 					<div class="pay-method my-3 border p-1">
 						<div class="d-flex justify-content-between">
 							<b>결제 수단</b>
-							<button type="button" class="btn btn-sm btn-dark mt-1" data-toggle="modal" data-target="#moreModal">카드등록</button>
+							<button type="button" class="btn btn-sm btn-black mt-1" data-toggle="modal" data-target="#moreModal">카드등록</button>
 						</div>
 						<div class="pt-2">
 							<select id="card" class="form-control">
@@ -55,12 +55,12 @@
 					</div>
 					
 					<div class="pay-request border p-0">
-						<div class="h-25 pl-1 pt-1"><b>요청사항</b></div>
+						<div class="pl-1 pt-1"><b>요청사항</b></div>
 						<textarea class="no-outline w-100 h-75 border-0 mb-1" id="requestInput"></textarea>
 					</div>
 					
-					<div class="pt-5">
-						<button type="button" class="btn form-control btn-dark" id="payBtn">결제하기</button>
+					<div class="pt-3">
+						<button type="button" class="btn form-control btn-black" id="payBtn">결제하기</button>
 					</div>
 					
 				</div>
@@ -72,8 +72,6 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -90,7 +88,7 @@
 	      		<input type="text" class="col-9" id="cardNumberInput">
 	      	</div>
 	      	<div class="d-flex justify-content-end">
-	      		<button type="button" class="btn btn-dark mt-5" id="saveCardBtn">등록</button>
+	      		<button type="button" class="btn btn-black mt-5" id="saveCardBtn">등록</button>
 	      	</div>
 	      </div>
 	    </div>

@@ -11,17 +11,17 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 로그인 -->
-			<div class="login col-6 small d-flex justify-content-center">	
+			<div class="login small d-flex justify-content-center">	
 				<div class="login-section d-flex justify-content-center align-items-center">
 					
 					<div class="text-center">
@@ -30,7 +30,7 @@
 						<!-- 문구 -->
 						
 						<!-- 입력란 -->				
-						<div class="login-box p-5 h-50 border pb-5">
+						<div class="p-5 h-50 border pb-5">
 							
 							<div class="d-flex justify-content-end">
 								<label>관리자 <input type="checkbox" name="loginType" value="manager"></label>
@@ -38,23 +38,23 @@
 							
 							<form id="loginForm">
 								<!-- 아이디 입력란 -->
-								<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+								<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 									<label class="col-3 p-0 mt-2">아이디:</label>
-									<input type="text" class="col-8 border-0" id="idInput">
+									<input type="text" class="col-8 border-0 no-outline" id="idInput">
 								</div>
 								<div class="text-danger small d-none" id="emptyId">아이디를 입력해주세요!</div>
 								<!-- /아이디 입력란 -->
 								
 								<!-- 비밀번호 입력란 -->
-								<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+								<div class="d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
 									<label class="col-4 p-0 mt-2">비밀번호 :</label>
-									<input type="password" class="col-8 border-0" id="pwInput">
+									<input type="password" class="col-8 border-0 no-outline" id="pwInput">
 								</div>
 								<div class="text-danger small d-none" id="emptyPw">비밀번호를 입력해주세요!</div>
 								<!-- /비밀번호 입력란 -->
 								
 								<!-- 로그인 버튼 -->
-								<button type="submit" class="btn btn-dark btn-block" id="loginBtn">로그인</button>
+								<button type="submit" class="btn btn-black btn-block" id="loginBtn">로그인</button>
 								<!-- /로그인 버튼 -->			
 							
 								<!-- 회원 정보 찾기 -->
@@ -72,13 +72,11 @@
 			</div>
 			<!-- /로그인 -->
 			
-			<!-- 베스트 상품2 -->
-			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
-			<!-- /베스트 상품2 -->
-		
+			<!-- footer -->
+			<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+			<!-- /footer -->
+			
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

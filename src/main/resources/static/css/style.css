@@ -7,6 +7,11 @@
 }
 
 /* header */
+header {
+	position: fixed;
+	z-index: 1000;
+	background-color: white;
+}
 header > .logo {
 	height: 11vh;
 	width: 10vw;
@@ -22,69 +27,96 @@ header > nav > .category {
 header > nav > .category > .login-user {
 	width: 10vw;
 }
-
 .gap {
-	height: 3.5vh;
+    height: 18vh;
+    background-color: black;
 }
 
 /* portal */
-.portal {
-	height: 75.5vh;
-	width: 73vw;
+.main-goods {
 	overflow-y: auto;
+	height: 75.5vh;
+}
+.portal {
+	width: 98.9vw;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: start; /* 시작점을 기준으로 아이템들을 배치합니다 */
-	align-items: start; /* 아이템들의 상단을 기준으로 정렬합니다 */
+	justify-content: space-between;
+	align-items: start; 
 }
 .portal > .goods {
-	margin-top:10px;
-	width:17vw;
-	height: 25vh;
+	margin-top:9vh;
+	width: 18vw;
+	height: 45vh;
 }
+.portal > .goods-info {
+	height: 20vh;
+}
+.goods img {
+	object-fit: cover;
+}
+
 
 /* best-goods */
-section > .best-goods {
-	width: 18.5vw;
+.main .best-goods {
+	width: 24vw;
+	height: 80vh;
+}
+.main .best-goods img {
+	object-fit: cover;
+}
+.best-goods {
+	width: 32vw;
+	height: 82vh;
+}
+.best-goods img {
+	object-fit: cover;
 }
 
-/* goods-info */
-section > .goods-info {
-	height: 570px;
-}
-section > .goods-info > .goods {
-	height: 250px;
-}
-
-/* goods-order */
-section > .goods-payment {
-	height: 570px;
-}
-section > .goods-payment > .pay-box > .pay-info {
-	height: 150px;
-}
-section > .goods-payment > .pay-box > .pay-method {
-	height: 100px;
-}
-section > .goods-payment > .pay-box > .pay-request {
-	height: 120px;
-}
 
 /* join */
-section > .join > .input-box {
-	height: 50px;
+.join {
+	height: 82vh;
+	width: 36vw;
 }
 
+
 /* login */
-section > .login > .login-section {
-	height: 570px;
+.login {
+	width: 36vw;
+}	
+.login > .login-section {
+	height: 82vh;
 }
-section > .login > .login-section > .login-phrase {
-	height: 70px;
+
+
+/* goods-info */
+.goods-info {
+	width: 36vw;
 }
-section > .login > .login-section > .login-box > .input-box {
-	height: 50px;
+.goods-info > .goods {
+	height: 50vh;
 }
+.goods-detail {
+	height: 32vh;
+}
+
+
+/* goods-order */
+.goods-payment {
+	height: 70vh;
+	width: 36vw;
+}
+.goods-payment > .pay-box > .pay-info {
+	height: 23vh;
+}
+.goods-payment > .pay-box > .pay-method {
+	height: 17vh;
+}
+.goods-payment > .pay-box > .pay-request {
+	height: 20vh;
+}
+
 
 /* find */
 section > .find > .find-id {
@@ -95,63 +127,104 @@ section > .find > .find-pw {
 }
 section > .find > .find-id > .input-box {
 	height: 50px;
-}
+} 
 section > .find > .find-pw > .input-box {
 	height: 50px;
 }
 
+
 /* goodsUpload */
-.goods-image {
-	height: 250px;
+.goods-upload {
+	height: 82vh;
+	width: 36vw;	
 }
+.goods-upload > .goods-image {
+	height: 36vh;
+}
+
 
 /* goodsUpdate */
-section > .goods-list {
-	height: 570px;
+.goods-update {
+	height: 82vh;
+	width: 36vw;
 }
-section > .goods-list > .goods {
-	height: 100px;
+.goods-update > .goods-image {
+	height: 66vh;
+}
+.goods-update > .goods-image img {
+	object-fit: cover;
+}
+.update-goods-list {
+	height: 82vh;
+	width: 36vw;
+}
+.update-goods-list > goods-list {
+	height: 68vh;
+	overflow-y: auto;
+}	
+.goods-list > .goods {
+    height: 100px;
 }
 
+
 /* mypage */
-section > .mypage {
-	height: 570px;
+.mypage {
+	height: 82vh;
+	width: 36vw;
 }
+
 
 /* mypage -> cancel/return, orderList */
 .mypage-order-list {
-  	height: 480px;
+  	height: 68vh;
+    overflow-y: auto;
+}
+.mypage-cancel-list {
+  	height: 68vh;
     overflow-y: auto;
 }
 .order-image {
     height: 100px;
     width: 80px;
 }
-.order-img {
-    height: 100%;
-     width: 100%;
-    object-fit: cover;
-}
 
+
+/* footer */
+.main footer {
+	height: 60vh;
+	width: 26vw;
+}
 footer {
-	height: 10vh;
+	height: 82vh;
+	width: 32vw;
+	justify-content: center;
+	align-items: end;
+	padding-bottom: 2em;
 }
-
 
 .no-outline:focus {
     outline: none;
 }
 
-
+/* border */
+* {
+    box-sizing: border-box;
+}
 .border-input {
     border-right: 0;
     border-left: 0;
     border-top: 0;
+    border-color: black;
 }
-
 .thick-border {
     border-width: 3px !important;
     border-color: black !important;
+}
+
+/* button */
+.btn-black {
+	background-color: black;
+	color: white;
 }
 
 .small-text {

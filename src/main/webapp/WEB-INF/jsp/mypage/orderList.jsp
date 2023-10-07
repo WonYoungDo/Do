@@ -12,17 +12,17 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 			
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 주문 목록 -->
-			<div class="mypage col-6 d-flex justify-content-center">	
+			<div class="mypage d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
 					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
@@ -51,11 +51,11 @@
 											구매 수량 : ${orderDetail.order.quantity }개
 										</a>
 										<div class="pl-5 pt-3 mt-1">
-											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control col-12 mb-1" id="cancelBtn" data-toggle="modal" data-target="#moreModal" 
+											<button type="button" class="order-btn btn btn-sm btn-black p-0 form-control col-12 mb-1" id="cancelBtn" data-toggle="modal" data-target="#moreModal" 
 												data-order-id="${orderDetail.order.id}" data-goods-id="${orderDetail.goods.id}" data-pay-id="${orderDetail.order.payId}">
 												주문취소
 											</button>
-											<button type="button" class="order-btn btn btn-sm btn-dark p-0 form-control" id="returnBtn"  data-toggle="modal" data-target="#moreModal"
+											<button type="button" class="order-btn btn btn-sm btn-black p-0 form-control" id="returnBtn"  data-toggle="modal" data-target="#moreModal"
 												data-order-id="${orderDetail.order.id}" data-goods-id="${orderDetail.goods.id}" data-pay-id="${orderDetail.order.payId}">
 												반품
 											</button>
@@ -74,8 +74,6 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
