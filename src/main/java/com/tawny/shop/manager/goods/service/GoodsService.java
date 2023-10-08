@@ -1,7 +1,8 @@
 package com.tawny.shop.manager.goods.service;
 import java.util.List;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,4 +68,16 @@ public class GoodsService {
 		return goodsRepository.selectGoodsCategory(category);
 	}
 	
+	// 상품 삭제 기능
+	public int deleteGoods(int goodsId) {
+		
+            Goods goods = goodsRepository.selectGoods(goodsId);
+            
+            if (goods != null) {
+                FileManager.removeFile(goods.getImagePath());
+                return goodsRepository.deleteGoods(goodsId);
+            } else {
+                return 0;
+            }
+	}
 }

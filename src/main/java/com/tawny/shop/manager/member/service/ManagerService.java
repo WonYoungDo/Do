@@ -61,13 +61,19 @@ public class ManagerService {
 		
 		Manager manager = managerRepository.getManagerLoginInfo(loginId);
 		
-		byte[] salt = Base64.getDecoder().decode(manager.getSaltStr());
-		String encryptPassword = PasswordEncoding.sha256(pw, salt);
-		
-		if(!manager.getPw().equals(encryptPassword)) {
+		if(manager == null) {
 			return null;
 		} else {
-			return manager;
+			byte[] salt = Base64.getDecoder().decode(manager.getSaltStr());
+			
+			String encryptPassword = PasswordEncoding.sha256(pw, salt);
+			
+			if(!manager.getPw().equals(encryptPassword)) {
+				return null;
+			} else {
+				return manager;
+			}
 		}
 	}
+
 }

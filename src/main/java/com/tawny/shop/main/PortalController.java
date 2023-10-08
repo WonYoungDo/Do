@@ -69,7 +69,6 @@ public class PortalController {
 		}
 	}
 	
-	
 	// 개별 상품 정보
 	@GetMapping("/main/goodsInfo/{id}")
 	public String goodsInfo(@PathVariable("id") int id, Model model) {

@@ -123,6 +123,8 @@
 						
 						if(data.result == "success") { 
 							location.href="/do/main/portal";
+						} else if(data.result == "AlreadyLoggedIn") {
+							alert("이미 로그인된 상태입니다.");
 						} else {
 							alert("회원정보가 일치하지 않습니다.");
 						}

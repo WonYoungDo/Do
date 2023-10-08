@@ -22,7 +22,7 @@
 			
 			<div class="update-goods-list d-flex justify-content-center">
 				<div class="col-10">
-					<div class="goods-list">
+					<div class="goods-list mt-5">
 						<c:forEach var="goods" items="${goodsList }">
 						
 							<div class="goods d-flex p-0 border">

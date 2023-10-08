@@ -22,13 +22,13 @@
 			
 			<!-- 상품 수정 -->
 			<div class="goods-update d-flex justify-content-center">	
-				<div class="col-10 bg-warning ">
+				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">상품 수정</h4>
-					<div class="border mt-3 bg-info">
+					<div class="goods-update-input border mt-3">
 					
 						<!-- 상품 사진 -->
 						<div class="goods-image col-6 d-flex align-items-center justify-content-center border p-0">
-							<img src="${goods.imagePath }" class="w-100"> 
+							<img src="${goods.imagePath }" class="w-100 h-100"> 
 						</div>
 						<!-- /상품 사진 -->
 						
@@ -86,6 +86,29 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
+			
+			// 삭제 버튼
+			$("#deleteBtn").on("click", function() {
+				let goodsId = $(this).data("goods-id");
+				
+				alert("해당 상품을 삭제하시겠습니까?")
+				$.ajax({
+					type:"delete"
+					, url:"/manager/goodsDelete"
+					, data:{"goodsId":goodsId}
+					, success:function(data) {
+						if(data.result == "success") {
+							alert("삭제되었습니다.");
+							location.reload();
+						} else {
+							alert("게시물 삭제 실패");
+						}
+					}
+					, error:function() {
+						alert("게시물 삭제 에러");
+					}
+				});
+			});
 			
 			// 수정 버튼
 			$("#saveBtn").on("click", function() {
