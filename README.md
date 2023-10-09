@@ -7,7 +7,7 @@
 
 ## 기획 및 설계
 - 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" height="25"/>
-- 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white" height="25"/>
+- 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white" height="0"/>
 
 ## stack
 <div align="center">
