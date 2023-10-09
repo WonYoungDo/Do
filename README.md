@@ -13,8 +13,8 @@
 	<img src="https://img.shields.io/badge/JSTL-%234169E1?style=flat&logo=JSTL&logoColor=white"/>
 	<img src="https://img.shields.io/badge/AWS-yellow?style=flat&logo=AWS&logoColor=white" /> <br>
 	<img src="https://img.shields.io/badge/HTML-darkorange?style=flat&logo=HTML&logoColor=white" />
-	<img src="https://img.shields.io/badge/CSS-#000080?style=flat&logo=CSS&logoColor=white"/>
-	<img src="https://img.shields.io/badge/JavaScript-%2300FF00?style=flat&logo=JavaScript&logoColor=white"/>
+	<img src="https://img.shields.io/badge/CSS-lightbrown?style=flat&logo=CSS&logoColor=white"/>
+	<img src="https://img.shields.io/badge/JavaScript-darkgreen?style=flat&logo=JavaScript&logoColor=white"/>
 </div>
 
 ## Tool
