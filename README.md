@@ -1,5 +1,6 @@
 # Do
-쇼핑몰 웹 서비스
+- 남성 쇼핑몰 웹 서비스
+- 상품을 간접적으로 결제 구매 기능을 구현한 프로젝트
 
 ## 주요 기능
 - 비밀번호 암호화
@@ -12,9 +13,9 @@
 </div>
 
 ## 개발 기간
+- 2023.08.22 ~ 2023.10.09 (6주)
 
-
-## <img src="https://example.com/tool-icon.png" alt="Tool icon" width="30"/> Stack 
+## Stack 
 <div align="center">
 	<img src="https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Java-%23007396?style=flat&logo=java&logoColor=white"/>
@@ -39,8 +40,8 @@
 - 재고 현황 기능
 - 사이즈 및 색상 선택 기능
 
-## 정보 
-- 원영도
+## 개발자 정보 
+- 이름 : 원영도
 - 이메일 : tawny6308@naver.com
 
 
