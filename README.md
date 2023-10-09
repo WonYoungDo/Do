@@ -14,7 +14,7 @@
 	<img src="https://img.shields.io/badge/AWS-%23FF9900?style=flat&logo=Amazon%20AWS&logoColor=white" /> <br>
 	<img src="https://img.shields.io/badge/HTML-%23E34F26?style=flat&logo=HTML5&logoColor=E9FFEE" />
 	<img src="https://img.shields.io/badge/CSS-%231572B6?style=flat&logo=CSS3&logoColor=E9FFEE"/>
-	<img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=social-square&amp;label=%20&amp;logocolor=F7DF1E&amp;link=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FFront-end_web_developer" />
+	<img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=social-square&amp;label=%20&amp;logocolor=F7DF1E&amp;link=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FLearn%2FFront-end_web_developer" />>
 </div>
 
 ## Tool
