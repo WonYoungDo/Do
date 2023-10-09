@@ -7,7 +7,7 @@
 
 ## stack
 <div align="center">
-	<img src="https://img.shields.io/badge/Spring Boot-lime?style=flat&logo=Spring Boot&logoColor=white"/>
+	<img src="https://img.shields.io/badge/Spring Boot-#00FF00?style=flat&logo=Spring Boot&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Java-black?style=flat&logo=Java&logoColor=white"/>
 	<img src="https://img.shields.io/badge/MYSQL-blue?style=flat&logo=MYSQL&logoColor=white"/> <br>
 	<img src="https://img.shields.io/badge/JSTL-%234169E1?style=flat&logo=JSTL&logoColor=white"/>
