@@ -34,7 +34,7 @@
 							<div class="d-flex border">
 								<div class="p-0 order-image">
 									<a href="/do/main/goodsInfo/${orderDetail.goods.id }">
-										<img alt="${orderDetail.goods.goodsName }" src="${orderDetail.goods.imagePath }" class="order-img">
+										<img alt="${orderDetail.goods.goodsName }" src="${orderDetail.goods.imagePath }" class="h-100 w-100">
 									</a>
 								</div>
 								<div class="col-10 pl-1">
