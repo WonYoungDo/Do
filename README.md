@@ -6,15 +6,8 @@
 - 이메일 인증
 
 ## 기획 및 설계
-- 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white"/>
-- 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white"/>
-
-<p style="font-size: 20px;">
-    - 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" style="vertical-align: middle;"/>
-</p>
-<p style="font-size: 20px;">
-    - 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white" style="vertical-align: middle;"/>
-</p>
+- 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" height="25"/>
+- 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white" height="25"/>
 
 ## stack
 <div align="center">
