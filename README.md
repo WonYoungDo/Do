@@ -9,6 +9,13 @@
 - 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white"/>
 - 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white"/>
 
+<p style="font-size: 20px;">
+    - 디자인 : <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" style="vertical-align: middle;"/>
+</p>
+<p style="font-size: 20px;">
+    - 문서 : <img src="https://img.shields.io/badge/Google Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white" style="vertical-align: middle;"/>
+</p>
+
 ## stack
 <div align="center">
 	<img src="https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/>
