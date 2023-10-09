@@ -6,14 +6,16 @@
 - 이메일 인증
 
 ## 기획 및 설계
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white)
-![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white)
-
+<div align="center">
+	![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white)
+	![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white)
+</div>
 
 ## 개발 기간
 
 
-## ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) stack
+## Stack <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python logo" width="30"/>
+
 <div align="center">
 	<img src="https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Java-%23007396?style=flat&logo=java&logoColor=white"/>
