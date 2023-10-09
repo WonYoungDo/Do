@@ -14,8 +14,7 @@
 ## 개발 기간
 
 
-## Stack <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python logo" width="30"/>
-
+## <img src="https://example.com/tool-icon.png" alt="Tool icon" width="30"/> Stack 
 <div align="center">
 	<img src="https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Java-%23007396?style=flat&logo=java&logoColor=white"/>
