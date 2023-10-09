@@ -13,7 +13,7 @@
 ## 개발 기간
 
 
-## stack
+## ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) stack
 <div align="center">
 	<img src="https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Java-%23007396?style=flat&logo=java&logoColor=white"/>
@@ -31,6 +31,12 @@
 	<img src="https://img.shields.io/badge/GitHub-black?style=flat&logo=GitHub&logoColor=white"/>
 	<img src="https://img.shields.io/badge/Tomcat-red?style=flat&logo=Apache-Tomcat&logoColor=white"/> 
 </div>
+
+## 향후 개발 목표
+- ID/PW 찾기 기능
+- 장바구니 기능
+- 재고 현황 기능
+- 사이즈 및 색상 선택 기능
 
 ## 정보 
 - 원영도
