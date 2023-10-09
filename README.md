@@ -6,8 +6,12 @@
 - 이메일 인증
 
 ## 기획 및 설계
-- ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white)
-- ![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white)
+![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=flat&logo=Google-Sheets&logoColor=white)
+
+
+## 개발 기간
+
 
 ## stack
 <div align="center">
