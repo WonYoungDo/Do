@@ -24,7 +24,7 @@
 			<!-- 취소/반품 조회 -->
 			<div class="mypage d-flex justify-content-center">	
 				<div class="col-10">
-					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
+					<h4 class="pt-3 pr-5 mr-5">취소/반품 목록</h4>
 					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
 						<a href="/do/user/mypage/order/cancelReturn?elapsedTime=recent" class="link">최근 1개월</a>
     					<a href="/do/user/mypage/order/cancelReturn?elapsedTime=all" class="link">전체조회</a>

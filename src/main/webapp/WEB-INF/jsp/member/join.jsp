@@ -426,7 +426,7 @@
 				
 				let joinUrl;
 				let resultData;
-				if(userBtn) { // 사용자로 로그인 할 때
+				if(userBtn) { 
 					joinUrl = "/user/join";
 					resultData = {"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber, "email":email};
 				
