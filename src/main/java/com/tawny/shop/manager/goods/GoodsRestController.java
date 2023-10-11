@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +22,7 @@ public class GoodsRestController {
 	private GoodsService goodsService;
 	
 	// 상품 등록
-	@PutMapping("/goodsUpload")
+	@PostMapping("/goodsUpload")
 	public Map<String, String> goodsUpload(
 			@RequestParam("goodsName") String goodsName
 			, @RequestParam("price") int price
