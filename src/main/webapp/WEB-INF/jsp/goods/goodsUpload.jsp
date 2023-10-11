@@ -157,7 +157,7 @@
 				formData.append("file", file.files[0]);
 				
 				$.ajax({
-					type:"put"
+					type:"post"
 					, url:"/manager/goodsUpload"
 					, data:formData
 					, processData:false
