@@ -120,4 +120,11 @@
 			`category` LIKE CONCAT(#{category}, '%')
  	</select>
  	
+ 	<delete id="deleteGoods" parameterType="int">
+ 		DELETE FROM
+			`goods`
+		WHERE
+			`id` = #{goodsId}
+ 	</delete>
+ 	
  </mapper>

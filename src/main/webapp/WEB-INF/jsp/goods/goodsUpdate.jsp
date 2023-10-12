@@ -11,20 +11,21 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 상품 수정 -->
-			<div class="goods-upload col-6 d-flex justify-content-center">	
+			<div class="goods-update d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">상품 수정</h4>
-					<div class="border mt-3">
+					<div class="goods-update-input border mt-3">
+					
 						<!-- 상품 사진 -->
 						<div class="goods-image col-6 d-flex align-items-center justify-content-center border p-0">
 							<img src="${goods.imagePath }" class="w-100 h-100"> 
@@ -66,7 +67,7 @@
 					
 					<div class="d-flex justify-content-between my-2">
 						<button type="button" class="btn form-control btn-danger col-3" id="deleteBtn" data-goods-id="${goods.id }">삭제</button>
-						<button type="button" class="btn form-control btn-dark col-3" id="saveBtn" data-goods-id="${goods.id }">저장</button>
+						<button type="button" class="btn form-control btn-black col-3" id="saveBtn" data-goods-id="${goods.id }">저장</button>
 					</div>
 					
 				</div>
@@ -79,14 +80,35 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 	<script>
 		$(document).ready(function() {
+			
+			// 삭제 버튼
+			$("#deleteBtn").on("click", function() {
+				let goodsId = $(this).data("goods-id");
+				
+				alert("해당 상품을 삭제하시겠습니까?")
+				$.ajax({
+					type:"delete"
+					, url:"/manager/goodsDelete"
+					, data:{"goodsId":goodsId}
+					, success:function(data) {
+						if(data.result == "success") {
+							alert("삭제되었습니다.");
+							location.reload();
+						} else {
+							alert("게시물 삭제 실패");
+						}
+					}
+					, error:function() {
+						alert("게시물 삭제 에러");
+					}
+				});
+			});
 			
 			// 수정 버튼
 			$("#saveBtn").on("click", function() {

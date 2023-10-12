@@ -11,17 +11,17 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 마이페이지 -->
-			<div class="mypage col-6 d-flex justify-content-center">	
+			<div class="mypage d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">마이페이지</h4>
 					<div class="mt-4 p-1">
@@ -47,8 +47,6 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

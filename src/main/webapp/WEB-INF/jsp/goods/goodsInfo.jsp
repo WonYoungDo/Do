@@ -11,21 +11,20 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
-			<!-- 베스트 상품1 -->
+			<!-- 베스트 상품 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
-			<!-- /베스트 상품1 -->
+			<!-- /베스트 상품 -->
 			
 			<!-- 상품 상세 정보 -->
-			<div class="col-6">
-			
+			<div>
 				<div class="goods-info d-flex justify-content-center" data-goods-id="${goods.id}">
 				
-					<div class="goods d-flex col-10 p-0">
+					<div class="goods d-flex col-10 p-1">
 					
 						<div class="col-6 p-0">
 							<img src="${goods.imagePath }"  class="w-100 h-100">
@@ -59,14 +58,19 @@
 										${goods.price }원
 									</div>
 								</div>
-								<a type="button" href="/do/goodsOrder" class="btn btn-dark form-control text-white" id="paymentBtn">바로 구매</a>
+								<a type="button" href="/do/goodsOrder" class="btn btn-black form-control text-white" id="paymentBtn">바로 구매</a>
 							</div>
 						</div>
 						
 					</div>
-					
 				</div>
-				
+				<div class="goods-detail d-flex justify-content-center align-items-center">
+					<div class="text-center">
+						<h3>상세 정보 보기</h3>
+						<i class="bi bi-caret-down-fill icon-lg "></i> <br>
+						<i class="bi bi-caret-down-fill icon-lg "></i>
+					</div>
+				</div>
 			</div>
 			<!-- /상품 상세 정보 -->
 			
@@ -75,8 +79,6 @@
 			<!-- /베스트 상품2 -->
 			
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

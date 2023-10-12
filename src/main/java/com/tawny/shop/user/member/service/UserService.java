@@ -62,14 +62,18 @@ public class UserService {
 		
 		User user = userRepository.getLoginInfo(loginId);
 		
-		byte[] salt = Base64.getDecoder().decode(user.getSaltStr());
-		
-		String encryptPassword = PasswordEncoding.sha256(pw, salt);
-		
-		if(!user.getPw().equals(encryptPassword)) {
+		if(user == null) {
 			return null;
 		} else {
-			return user;
+			byte[] salt = Base64.getDecoder().decode(user.getSaltStr());
+			
+			String encryptPassword = PasswordEncoding.sha256(pw, salt);
+
+			if(!user.getPw().equals(encryptPassword)) {
+				return null;
+			} else {
+				return user;
+			}
 		}
 	}
 	

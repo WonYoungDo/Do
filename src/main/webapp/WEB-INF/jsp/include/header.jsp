@@ -15,7 +15,7 @@
 			<div class="pl-3">
 				<form id="searchForm" action="/do/main/portal" method="get">
 					<i class="bi bi-search icon-md"></i>
-					<input type="text" class="border-input no-outline" name="keyword">
+					<input type="text" class="border-input no-outline mb-2" name="keyword">
 					<button type="submit" class="d-none">검색</button>
 				</form>
 			</div>
@@ -24,13 +24,20 @@
 			<c:if test="${empty managerId }">
 				<!-- 메뉴 -->
 				<div class="small">
-					<c:if test="${empty userId }">
-						<a href="/do/login" class="text-dark">로그인</a>
-						<a href="/do/join" class="text-dark px-2 pr-4">회원가입</a>
-					</c:if>	
-					<c:if test="${not empty userId }">
-						<a href="/do/user/mypage" class="text-dark pr-3">마이페이지</a>
-					</c:if>	
+					<c:choose>
+						<c:when test="${empty userId }">
+							<a href="/do/login" class="text-dark">로그인</a>
+							<a href="/do/join" class="text-dark px-2">회원가입</a>
+							<a href="#" class="login-check text-dark">장바구니</a>
+							<a href="/do/login" class="login-check text-dark pl-2 pr-5">마이페이지</a>
+						</c:when>	
+						<c:otherwise>
+							<a href="/do/login" class="text-dark">로그인</a>
+							<a href="/do/join" class="text-dark px-2">회원가입</a>
+							<a href="#" class="text-dark">장바구니</a>
+							<a href="/do/user/mypage" class="text-dark pl-2 pr-5">마이페이지</a>
+						</c:otherwise>
+					</c:choose>	
 				</div>
 				<!-- /메뉴 -->
 			</c:if>
@@ -41,7 +48,7 @@
 		<!-- 카테고리2 -->
 		<div class="category d-flex border border-dark">
 		
-			<ul class="nav w-100 d-flex justify-content-center pt-1 text-center">
+			<ul class="nav w-100 d-flex justify-content-center text-center">
 			<c:choose>
 				<%-- 관리자 로그인 시 --%>
 				<c:when test="${not empty managerId}">
@@ -126,6 +133,22 @@
 		            </li>
 					<!-- /OUTER -->
 					
+					<!-- TOP -->		
+		            <li class="nav-item">
+			            <a href="/do/main/portal?category=TOP" class="nav-link text-dark font-weight-bold main-category">TOP</a>
+			            <div class="d-none sub-category">
+			                <ul class="d-flex justify-content-around">
+			               		<li><a href="/do/main/portal?category=TOP-셔츠" class="dropdown-item">셔츠</a></li>
+			                    <li><a href="/do/main/portal?category=TOP-후드티" class="dropdown-item">후드티</a></li>
+			                    <li><a href="/do/main/portal?category=TOP-맨투맨" class="dropdown-item">맨투맨</a></li>
+			                    <li><a href="/do/main/portal?category=TOP-긴팔티" class="dropdown-item">긴팔티</a></li>
+			                    <li><a href="/do/main/portal?category=TOP-반팔티" class="dropdown-item">반팔티</a></li>
+			                    <li><a href="/do/main/portal?category=TOP-나시" class="dropdown-item">나시</a></li>
+			                </ul>
+			            </div>
+		            </li>
+					<!-- /OUTER -->
+					
 					<!-- PANTS -->		
 		            <li class="nav-item">
 			            <a href="/do/main/portal?category=PANTS" class="nav-link text-dark font-weight-bold main-category">PANTS</a>
@@ -180,7 +203,7 @@
 			</c:choose>
 			</ul>
 			 
-			<div class="login-user small-text d-flex justify-content-start align-items-center mr-3">
+			<div class="login-user small-text d-flex justify-content-start align-items-center mr-5">
 				<c:if test="${not empty managerId}">
 					${managerName } <a href="/manager/logout" class="pl-1">로그아웃</a>
 				</c:if>
@@ -194,7 +217,7 @@
 		
 	</nav>
 </header>
-<div class="gap bg-dark border border-dark"></div>
+<div class="gap"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
@@ -223,6 +246,19 @@
 			let subCategory = $(this).find(".sub-category"); 
 			subCategory.addClass('d-none'); 	
 	    });
+	    
+		// 로그인이 되어있지 않으면 로그인 페이지로 이동 
+		let userId = "${sessionScope.userId}";
+		$(".login-check").on("click", function(e) {
+			e.preventDefault();
+
+			if(userId == "") {
+			    let result = confirm("로그인 후에만 이용이 가능합니다.\n로그인 페이지로 이동하시겠습니까?");
+			    if (result) {
+			        window.location.href = "/do/login";
+			    }
+			}
+		});	
 	    
 	});
 </script>

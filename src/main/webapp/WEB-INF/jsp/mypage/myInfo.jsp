@@ -13,20 +13,20 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 내정보 -->
-			<div class="mypage col-6 d-flex justify-content-center">	
+			<div class="mypage d-flex justify-content-center">	
 				<div class="col-10">
 					<h4 class="pt-3 pr-5 mr-5">내정보</h4>
-					<div class="mt-4 p-1">
+					<div class="mt-3 p-1">
 					
 						<!-- 아이디 -->
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
@@ -36,7 +36,7 @@
 						<!-- /아이디 -->
 						
 						<!-- 이름 -->
-						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-4 pt-2">
 							<label class="mt-2">이름 :</label> 
 							<input type="text" class="col-9 border-0 no-outline" id="nameInput" value="${user.name }" readonly>
 						</div>
@@ -46,17 +46,17 @@
 						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="col-3 p-0 mt-2">전화번호 :</label>
 							<input type="text" class="col-7 border-0 no-outline" id="phoneNumberInput" value="${user.phoneNumber }" readonly>
-							<button type="button" class="btn btn-dark col-2 btn-sm" id="phoneNumberUpdateBtn">수정</button>
+							<button type="button" class="btn btn-black col-2 btn-sm" id="phoneNumberUpdateBtn">수정</button>
 						</div>
 						<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요.</div>
 						<div class="text-danger small d-none guide-message" id="invalidPhoneNumber">전화번호 형식이 올바르지 않습니다.</div>
 						<!-- /전화번호 -->
 						
 						<!-- 이메일 -->
-						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-4 pt-2">
 							<label class="col-3 p-0 mt-2">이메일 :</label>
 							<input type="text" class="col-7 border-0 no-outline" id="emailInput" value="${user.email }" readonly>
-							<button type="button" class="btn btn-dark col-2 btn-sm" id="emailUpdateBtn">수정</button>
+							<button type="button" class="btn btn-black col-2 btn-sm" id="emailUpdateBtn">수정</button>
 						</div>
 						<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요.</div>
 						<!-- /이메일 -->
@@ -72,24 +72,24 @@
 								</c:forEach>
 								
 							</select>
-								<button type="button" class="btn btn-dark col-2 btn-sm" data-toggle="modal" data-target="#moreModal">등록</button>
+								<button type="button" class="btn btn-black col-2 btn-sm" data-toggle="modal" data-target="#moreModal">등록</button>
 							</div>
 						</div>	
 						<!-- /결제 수단 -->
 
 						<!-- 주소 -->
 						<div id="address">
-							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+							<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-4 pt-2">
 								<label class="mt-2">주소 :</label>
 								<input type="text" class="col-7 border-0 no-outline" id="addressInput" value="${user.address }" readonly>
-								<button type="button" class="btn btn-dark col-2 btn-sm" id="addressUpdateBtn">수정</button>
+								<button type="button" class="btn btn-black col-2 btn-sm" id="addressUpdateBtn">수정</button>
 							</div>
 						</div>
 						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요.</div>	
 						<!-- /주소 -->
 						
 						<div class="d-flex justify-content-end">
-							<button type="button" class="btn btn-dark" id="saveBtn">저장</button>
+							<button type="button" class="btn btn-black" id="saveBtn">저장</button>
 						</div>
 					</div>
 				</div>
@@ -101,8 +101,6 @@
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	
 	<!-- Modal -->

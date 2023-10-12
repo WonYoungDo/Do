@@ -12,29 +12,25 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="d-flex p-0 border border-dark">
+		<section class="d-flex p-0">
 		
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
-			<!-- 취소/반품 조회 -->
-			<div class="mypage col-6 d-flex justify-content-center">	
+			<!-- 모든 주문 목록 -->
+			<div class="all-order d-flex justify-content-center">	
 				<div class="col-10">
-					<h4 class="pt-3 pr-5 mr-5">주문 목록</h4>
-					<div class="d-flex justify-content-between font-weight-bold mt-1 p-1">
-						<a href="/do/user/mypage/order/cancelReturn?elapsedTime=recent" class="link">최근 1개월</a>
-    					<a href="/do/user/mypage/order/cancelReturn?elapsedTime=all" class="link">전체조회</a>
-					</div>
-					<div class="mypage-order-list mt-1 p-1">
+					<h4 class="pt-3 pr-5 mr-5">모든 주문 목록</h4>
+					<div class="all-order-list mt-1">
 						<c:forEach var="allOrderList" items="${allOrderDetailList }">
 							<div class="d-flex border">
 								<div class="p-0 order-image">
 									<a href="/do/main/goodsInfo/${allOrderList.goods.id }">
-										<img alt="${allOrderList.goods.goodsName }" src="${allOrderList.goods.imagePath }" class="order-img">
+										<img alt="${allOrderList.goods.goodsName }" src="${allOrderList.goods.imagePath }" class="w-100 h-100">
 									</a>
 								</div>
 								<div class="col-10 pl-1">
@@ -58,15 +54,13 @@
 					</div>
 				</div>
 			</div>
-			<!-- /취소/반품 조회 -->
+			<!-- /모든 주문 목록 -->
 			
 			<!-- 베스트 상품2 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
 			<!-- /베스트 상품2 -->
 		
 		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
