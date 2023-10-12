@@ -108,12 +108,20 @@ public class UserRestController {
 		User user = userService.login(loginId, pw);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(user != null) {
-			resultMap.put("result", "success");
-			session.setAttribute("userId", user.getId());
-			session.setAttribute("userName", user.getName());
+		
+		boolean AlreadyLoggedInUser = session.getAttribute("userId") != null;
+		boolean AlreadyLoggedInManager = session.getAttribute("managerId") != null;
+		
+		if(AlreadyLoggedInUser || AlreadyLoggedInManager) {
+			resultMap.put("result", "AlreadyLoggedIn");
 		} else {
-			resultMap.put("result", "fail");
+			if(user != null) {
+				resultMap.put("result", "success");
+				session.setAttribute("userId", user.getId());
+				session.setAttribute("userName", user.getName());
+			} else {
+				resultMap.put("result", "fail");
+			}
 		}
 		return resultMap;
 	}

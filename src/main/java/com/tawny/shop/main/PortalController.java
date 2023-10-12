@@ -24,7 +24,6 @@ public class PortalController {
 	@Autowired
 	private PortalService portalService;
 	
-	
 	// 메인 포털 화면
 	@GetMapping("/main/portal")
 	public String portal(
@@ -55,18 +54,33 @@ public class PortalController {
 	
 	// 베스트 상품 보여주기 
 	public void bestGoodsModel(Model model) {
-		List<OrderBestGoodsDetail> bestGoodsList = portalService.getBestGoodsList(2);
-		OrderBestGoodsDetail bestGoods1 = bestGoodsList.get(0);
-		OrderBestGoodsDetail bestGoods2 = bestGoodsList.get(1);
+		List<OrderBestGoodsDetail> bestGoodsList = portalService.getBestGoodsList(3);
 		
-		model.addAttribute("bestGoods1", bestGoods1);
-		model.addAttribute("bestGoods2", bestGoods2);
+		if(bestGoodsList == null) {
+			 model.addAttribute("errorMessage", "현재 판매된 상품 정보가 충분하지 않습니다.");
+		} else {
+			
+			OrderBestGoodsDetail bestGoods1 = bestGoodsList.get(0);
+			model.addAttribute("bestGoods1", bestGoods1);
+
+			if(bestGoodsList.size() >= 2) {
+				OrderBestGoodsDetail bestGoods2 = bestGoodsList.get(1);
+				model.addAttribute("bestGoods2", bestGoods2);
+			}
+			
+			if(bestGoodsList.size() >= 3) {
+				OrderBestGoodsDetail bestGoods3 = bestGoodsList.get(2);
+				model.addAttribute("bestGoods3", bestGoods3);
+			}
+		}
 	}
-	
 	
 	// 개별 상품 정보
 	@GetMapping("/main/goodsInfo/{id}")
 	public String goodsInfo(@PathVariable("id") int id, Model model) {
+		
+		bestGoodsModel(model);
+		
 		Goods goods = portalService.getGoods(id);
 		model.addAttribute("goods", goods);
 		return "goods/goodsInfo";
@@ -74,25 +88,29 @@ public class PortalController {
 	
 	// 회원가입 화면
 	@GetMapping("/join")
-	public String join() {
+	public String join(Model model) {
+		bestGoodsModel(model);
 		return "member/join";
 	}
 	
 	// 로그인 화면
 	@GetMapping("/login")
-	public String login() {
+	public String login(Model model) {
+		bestGoodsModel(model);
 		return "member/login";
 	}
 	
 	// 아이디 찾기 화면
 	@GetMapping("/find/id")
-	public String findId() {
+	public String findId(Model model) {
+		bestGoodsModel(model);
 		return "member/findId";
 	}
 	
 	// 비밀번호 찾기 화면
 	@GetMapping("/find/pw")
-	public String findPw() {
+	public String findPw(Model model) {
+		bestGoodsModel(model);
 		return "member/findPw";
 	}
 	

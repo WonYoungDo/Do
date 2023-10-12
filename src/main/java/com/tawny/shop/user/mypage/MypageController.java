@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.shop.after.dto.AfterSalesDetail;
 import com.tawny.shop.after.service.AfterSalesService;
+import com.tawny.shop.main.PortalController;
 import com.tawny.shop.order.dto.OrderDetail;
 import com.tawny.shop.order.service.OrderService;
 import com.tawny.shop.pay.domain.Pay;
@@ -36,15 +37,22 @@ public class MypageController {
 	@Autowired
 	private AfterSalesService afterSalesService;
 	
+	@Autowired
+	private PortalController portalController;
+	
 	// 마이페이지 화면
 	@GetMapping("")
-	public String mypage() {
+	public String mypage(Model model) {
+		portalController.bestGoodsModel(model);
 		return "mypage/mypage";
 	}
 	
 	// 마이페이지 -> 주문 목록 화면
 	@GetMapping("/order/list")
 	public String orderList(Model model, HttpSession session, @RequestParam(value="elapsedTime", required = false) String elapsedTime) {
+		
+		portalController.bestGoodsModel(model);
+		
 		int userId = (Integer)session.getAttribute("userId");
 		List<OrderDetail> orderDetailList = orderService.getOrderList(userId, elapsedTime);
 		model.addAttribute("orderDetailList", orderDetailList);
@@ -54,6 +62,9 @@ public class MypageController {
 	// 마이페이지 -> 취소/반품 조회 화면
 	@GetMapping("/order/cancelReturn")
 	public String cancelReturnList(Model model, HttpSession session, @RequestParam(value="elapsedTime", required = false) String elapsedTime) {
+		
+		portalController.bestGoodsModel(model);
+		
 		int userId = (Integer)session.getAttribute("userId");
 		List<AfterSalesDetail> afterSalesList = afterSalesService.getAfterSalesList(userId, elapsedTime);
 		model.addAttribute("afterSalesList", afterSalesList);
@@ -63,6 +74,9 @@ public class MypageController {
 	// 마이페이지 -> 내정보 화면
 	@GetMapping("/info")
 	public String mypageInfo(Model model, HttpSession session) {
+		
+		portalController.bestGoodsModel(model);
+		
 		int userId = (Integer)session.getAttribute("userId");
 		User user = userService.getUser(userId);
 		List<Pay> pay = payService.getCardInfo(userId);

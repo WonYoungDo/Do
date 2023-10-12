@@ -46,4 +46,6 @@ public interface GoodsRepository {
 	// 카테고리 분류(해당 되는 카테고와 일치하는 상품 정보 가져오기) 
 	public List<Goods> selectGoodsCategory(@Param("category") String category);
 		
+	// 상품 삭제 
+	public int deleteGoods(@Param("goodsId") int goodsId);
 }

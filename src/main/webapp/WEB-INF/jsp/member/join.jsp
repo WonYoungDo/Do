@@ -11,19 +11,19 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container p-0">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section class="d-flex p-0 border border-dark">
-		
+		<section class="section d-flex p-0">
+			
 			<!-- 베스트 상품1 -->
 			<c:import url="/WEB-INF/jsp/include/bestGoods1.jsp"/>
 			<!-- /베스트 상품1 -->
 			
 			<!-- 회원가입 -->
-			<div class="join col-6 small d-flex justify-content-center">
+			<div class="join small d-flex justify-content-center p-2">
 				
 				<!-- 입력란 -->				
-				<div class="join-box col-10 p-5">
+				<div class="join-box col-10">
 				
 					<div class="d-flex">
 						<button type="button" class="btn btn-secondary form-control mr-1" id="userBtn">사용자</button>
@@ -31,10 +31,10 @@
 					</div>
 					
 					<!-- 아이디 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-4">
 						<label class="col-2 p-0 mt-2">아이디:</label>
-						<input type="text" class="col-7 border-0" id="idInput">
-						<button type="button" class="btn btn-dark btn-sm col-2 p-0" id="duplicateBtn">중복확인</button>
+						<input type="text" class="no-outline col-7 border-0 ml-3" id="idInput">
+						<button type="button" class="btn btn-black btn-sm col-2 p-0" id="duplicateBtn">중복확인</button>
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyId">아이디를 입력해주세요!</div>
 					<div class="text-success small d-none guide-message" id="availableId">사용가능한 아이디입니다.</div>
@@ -43,53 +43,53 @@
 					<!-- /아이디 입력란 -->
 					
 					<!-- 비밀번호 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark my-2 pt-2">
 						<label class="mt-2">비밀번호 :</label>
-						<input type="password" class="col-7 border-0" id="pwInput">
+						<input type="password" class="no-outline col-9 border-0 mr-2" id="pwInput">
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyPw">비밀번호를 입력해주세요.</div>
 					<!-- /비밀번호 입력란 -->
 					
 					<!-- 비밀번호 확인란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 						<label class="mt-2">비밀번호 확인 :</label>
-						<input type="password" class="col-7 border-0" id="pwCheckInput">
+						<input type="password" class="no-outline col-9 border-0 mr-2" id="pwCheckInput">
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyPwCheck">비밀번호를 확인해주세요.</div>
 					<!-- /비밀번호 확인란 -->
 					
 					<!-- 이름 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark my-2 pt-2">
 						<label class="mt-2">이름 :</label>
-						<input type="text" class="col-7 border-0" id="nameInput">
+						<input type="text" class="no-outline col-9 border-0 mr-2" id="nameInput">
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyName">이름을 입력해주세요.</div>
 					<!-- /이름 입력란 -->
 					
 					<!-- 주소 입력란 -->
 					<div id="address">
-						<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+						<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
 							<label class="mt-2">주소 :</label>
-							<input type="text" class="col-7 border-0" id="addressInput">
+							<input type="text" class="no-outline col-9 border-0 mr-2" id="addressInput">
 						</div>
 						<div class="text-danger small d-none guide-message" id="emptyAddress">주소를 입력해주세요.</div>
 					</div>	
 					<!-- /주소 입력란 -->
 					
 					<!-- 전화번호 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark my-3 pt-2">
-						<label class="col-3 p-0 mt-2">전화번호:</label>
-						<input type="text" class="col-6 border-0" id="phoneNumberInput">
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark my-2 pt-2">
+						<label class="p-0 mt-2">전화번호:</label>
+						<input type="text" class="no-outline col-9 border-0 mr-2" id="phoneNumberInput">
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyPhoneNumber">전화번호를 입력해주세요.</div>
 					<div class="text-danger small d-none guide-message" id="invalidPhoneNumber">전화번호 형식이 올바르지 않습니다.</div>
 					<!-- /전화번호 입력란 -->
 					
 					<!-- 이메일 입력란 -->
-					<div class="input-box d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
-						<label class="col-3 p-0 mt-2">이메일:</label>
-						<input type="text" class="col-6 border-0" id="emailInput">
-						<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="sendVerifyBtn">인증</button>
+					<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+						<label class="col-2 p-0 mt-2">이메일:</label>
+						<input type="text" class="no-outline col-7 border-0 ml-3" id="emailInput">
+						<button type="button" class="btn btn-black btn-sm p-0 col-2" id="sendVerifyBtn">인증</button>
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyEmail">이메일을 입력해주세요.</div>
 					<div class="text-success small d-none guide-message" id="sendVerityCode">인증번호를 전송했습니다.</div>
@@ -98,10 +98,10 @@
 					
 					<!-- 인증번호 입력란 -->
 					<div class="d-none" id="verifyBox">
-						<div class="join-input d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
-							<label class="col-3 p-0 mt-2">인증번호:</label>
-							<input type="text" class="col-6 border-0" id="verifyCodeInput">
-							<button type="button" class="btn btn-dark btn-sm p-0 col-2" id="verifyCodeBtn">확인</button>
+						<div class="d-flex align-items-center justify-content-between border-bottom border-dark pt-2">
+							<label class="col-2 p-0 mt-2">인증번호:</label>
+							<input type="text" class="no-outline col-7 border-0 ml-3" id="verifyCodeInput">
+							<button type="button" class="btn btn-black btn-sm p-0 col-2" id="verifyCodeBtn">확인</button>
 						</div>					
 					</div>
 					<div class="text-danger small d-none guide-message" id="emptyVerifyCode">인증번호를 입력해주세요.</div>
@@ -110,10 +110,8 @@
 					<div class="text-danger small d-none guide-message" id="notMatchCode">인증번호가 일치하지 않습니다.</div>
 					<!-- /인증번호 입력란 -->
 					
-					
-					
 					<!-- 회원가입 버튼 -->
-					<button type="button" class="btn btn-dark btn-block mt-5" id="joinBtn">회원가입</button>
+					<button type="button" class="btn btn-black btn-block mt-5" id="joinBtn">회원가입</button>
 					<!-- /회원가입 버튼 -->
 									
 				</div>
@@ -121,13 +119,9 @@
 				
 			</div>
 			<!-- /회원가입 -->
+				<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 			
-			<!-- 베스트 상품2 -->
-			<c:import url="/WEB-INF/jsp/include/bestGoods2.jsp"/>
-			<!-- /베스트 상품2 -->
-		
 		</section>
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -432,7 +426,7 @@
 				
 				let joinUrl;
 				let resultData;
-				if(userBtn) { // 사용자로 로그인 할 때
+				if(userBtn) { 
 					joinUrl = "/user/join";
 					resultData = {"loginId":id, "pw":pw, "name":name, "address":address, "phoneNumber":phoneNumber, "email":email};
 				

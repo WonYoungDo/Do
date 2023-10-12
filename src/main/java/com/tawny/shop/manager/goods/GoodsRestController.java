@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +22,7 @@ public class GoodsRestController {
 	private GoodsService goodsService;
 	
 	// 상품 등록
-	@PutMapping("/goodsUpload")
+	@PostMapping("/goodsUpload")
 	public Map<String, String> goodsUpload(
 			@RequestParam("goodsName") String goodsName
 			, @RequestParam("price") int price
@@ -53,6 +54,21 @@ public class GoodsRestController {
 	
 		Map<String, String> resultMap = new HashMap<>();
 		if(goodsUpdate != 0) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
+	// 상품 삭제
+	@DeleteMapping("/goodsDelete")
+	public Map<String, String> goodsDelete(@RequestParam("goodsId") int goodsId) {
+		int goodsDelete = goodsService.deleteGoods(goodsId);
+	
+		Map<String, String> resultMap = new HashMap<>();
+		if(goodsDelete != 0) {
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");
