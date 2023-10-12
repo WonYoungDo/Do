@@ -1,13 +1,12 @@
 package com.tawny.shop.order;
 
 import java.util.HashMap;
-
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +19,7 @@ public class OrderRestController {
 	private OrderService orderService;
 	
 	// 주문 정보 저장
-	@PutMapping("/goods/order")
+	@PostMapping("/goods/order")
 	public Map<String, String> Order(
 			@RequestParam("goodsId") int goodsId
 			, @RequestParam("payId") int payId

@@ -192,7 +192,7 @@
 			    } 
 			    	
 				$.ajax({
-					type:"put"
+					type:"post"
 					, url:"/goods/order"
 					, data:{"goodsId":goodsId, "payId":payId, "request":request, "address":address, "quantity":count, "totalPrice":totalPrice}
 					, success:function(data) {
