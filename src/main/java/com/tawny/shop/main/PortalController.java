@@ -56,7 +56,7 @@ public class PortalController {
 	public void bestGoodsModel(Model model) {
 		List<OrderBestGoodsDetail> bestGoodsList = portalService.getBestGoodsList(3);
 		
-		if(bestGoodsList == null) {
+		if(bestGoodsList == null || bestGoodsList.isEmpty()) {
 			 model.addAttribute("errorMessage", "현재 판매된 상품 정보가 충분하지 않습니다.");
 		} else {
 			
